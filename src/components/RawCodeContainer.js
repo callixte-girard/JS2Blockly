@@ -16,8 +16,10 @@ export class RawCodeContainer extends React.Component {
     handleChange(event) {
 
         let inputContent = event.target.value ;
+        let index = inputContent.indexOf("/");
+
         let splitContent = inputContent.split(/\r?\n/);
-        console.log(splitContent);
+        console.log("splitInput: " , splitContent);
 
         this.setState({codeRaw: splitContent});
 
@@ -28,10 +30,14 @@ export class RawCodeContainer extends React.Component {
 
     handleConversion(codeRaw) {
 
-        console.log("codeRaw: " , codeRaw);
+        // console.log("codeRaw: " , codeRaw);
 
-        let codeParsed = esprima.tokenize(codeRaw);
-        console.log("codeParsed: " , codeParsed);
+        try {
+            let codeParsed = esprima.tokenize(codeRaw);
+            console.log("codeParsed: " , codeParsed);
+        } catch {
+            console.log("codeParsed: " , "!ERROR TO HANDLE!");
+        }
 
         console.log(line);
     }

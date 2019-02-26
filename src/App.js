@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './App.css';
 
 import {ParsedCodeContainer} from './components/ParsedCodeContainer';
-import {RawCodeContainer} from "./components/RawCodeContainer";
+import {RawCodeContainer} from './components/RawCodeContainer';
+import {ErrorBoundary} from "./components/ErrorBoundary";
 
 class App extends React.Component {
 
@@ -12,19 +13,18 @@ class App extends React.Component {
 
 ReactDOM.render(
 
-    <div>
+    <ErrorBoundary>
         <h1>HEY GUYS :)</h1>
 
 
         <RawCodeContainer>
-
         </RawCodeContainer>
 
 
-        <ParsedCodeContainer message="var pipou = 5;">
-
+        <ParsedCodeContainer>
         </ParsedCodeContainer>
-    </div>,
+
+    </ErrorBoundary>,
 
     document.getElementById('app')
 );
