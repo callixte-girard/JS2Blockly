@@ -16,9 +16,11 @@ export class RawCodeContainer extends React.Component {
     handleChange(event) {
 
         let inputContent = event.target.value ;
+        let splitContent = inputContent.split(/\r?\n/);
+        console.log(splitContent);
 
-        this.setState({codeRaw: inputContent});
-        // console.log(event.target.value);
+        this.setState({codeRaw: splitContent});
+
 
         this.handleConversion(inputContent);
     }
@@ -41,7 +43,7 @@ export class RawCodeContainer extends React.Component {
                       rows="20"
                       cols="80"
                       onChange={this.handleChange}>
-            ></textarea>
+            </textarea>
         );
     }
 
