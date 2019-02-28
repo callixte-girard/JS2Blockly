@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {style} from '../App.js';
+
 const esprima = require('esprima');
 
 
@@ -56,11 +58,10 @@ export class RawCodeContainer extends React.Component {
 
 
     render() {
+
         return (
             <textarea id="code-raw"
-                      style={{
-                          // display: "inline-block"
-                      }}
+                      style={{style}}
                       rows="40"
                       cols="80"
                       placeholder={this.exampleCode}
