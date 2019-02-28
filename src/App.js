@@ -14,29 +14,20 @@ class App extends React.Component {
 
         render() {
                 return (
-                    <div style={{
-                            // display: 'inline-block'
-                    }}>
-
-                            <script src="blockly_compressed.js"></script>
-                            <script src="blocks_compressed.js"></script>
-
+                    <div>
                             <h1>HEY GUYS :)</h1>
+                            <h5>Have fun with this fantastic app.</h5>
 
-                            <div>
-                                    <RawCodeContainer exampleCode="
-                                                let pipou = 5;
-                                                const papou = 8;
-                                                console.log(papou - pipou);
-                                    ">
-                                    </RawCodeContainer>
-
-
-                                    <ParsedCodeContainer>
-                                    </ParsedCodeContainer>
-                            </div>
+                            <RawCodeContainer exampleCode="
+                                        let pipou = 5;
+                                        const papou = 8;
+                                        console.log(papou - pipou);
+                            ">
+                            </RawCodeContainer>
 
 
+                            <ParsedCodeContainer>
+                            </ParsedCodeContainer>
                     </div>
                 )
         }
