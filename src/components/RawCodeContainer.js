@@ -1,14 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 const esprima = require('esprima');
 
-const line = "--------------------------------------------------------------";
 
 export class RawCodeContainer extends React.Component {
 
     constructor(props) {
         super(props);
+        this.exampleCode = props.exampleCode;
+
+        // bindings
         this.handleChange = this.handleChange.bind(this);
         this.handleConversion = this.handleConversion.bind(this);
     }
@@ -23,8 +24,12 @@ export class RawCodeContainer extends React.Component {
 
         this.setState({codeRaw: splitContent});
 
-
+        // converts code for parsing
         this.handleConversion(inputContent);
+
+        // warns the other Component to refresh himself.
+        // or gives the raw data to another Component that wil ParseCode.
+        ///////
     }
 
 
@@ -35,20 +40,32 @@ export class RawCodeContainer extends React.Component {
         try {
             let codeParsed = esprima.tokenize(codeRaw);
             console.log("codeParsed: " , codeParsed);
+
+            for (let i=0 ; i < codeParsed.length ; i++) {
+
+                let word = codeParsed[i];
+                console.log(word);
+            }
+
         } catch {
             console.log("codeParsed: " , "!ERROR TO HANDLE!");
         }
 
-        console.log(line);
+        console.log("------------------------------------");
     }
 
 
     render() {
         return (
             <textarea id="code-raw"
-                      rows="20"
+                      style={{
+                          // display: "inline-block"
+                      }}
+                      rows="40"
                       cols="80"
-                      onChange={this.handleChange}>
+                      placeholder={this.exampleCode}
+                      onChange={this.handleChange}
+            >
             </textarea>
         );
     }
