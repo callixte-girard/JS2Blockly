@@ -46,7 +46,7 @@ export class RawCodeContainer extends React.Component {
             for (let i=0 ; i < codeParsed.length ; i++) {
 
                 let word = codeParsed[i];
-                console.log(word);
+                // console.log(word);
             }
 
         } catch {

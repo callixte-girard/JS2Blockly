@@ -5,15 +5,16 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     // SORRY TOTALLY RANDOM EXAMPLE BUT IT works.
 
 
-    // Block for reversing a list.
+    // Block for reversing a list. #Modified by C for playing around
     {
         "type": "pipou",
-        "message0": "%{BKY_LISTS_REVERSE_MESSAGE0}",
+        "message0": "ur variable name : %1",
         "args0": [
             {
-                "type": "input_value",
-                "name": "LIST",
-                "check": "Array"
+                // "type": "input_value",
+                "type": "field_variable",
+                "name": "VALUE",
+                "check": "Double"
             }
         ],
         "output": "Array",
