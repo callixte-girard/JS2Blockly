@@ -2,7 +2,7 @@ import React from 'react';
 
 import {style} from '../App.js';
 
-const esprima = require('esprima');
+import {CodeToBlock} from '../static/CodeToBlock.js';
 
 
 export class RawCodeContainer extends React.Component {
@@ -13,7 +13,6 @@ export class RawCodeContainer extends React.Component {
 
         // bindings
         this.handleChange = this.handleChange.bind(this);
-        this.handleConversion = this.handleConversion.bind(this);
     }
 
     handleChange(event) {
@@ -27,33 +26,11 @@ export class RawCodeContainer extends React.Component {
         this.setState({codeRaw: splitContent});
 
         // converts code for parsing
-        this.handleConversion(inputContent);
+        CodeToBlock.lexicalAnalysis(inputContent);
 
         // warns the other Component to refresh himself.
         // or gives the raw data to another Component that wil ParseCode.
         ///////
-    }
-
-
-    handleConversion(codeRaw) {
-
-        // console.log("codeRaw: " , codeRaw);
-
-        try {
-            let codeParsed = esprima.tokenize(codeRaw);
-            console.log("codeParsed: " , codeParsed);
-
-            for (let i=0 ; i < codeParsed.length ; i++) {
-
-                let word = codeParsed[i];
-                // console.log(word);
-            }
-
-        } catch {
-            console.log("codeParsed: " , "!ERROR TO HANDLE!");
-        }
-
-        console.log("------------------------------------");
     }
 
 
