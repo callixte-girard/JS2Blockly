@@ -1,8 +1,21 @@
-.App {
-  text-align: center;
-  display: inline-block;
+/* GUIDE TO FLEX BOX (it's life give it a look) https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+
+.main {
   background-color: #8888ff;
   text-decoration-color: #8888ff;
+}
+
+.pipou {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.header {
+  text-align: center;
+  display: inline;
+  flex-wrap: wrap;
 }
 
 

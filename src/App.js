@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import Blockly from 'node-blockly/browser';
 
 import './App.css';
+// import {pipouStyle} from './misc/';
+// import './DottedBox.css';
 
 import {CodeToBlock} from './static/CodeToBlock.js';
-
-import './pipou.js';
 
 import {ParsedCodeContainer} from './components/ParsedCodeContainer';
 import {RawCodeContainer} from './components/RawCodeContainer';
@@ -14,10 +14,6 @@ import {RawCodeContainer} from './components/RawCodeContainer';
 
 export const line = "--------------------------------------------------------------";
 
-export const style = {
-    display: 'inline-block',
-    margin: 40
-};
 
 /////////////////////////////////////////////////////////////////////////////////////
 ////////////////// !!! README !!! ///////////////////////////////////////////////////
@@ -39,11 +35,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <div style={style}>
-
+            <div className={"main"}>
+                <div className={"header"}>
                     <h1>HEY GUYS :)</h1>
                     <h4>Enjoy visualising horrible code with this fantastic app ;)</h4>
+                </div>
 
+                <div className={"pipou"}>
                     <RawCodeContainer exampleCode="
                                 let pipou = 5;
                                 const papou = 8;
@@ -53,6 +51,7 @@ class App extends React.Component {
 
                     <ParsedCodeContainer>
                     </ParsedCodeContainer>
+                </div>
             </div>
         );
     }

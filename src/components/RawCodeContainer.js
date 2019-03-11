@@ -38,9 +38,8 @@ export class RawCodeContainer extends React.Component {
 
         return (
             <textarea id="code-raw"
-                      style={{style}}
                       rows="40"
-                      cols="80"
+                      cols="60"
                       placeholder={this.exampleCode}
                       onChange={this.handleChange}
             >
