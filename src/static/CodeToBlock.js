@@ -61,86 +61,104 @@ export class CodeToBlock {
         //('controls_forEach');
         //('controls_flow_statements');
 
+        // III - MATH (14)
+        //////////////////////////////////
+        //('math_number')
+        //('math_arithmetic')
+        //('math_single')
+        //('math_trig')
+        //('math_constant')
+        //('math_number_property')
+        //('math_change')
+        //('math_round')
+        //('math_on_list')
+        //('math_modulo')
+        //('math_constrain')
+        //('math_random_int')
+        //('math_random_float')
+        //('math_atan2') // c'est juste tangente lol
+
+        // IV - TEXT (9)
+        //////////////////////////////////
+        //('text')
+        //('text_join')
+        //('text_create_join_container')
+        //('text_create_join_item')
+        //('text_append')
+        //('text_length')
+        //('text_isEmpty')
+        //('text_indexOf')
+        //('text_charAt')
+
+        // V - LISTS (5)
+        //////////////////////////////////
+        //('lists_create_empty')
+        //('lists_repeat')
+        //('lists_reverse')
+        //('lists_isEmpty')
+        //('lists_length')
+
+        // VI - COLOURS (4)
+        //////////////////////////////////
+        //('colour_picker')
+        //('colour_random')
+        //('colour_rgb')
+        //('colour_blend')
+
         // A - VARIABLES (2)
         //////////////////////////////////
         //('variables_get');
         //('variables_set');
 
-        // B - FUNCTIONS (
-        //('
+        // B - FUNCTIONS (???)
+        //////////////////////////////////
+        //blablablabelibelou
 
+        // this.demoBlock(workspace)
 
-        var pipou = (
-            <xml xmlns="http://www.w3.org/1999/xhtml">
-                <block type="controls_if" id="/VUw+-Jdf%}%N|S0ui(]" x="116" y="63">
-                    <value name="IF0">
-                        <block type="logic_compare" id="nU*SI?Ri3wrHvSO%]4J9">
-                            <field name="OP">LT</field>
-                            <value name="A">
-                                <block type="math_number" id="+3i/e+)TKB*-f$j@1we{">
-                                    <field name="NUM">0</field>
-                                </block>
-                            </value>
-                            <value name="B">
-                                <block type="math_number" id="8:3_k-i`}c)R4%#wiLOq">
-                                    <field name="NUM">4</field>
-                                </block>
-                            </value>
-                        </block>
-                    </value>
-                    <statement name="DO0">
-                        <block type="show_icon" id="=j2L@^+J/lFn{6BaD9nd">
-                            <field name="ICON">HEART</field>
-                        </block>
-                    </statement>
-                </block>
-            </xml>
+        // !!!!!!!!!!!!!!!!!!!!!!!!! README VERY IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // You must do the following treatment to the raw XML dump in order to make it work :
+        // 1) take the line you want and copy it into a variable like pipou below
+        // 2) replace the " by ' (you can use ctrl/cmd + R)
+        // 3) add " before and after the end of the xml variable
+        // 4) pipou is now treated as regular string and not JSX. It is now parsable.
+
+        const pipou = (
+            "<xml><block type='variables_set' x='184' y='77'><field name='VAR' id='jkHF+$l3z=zq+l//Jq/!' variabletype=''>x</field><value name='VALUE'><block type='math_number' id='~H$RX[NeuC)$jKrGs]:z'><field name='NUM'>17</field></block></value><next><block type='show_number' ><value name='NAME'><block type='variables_get'><field name='VAR' variabletype=''>x</field></block></value></block></next></block></xml>"
         )
 
-        this.loadXmlToWorkspace(pipou, workspace)
+        this.xmlToWorkspace(pipou, workspace)
 
     }
 
 
-    static loadXmlToWorkspace(wholexml, workspace) {
+    static xmlToWorkspace(xml, workspace) {
 
-        // Cette fonction prend en entrée un XML et utilise 2 fonctions de Blockly
-        // textToDom -> qui prend un input au format texte (pour nous XML) et qui le
-        // transforme en DOM
-        // domToWorkspace -> qui prend le DOM et insère les blocs dans le workspace
-
-
-        let blockEvent
-
-        if (wholexml == null)
-
-            return;
-
-        blockEvent +=1;
-
-        Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(wholexml), workspace);
-
+        Blockly.Xml.appendDomToWorkspace(
+            Blockly.Xml.textToDom(xml),
+            workspace
+        )
     }
 
-
-    static demoBlock(workspace) {
-
-        //////////////////////////////////////// which  one to test ?
-        // const block_forEach = workspace.newBlock('controls_forEach');
-        // let test_block = block_forEach;
-
-        // GENERAL
-        // test_block.initSvg();
-        // test_block.render();
-        // test_block.setColour(100);
-        // test_block.setCollapsed(false);
-        // test_block.centerBlock();
-        // test_block.setCommentText("here is da comment");
-        // test_block.setParent(parent);
-
-        // SPECIFIC text_print
-        // test_block.setFieldValue("pipou");
-    }
+    //
+    // static demoBlock(workspace) {
+    //
+    //     //////////////////////////////////////// which  one to test ?
+    //     const block_forEach = workspace.newBlock('controls_forEach');
+    //     let test_block = block_forEach;
+    //
+    //     // GENERAL
+    //     test_block.initSvg();
+    //     test_block.render();
+    //     test_block.setColour(100);
+    //     test_block.setCollapsed(false);
+    //     // test_block.centerBlock();
+    //     // test_block.setCommentText("here is da comment");
+    //     // test_block.setParent(parent);
+    //
+    //     // SPECIFIC text_print
+    //     // test_block.setFieldValue("pipou");
+    // }
 
 
 }
