@@ -12,28 +12,34 @@ export class CodeToBlock extends React.Component {
 
         // console.log("codeRaw: " , codeRaw);
 
+        let codeParsed
+
         try {
-            let codeParsed = esprima.tokenize(codeRaw);
+            codeParsed = esprima.tokenize(codeRaw);
             console.log("codeParsed: " , codeParsed);
+            console.log("------------------------------------");
 
             for (let i=0 ; i < codeParsed.length ; i++) {
 
-                let word = codeParsed[i];
+                // let word = codeParsed[i];
                 // console.log(word);
             }
+
+            return codeParsed
 
         } catch {
 
             ///////////////////
             console.log("codeParsed: " , "!ERROR TO HANDLE!");
+            console.log("------------------------------------");
+
         }
 
-        console.log("------------------------------------");
     }
 
 
 
-    static playAroundWithBlocks(workspace) {
+    static generateXmlFromParsedContent(parsedInput) {
 
         // #########################################################
         // ##### OKAY HERE ARE ALL THE USABLE BLOCKS IN XML/JS :
@@ -74,7 +80,7 @@ export class CodeToBlock extends React.Component {
         //('math_constrain')
         //('math_random_int')
         //('math_random_float')
-        //('math_atan2') // c'est juste tangente lol
+        //('math_atan2')
 
         // IV - TEXT (9)
         //////////////////////////////////
@@ -116,12 +122,14 @@ export class CodeToBlock extends React.Component {
         // ##### OKAY NOW YOU CAN PLAY AROUND WITH XML :)
         // ##########################################################
 
-        const pipou_jsx = (
+        const pipou1 = (
             <xml>
-                <block type='variables_set' x='10' y='10'>
+                <block type='variables_set' x="20" y="50">
+
                     <field name='VAR' variabletype=''>
                         pipou
                     </field>
+
                     <value name='VALUE'>
                         <block type='math_number' >
                             <field name='NUM'>
@@ -129,42 +137,87 @@ export class CodeToBlock extends React.Component {
                             </field>
                         </block>
                     </value>
-                    <next>
-                        <block type='show_number' >
-                            <value name='NAME'>
-                                <block type='variables_get'>
-                                    <field name='VAR' variabletype=''>
-                                        x
-                                    </field>
-                                </block>
-                            </value>
+
+
+
+                </block>
+            </xml>
+        )
+        const pipou2 = (
+            <xml>
+                <block type='variables_set' x="50" y="20">
+
+                    <field name='VAR' variabletype=''>
+                        poupi
+                    </field>
+
+                    <value name='VALUE'>
+                        <block type='math_number' >
+                            <field name='NUM'>
+                                34
+                            </field>
                         </block>
-                    </next>
+                    </value>
+
                 </block>
             </xml>
         )
 
-        this.jsxToWorkspace(pipou_jsx, workspace)
+        const pipou3 = (
+            <xml>
+                <block type='variables_set' x="50" y="50">
+
+                    <field name='VAR' variabletype=''>
+                        poupapou
+                    </field>
+
+                    <value name='VALUE'>
+                        <block type='math_number' >
+                            <field name='NUM'>
+                                51
+                            </field>
+                        </block>
+                    </value>
+
+                </block>
+            </xml>
+        )
+
+        const num = parsedInput.length
+
+        if (num % 3 === 1) {
+            this.jsxToWorkspace(pipou1)
+        }
+        else if (num % 3 === 2) {
+            this.jsxToWorkspace(pipou2)
+        }
+        else {
+            this.jsxToWorkspace(pipou3)
+        }
     }
 
 
-    static jsxToWorkspace(xml_jsx, workspace) {
+    static jsxToWorkspace(xml_jsx) {
         // this method :
+        // - first clears current workspace
         // - takes JSX-like XML
         // - converts it into string
         // - parses it into DOM
         // - renders DOM to workspace
 
+        Blockly.getMainWorkspace().clear()
+
         const xml_str = ReactDOMServer.renderToStaticMarkup(xml_jsx)
         // console.log(xml_str)
 
         Blockly.Xml.appendDomToWorkspace(
-            Blockly.Xml.textToDom(xml_str), workspace
+            Blockly.Xml.textToDom(xml_str),
+            Blockly.getMainWorkspace()
         )
     }
 
-    //
-    // static demoBlock(workspace) {
+
+    // static demoBlock(workspace) { // old method
     //
     //     //////////////////////////////////////// which  one to test ?
     //     const block_forEach = workspace.newBlock('controls_forEach');

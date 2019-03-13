@@ -24,14 +24,23 @@ export class RawCodeContainer extends React.Component {
         let splitContent = MyFunctions.splitLineByLine(inputContent);
         console.log("splitInput: " , splitContent);
 
-        this.setState({codeRaw: splitContent});
-
-        // converts code for parsing
-        CodeToBlock.lexicalAnalysis(inputContent);
-
         // warns the other Component to refresh himself.
         // or gives the raw data to another Component that wil ParseCode.
         ///////
+        this.setState({
+            codeRaw: splitContent
+        });
+
+        // processes conversion
+        try {
+            const parsedContent = CodeToBlock.lexicalAnalysis(inputContent);
+            CodeToBlock.generateXmlFromParsedContent(parsedContent);
+
+        } catch {
+            //////
+        }
+
+
     }
 
 

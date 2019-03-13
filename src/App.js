@@ -7,7 +7,6 @@ import './App.css';
 // import './DottedBox.css';
 
 import {CodeToBlock} from './components/CodeToBlock.js';
-
 import {ParsedCodeContainer} from './components/ParsedCodeContainer';
 import {RawCodeContainer} from './components/RawCodeContainer';
 // import {ErrorBoundary} from "./components/ErrorBoundary";
@@ -24,14 +23,11 @@ class App extends React.Component {
 
     componentDidMount() {
 
-        const workspace = Blockly.inject('blocklyDiv', {
+        Blockly.inject('blocklyDiv', {
                 // toolbox: document.getElementById('toolbox') // comment this line to inject no toolbox
-            });
-
-        // go to the method to play around :)
-        CodeToBlock.playAroundWithBlocks(workspace);
-
+        });
     }
+
 
     render() {
         return (
