@@ -1,12 +1,11 @@
 import React from 'react';
-
+import ReactDOMServer from 'react-dom/server';
 import Blockly from 'node-blockly/browser';
-
 
 const esprima = require('esprima');
 
 
-export class CodeToBlock {
+export class CodeToBlock extends React.Component {
 
 
     static lexicalAnalysis(codeRaw) {
@@ -25,8 +24,7 @@ export class CodeToBlock {
 
         } catch {
 
-
-
+            ///////////////////
             console.log("codeParsed: " , "!ERROR TO HANDLE!");
         }
 
@@ -114,29 +112,54 @@ export class CodeToBlock {
         //////////////////////////////////
         //blablablabelibelou
 
-        // this.demoBlock(workspace)
+        // #########################################################
+        // ##### OKAY NOW YOU CAN PLAY AROUND WITH XML :)
+        // ##########################################################
 
-        // !!!!!!!!!!!!!!!!!!!!!!!!! README VERY IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // You must do the following treatment to the raw XML dump in order to make it work :
-        // 1) take the line you want and copy it into a variable like pipou below
-        // 2) replace the " by ' (you can use ctrl/cmd + R)
-        // 3) add " before and after the end of the xml variable
-        // 4) pipou is now treated as regular string and not JSX. It is now parsable.
-
-        const pipou = (
-            "<xml><block type='variables_set' x='184' y='77'><field name='VAR' id='jkHF+$l3z=zq+l//Jq/!' variabletype=''>x</field><value name='VALUE'><block type='math_number' id='~H$RX[NeuC)$jKrGs]:z'><field name='NUM'>17</field></block></value><next><block type='show_number' ><value name='NAME'><block type='variables_get'><field name='VAR' variabletype=''>x</field></block></value></block></next></block></xml>"
+        const pipou_jsx = (
+            <xml>
+                <block type='variables_set' x='10' y='10'>
+                    <field name='VAR' variabletype=''>
+                        pipou
+                    </field>
+                    <value name='VALUE'>
+                        <block type='math_number' >
+                            <field name='NUM'>
+                                17
+                            </field>
+                        </block>
+                    </value>
+                    <next>
+                        <block type='show_number' >
+                            <value name='NAME'>
+                                <block type='variables_get'>
+                                    <field name='VAR' variabletype=''>
+                                        x
+                                    </field>
+                                </block>
+                            </value>
+                        </block>
+                    </next>
+                </block>
+            </xml>
         )
 
-        this.xmlToWorkspace(pipou, workspace)
-
+        this.jsxToWorkspace(pipou_jsx, workspace)
     }
 
 
-    static xmlToWorkspace(xml, workspace) {
+    static jsxToWorkspace(xml_jsx, workspace) {
+        // this method :
+        // - takes JSX-like XML
+        // - converts it into string
+        // - parses it into DOM
+        // - renders DOM to workspace
+
+        const xml_str = ReactDOMServer.renderToStaticMarkup(xml_jsx)
+        // console.log(xml_str)
 
         Blockly.Xml.appendDomToWorkspace(
-            Blockly.Xml.textToDom(xml),
-            workspace
+            Blockly.Xml.textToDom(xml_str), workspace
         )
     }
 

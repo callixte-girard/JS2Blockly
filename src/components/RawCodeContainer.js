@@ -2,8 +2,8 @@ import React from 'react';
 
 import {style} from '../App.js';
 
-import {CodeToBlock} from '../static/CodeToBlock.js';
-
+import {CodeToBlock} from './CodeToBlock.js';
+import {MyFunctions} from '../static/MyFunctions';
 
 export class RawCodeContainer extends React.Component {
 
@@ -12,15 +12,16 @@ export class RawCodeContainer extends React.Component {
         this.exampleCode = props.exampleCode;
 
         // bindings
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this)
     }
+
 
     handleChange(event) {
 
-        let inputContent = event.target.value ;
+        let inputContent = event.target.value;
         let index = inputContent.indexOf("/");
 
-        let splitContent = inputContent.split(/\r?\n/);
+        let splitContent = MyFunctions.splitLineByLine(inputContent);
         console.log("splitInput: " , splitContent);
 
         this.setState({codeRaw: splitContent});

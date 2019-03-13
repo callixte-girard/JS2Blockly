@@ -6,7 +6,7 @@ import './App.css';
 // import {pipouStyle} from './misc/';
 // import './DottedBox.css';
 
-import {CodeToBlock} from './static/CodeToBlock.js';
+import {CodeToBlock} from './components/CodeToBlock.js';
 
 import {ParsedCodeContainer} from './components/ParsedCodeContainer';
 import {RawCodeContainer} from './components/RawCodeContainer';
