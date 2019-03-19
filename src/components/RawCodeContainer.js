@@ -3,7 +3,7 @@ import React from 'react';
 import {style} from '../App.js';
 
 import {CodeToBlock} from './CodeToBlock.js';
-import {MyFunctions} from '../static/MyFunctions';
+import {MiscFunctions} from '../functions/MiscFunctions';
 
 export class RawCodeContainer extends React.Component {
 
@@ -19,9 +19,9 @@ export class RawCodeContainer extends React.Component {
     handleChange(event) {
 
         let inputContent = event.target.value;
-        let index = inputContent.indexOf("/");
+        // let index = inputContent.indexOf("/");
 
-        let splitContent = MyFunctions.splitLineByLine(inputContent);
+        let splitContent = MiscFunctions.splitLineByLine(inputContent);
         console.log("splitInput: " , splitContent);
 
         // warns the other Component to refresh himself.

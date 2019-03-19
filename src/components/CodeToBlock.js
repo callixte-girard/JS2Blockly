@@ -4,6 +4,14 @@ import Blockly from 'node-blockly/browser';
 
 const esprima = require('esprima');
 
+//Cette variable contiendra le contenu des blocks sous format XML
+var xml_str;
+//xml_str = "<xml> <variables><variable type='' id='var1'>a</variable></variables> <block type='variables_set' id='bloc1'><field name='VAR' id='var1' variabletype=''>x</field><value name='VALUE'><block type='math_number' id='number1'><field name='NUM'>1</field></block></value></block></xml>"
+
+//CCO - Constantes pour créer le LET
+const affset1 = "<xml> <variables><variable type='' id='var1'>"
+const affset2 = "</variable></variables> <block type='variables_set' id='bloc1'><field name='VAR' id='var1' variabletype=''>x</field><value name='VALUE'><block type='math_number' id='number1'><field name='NUM'>"
+const affset3 = "</field></block></value></block></xml>"
 
 export class CodeToBlock extends React.Component {
 
@@ -19,14 +27,15 @@ export class CodeToBlock extends React.Component {
             console.log("codeParsed: " , codeParsed);
             console.log("------------------------------------");
 
+            // Création du tableau contenant les mots parsés par esprima
             for (let i=0 ; i < codeParsed.length ; i++) {
-
-                // let word = codeParsed[i];
-                // console.log(word);
+                let word = codeParsed[i];
             }
 
-            return codeParsed
+            //CCO - On analyse le tableau
+            this.codeAnalysis(codeParsed);
 
+            return codeParsed
         } catch {
 
             ///////////////////
@@ -35,181 +44,63 @@ export class CodeToBlock extends React.Component {
 
         }
 
+
     }
 
+    //CCO - Cette fonction permet d'analyser le code afin de le traiter de manière approprié
+    static codeAnalysis(codeParsed) {
+        
+        // parcours la liste des mots et vérifie si c'est un let.
+        for (let i=0 ; i < codeParsed.length ; i++) {
+        
+            let word = codeParsed[i];   
+            console.log(word);
+            let typ = word.type;
+            let val = word.value;
+            // Reconnaissance du "let"
+            if ((typ === "Keyword") && (val === "let")) 
+            {
+                i = this.traitementLet(codeParsed, i); 
 
+            }
+        }
+    }
+
+    // Traitement du "let" : permet de générer le XML blockly associé.
+
+    static traitementLet(codeParsed,i) {
+        
+
+        for (; i < codeParsed.length ; i++) {
+        
+        let word = codeParsed[i];   
+        let typ = word.type;
+        
+        var val1;
+        var val2;
+        
+        if (typ === "Identifier" && i === 1 ) 
+            {
+                val1 = word.value;
+            }
+
+            if ((typ === "Identifier" || typ === "Numeric" )&& i !== 1 ) 
+            {
+                val2 = word.value;
+            }
+
+            if (word.value === ";")
+            {
+                xml_str = affset1.concat(val1,affset2,val2,affset3);
+                return i;
+            }
+        }
+    }
 
     static generateXmlFromParsedContent(parsedInput) {
-
-        // #########################################################
-        // ##### OKAY HERE ARE ALL THE USABLE BLOCKS IN XML/JS :
-        // ##########################################################
-
-        // I - LOGIC (8)
-        //////////////////////////////////
-        //('logic_boolean');
-        //('controls_if');
-        //('controls_ifelse');
-        //('logic_compare');
-        //('logic_operation');
-        //('logic_negate');
-        //('logic_null');
-        //('logic_ternary');
-
-        // II - LOOPS (6)
-        //////////////////////////////////
-        //('controls_repeat_ext');
-        //('controls_repeat');
-        //('controls_whileUntil');
-        //('controls_for');
-        //('controls_forEach');
-        //('controls_flow_statements');
-
-        // III - MATH (14)
-        //////////////////////////////////
-        //('math_number')
-        //('math_arithmetic')
-        //('math_single')
-        //('math_trig')
-        //('math_constant')
-        //('math_number_property')
-        //('math_change')
-        //('math_round')
-        //('math_on_list')
-        //('math_modulo')
-        //('math_constrain')
-        //('math_random_int')
-        //('math_random_float')
-        //('math_atan2')
-
-        // IV - TEXT (9)
-        //////////////////////////////////
-        //('text')
-        //('text_join')
-        //('text_create_join_container')
-        //('text_create_join_item')
-        //('text_append')
-        //('text_length')
-        //('text_isEmpty')
-        //('text_indexOf')
-        //('text_charAt')
-
-        // V - LISTS (5)
-        //////////////////////////////////
-        //('lists_create_empty')
-        //('lists_repeat')
-        //('lists_reverse')
-        //('lists_isEmpty')
-        //('lists_length')
-
-        // VI - COLOURS (4)
-        //////////////////////////////////
-        //('colour_picker')
-        //('colour_random')
-        //('colour_rgb')
-        //('colour_blend')
-
-        // A - VARIABLES (2)
-        //////////////////////////////////
-        //('variables_get');
-        //('variables_set');
-
-        // B - FUNCTIONS (???)
-        //////////////////////////////////
-        //blablablabelibelou
-
-        // #########################################################
-        // ##### OKAY NOW YOU CAN PLAY AROUND WITH XML :)
-        // ##########################################################
-
-        const pipou1 = (
-            <xml>
-                <block type='variables_set' x="20" y="50">
-
-                    <field name='VAR' variabletype=''>
-                        pipou
-                    </field>
-
-                    <value name='VALUE'>
-                        <block type='math_number' >
-                            <field name='NUM'>
-                                17
-                            </field>
-                        </block>
-                    </value>
-
-
-
-                </block>
-            </xml>
-        )
-        const pipou2 = (
-            <xml>
-                <block type='variables_set' x="50" y="20">
-
-                    <field name='VAR' variabletype=''>
-                        poupi
-                    </field>
-
-                    <value name='VALUE'>
-                        <block type='math_number' >
-                            <field name='NUM'>
-                                34
-                            </field>
-                        </block>
-                    </value>
-
-                </block>
-            </xml>
-        )
-
-        const pipou3 = (
-            <xml>
-                <block type='variables_set' x="50" y="50">
-
-                    <field name='VAR' variabletype=''>
-                        poupapou
-                    </field>
-
-                    <value name='VALUE'>
-                        <block type='math_number' >
-                            <field name='NUM'>
-                                51
-                            </field>
-                        </block>
-                    </value>
-
-                </block>
-            </xml>
-        )
-
-        const num = parsedInput.length
-
-        if (num % 3 === 1) {
-            this.jsxToWorkspace(pipou1)
-        }
-        else if (num % 3 === 2) {
-            this.jsxToWorkspace(pipou2)
-        }
-        else {
-            this.jsxToWorkspace(pipou3)
-        }
-    }
-
-
-    static jsxToWorkspace(xml_jsx) {
-        // this method :
-        // - first clears current workspace
-        // - takes JSX-like XML
-        // - converts it into string
-        // - parses it into DOM
-        // - renders DOM to workspace
-
+   
         Blockly.getMainWorkspace().clear()
-
-        const xml_str = ReactDOMServer.renderToStaticMarkup(xml_jsx)
-        // console.log(xml_str)
-
+      
         Blockly.Xml.appendDomToWorkspace(
             Blockly.Xml.textToDom(xml_str),
             Blockly.getMainWorkspace()

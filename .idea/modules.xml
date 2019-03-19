@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/pipou.iml" filepath="$PROJECT_DIR$/.idea/pipou.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/BlockBasedCodeVisualisation.iml" filepath="$PROJECT_DIR$/.idea/BlockBasedCodeVisualisation.iml" />
     </modules>
   </component>
 </project>
