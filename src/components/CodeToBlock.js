@@ -4,15 +4,6 @@ import Blockly from 'node-blockly/browser';
 
 const esprima = require('esprima');
 
-//Cette variable contiendra le contenu des blocks sous format XML
-var xml_str;
-//xml_str = "<xml> <variables><variable type='' id='var1'>a</variable></variables> <block type='variables_set' id='bloc1'><field name='VAR' id='var1' variabletype=''>x</field><value name='VALUE'><block type='math_number' id='number1'><field name='NUM'>1</field></block></value></block></xml>"
-
-//CCO - Constantes pour créer le LET
-const affset1 = "<xml> <variables><variable type='' id='var1'>"
-const affset2 = "</variable></variables> <block type='variables_set' id='bloc1'><field name='VAR' id='var1' variabletype=''>x</field><value name='VALUE'><block type='math_number' id='number1'><field name='NUM'>"
-const affset3 = "</field></block></value></block></xml>"
-
 export class CodeToBlock extends React.Component {
 
 
@@ -23,7 +14,7 @@ export class CodeToBlock extends React.Component {
         let codeParsed
 
         try {
-            codeParsed = esprima.tokenize(codeRaw);
+            codeParsed = esprima.parse(codeRaw);
             console.log("codeParsed: " , codeParsed);
             console.log("------------------------------------");
 
@@ -46,6 +37,14 @@ export class CodeToBlock extends React.Component {
 
 
     }
+
+
+    static syntaxicAnalysis(codeRaw) {
+
+        // console.log("codeRaw: " , codeRaw);
+
+    }
+
 
     //CCO - Cette fonction permet d'analyser le code afin de le traiter de manière approprié
     static codeAnalysis(codeParsed) {
