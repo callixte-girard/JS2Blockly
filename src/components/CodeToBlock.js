@@ -54,11 +54,15 @@ export class CodeToBlock extends React.Component {
 
     static parsedContentToXml(parsedContent) {
 
-        let xml
+        const xml_head = "<block type='"
+        const xml_tail = "'></block>"
 
         /////// do processing here
+        let xml_body = "controls_if"
+        /////// end of processing
 
-        return xml
+        // assembles xml pieces
+        return xml_head + xml_body + xml_tail
     }
 
 
