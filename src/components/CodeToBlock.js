@@ -52,15 +52,38 @@ export class CodeToBlock extends React.Component {
     }
 
 
-    static generateXmlFromParsedContent(xml_str) {
+    static parsedContentToXml(parsedContent) {
+
+        let xml
+
+        /////// do processing here
+
+        return xml
+    }
+
+
+    static generateBlocksFromParsedContent(parsedContent) {
    
+        const xml_head = "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables>"
+        const xml_tail = "</xml>"
+
+        // processes code into xml corresponding
+        let xml_body = this.parsedContentToXml(parsedContent)
+        // assembles xml pieces
+        let xml_final = xml_head + xml_body + xml_tail
+
+        this.updateBlocksFromXml(xml_final)
+    }
+
+
+    static updateBlocksFromXml(xml_str) {
+
         Blockly.getMainWorkspace().clear()
-      
+
         Blockly.Xml.appendDomToWorkspace(
             Blockly.Xml.textToDom(xml_str),
             Blockly.getMainWorkspace()
         )
     }
-
 
 }

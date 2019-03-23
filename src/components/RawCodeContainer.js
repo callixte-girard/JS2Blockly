@@ -40,7 +40,7 @@ export class RawCodeContainer extends React.Component {
             console.log("programBody: ", parsedContent);
             console.log("------------------------------------");
 
-            // CodeToBlock.generateXmlFromParsedContent(parsedContent);
+            CodeToBlock.generateBlocksFromParsedContent(parsedContent);
 
         } catch (ex) {
             console.log(ex.stackTrace)
