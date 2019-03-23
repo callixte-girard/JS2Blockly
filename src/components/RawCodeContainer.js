@@ -21,23 +21,30 @@ export class RawCodeContainer extends React.Component {
         let inputContent = event.target.value;
         // let index = inputContent.indexOf("/");
 
-        let splitContent = MiscFunctions.splitLineByLine(inputContent);
-        console.log("splitInput: " , splitContent);
+        // 1) splits line by line
+        // let splitContent = MiscFunctions.splitLineByLine(inputContent);
+        // console.log("splitInput: " , splitContent);
 
-        // warns the other Component to refresh himself.
-        // or gives the raw data to another Component that wil ParseCode.
-        ///////
-        this.setState({
-            codeRaw: splitContent
-        });
+        // 2) patches lines into one big string
+        // let codeToParse = MiscFunctions.patchUpStringArrayIntoOneBigString(splitContent, true);
 
-        // processes conversion
+        // processes JS <> Blockly conversion
         try {
-            const parsedContent = CodeToBlock.lexicalAnalysis(inputContent);
-            CodeToBlock.generateXmlFromParsedContent(parsedContent);
+            // ### VER 1 : lexical
+            // const parsedContent = CodeToBlock.lexicalAnalysis(codeToParse);
 
-        } catch {
-            //////
+            // ### VER 2 : syntaxic
+            let parsedContent = CodeToBlock.syntaxicAnalysis(inputContent);
+
+            // debug
+            console.log("programBody: ", parsedContent);
+            console.log("------------------------------------");
+
+            CodeToBlock.generateBlocksFromParsedContent(parsedContent);
+
+        } catch (ex) {
+            console.log(ex.stackTrace)
+            ////// maybe insert lexical analysis here
         }
 
 
