@@ -36,10 +36,8 @@ export class RawCodeContainer extends React.Component {
             // ### VER 2 : syntaxic
             let parsedContent = CodeToBlock.syntaxicAnalysis(inputContent);
 
-            let programBody = parsedContent;
-            console.log("programBody: ", programBody);
-
-            console.log("codeParsed: ", parsedContent);
+            // debug
+            console.log("programBody: ", parsedContent);
             console.log("------------------------------------");
 
             // CodeToBlock.generateXmlFromParsedContent(parsedContent);

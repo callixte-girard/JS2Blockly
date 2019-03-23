@@ -44,7 +44,7 @@ export class CodeToBlock extends React.Component {
 
             }
 
-            return codeParsed
+            return codeParsed.body
 
         } catch (ex) {
 
