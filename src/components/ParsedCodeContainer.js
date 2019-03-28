@@ -4,9 +4,6 @@ import React from 'react';
 export class ParsedCodeContainer extends React.Component {
 
     render() {
-
-        console.log(this.props);
-
         return (
             <div id="blocklyDiv" style={{
                 height: 500,
@@ -17,8 +14,6 @@ export class ParsedCodeContainer extends React.Component {
                 display: 'inline-block',
                 // margin: 40
             }}>
-
-
             </div>
         );
     }

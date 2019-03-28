@@ -3,21 +3,14 @@ import ReactDOM from 'react-dom';
 import Blockly from 'node-blockly/browser';
 
 import './App.css';
-// import {pipouStyle} from './misc/';
-// import './DottedBox.css';
 
 import {CodeToBlock} from './components/CodeToBlock.js';
 import {ParsedCodeContainer} from './components/ParsedCodeContainer';
 import {RawCodeContainer} from './components/RawCodeContainer';
-// import {ErrorBoundary} from "./components/ErrorBoundary";
+import {MainCodeContainer} from "./components/MainCodeContainer";
 
 export const line = "--------------------------------------------------------------";
 
-
-/////////////////////////////////////////////////////////////////////////////////////
-////////////////// !!! README !!! ///////////////////////////////////////////////////
-// blocks can be tested at : https://developers.google.com/blockly/
-// feel free to test them if you're not sure what the variables represent :)
 
 class App extends React.Component {
 
@@ -32,23 +25,14 @@ class App extends React.Component {
     render() {
         return (
             <div className={"main"}>
+
                 <div className={"header"}>
                     <h1>HEY GUYS :)</h1>
                     <h4>Enjoy visualising horrible code with this fantastic app ;)</h4>
                 </div>
 
-                <div className={"pipou"}>
-                    <RawCodeContainer exampleCode="
-                                let pipou = 5;
-                                const papou = 8;
-                                console.log(papou - pipou);">
-                    </RawCodeContainer>
+                <MainCodeContainer className={"pipou"}/>
 
-
-                    <ParsedCodeContainer>
-
-                    </ParsedCodeContainer>
-                </div>
             </div>
         );
     }
