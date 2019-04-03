@@ -1,3 +1,15 @@
+***** ISEP final project *****
+
+This basically does the opposite of Blocky, which enables user to transform logical blocks into code.
+Our app transforms code (only JS for the moment) into block constructions using Blockly framework.
+This way, any obnoxious code, poorly-idented etc will become much clearer, and easier to read and understand.
+
+### DEBUGGING FOR FREQUENT ERRORS :
+- if the blocks don't appear after you cloned, check if ./src/blockly is empty. If it is, download blockly and copy it in ./src
+- if npm can't start, go to the directory (BlockBasedCodeVisualisation) and do : "npm install" then "npm start".
+
+-------------------------------------------------------------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
