@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export class RawCodeContainer extends React.Component {
+export class CodeContainer extends React.Component {
 
     render() {
         return (

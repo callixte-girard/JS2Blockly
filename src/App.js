@@ -4,10 +4,10 @@ import Blockly from 'node-blockly/browser';
 
 import './App.css';
 
-import {CodeToBlock} from './components/CodeToBlock.js';
-import {ParsedCodeContainer} from './components/ParsedCodeContainer';
-import {RawCodeContainer} from './components/RawCodeContainer';
-import {MainCodeContainer} from "./components/MainCodeContainer";
+// import {CodeToBlock} from './components/CodeToBlock.js';
+import {BlocklyContainer} from './components/BlocklyContainer';
+import {CodeContainer} from './components/CodeContainer';
+import {MainContainer} from "./components/MainContainer";
 
 export const line = "--------------------------------------------------------------";
 
@@ -31,7 +31,7 @@ class App extends React.Component {
                     <h4>Enjoy visualising horrible code with this fantastic app ;)</h4>
                 </div>
 
-                <MainCodeContainer className={"pipou"}/>
+                <MainContainer className={"pipou"}/>
 
             </div>
         );
