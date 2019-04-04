@@ -113,9 +113,7 @@ export class MainContainer extends React.Component {
 
     parsedContentToXml(parsedContent) {
 
-        const xml_head = "<block type='"
-        const xml_tail = "'></block>"
-        let xml_body = ""
+        let whole_xml = ""
 
         /////// do processing here
         // 1) make recursive
@@ -124,25 +122,46 @@ export class MainContainer extends React.Component {
             let statementType = parsedContent[i].type
             // console.log(statementType)
 
+            let blocklyType = this.getBlocklyTypeFromStatementType(statementType)
+            // console.log("statement_" + i, blocklyType)
+
+            // create block
+            let block_xml = this.buildBlockXmlFromBlockyType(blocklyType)
+            // appends it to whole xml
+            whole_xml += block_xml
         }
 
-        // working sample code
-        let statementTypeToBlocklyType = {
-            VariableDeclaration: "variables_set"
-        };
-
-        for (let statementType in statementTypeToBlocklyType) {
-
-            let blocklyType = statementTypeToBlocklyType[statementType];
-            console.log(statementType, blocklyType);
-        }
-
-
-        xml_body += "controls_if"
         /////// end of processing
+        return whole_xml
+    }
+
+
+    buildBlockXmlFromBlockyType(blockType) {
+
+        const xml_head = "<block type='"
+        const xml_tail = "'></block>"
+        let xml_body = ""
+
+        xml_body += blockType
 
         // assembles xml pieces
         return xml_head + xml_body + xml_tail
+    }
+
+
+    getBlocklyTypeFromStatementType(statementType) {
+
+        const statementTypeToBlocklyType = {
+            VariableDeclaration: "variables_set"
+            ////
+        };
+
+        // for (let statementType in statementTypeToBlocklyType) {
+        //     let blocklyType = statementTypeToBlocklyType[statementType];
+        //     console.log(statementType, blocklyType);
+        // }
+
+        return statementTypeToBlocklyType[statementType]
     }
 
 
