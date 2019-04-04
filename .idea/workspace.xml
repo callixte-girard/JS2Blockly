@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="91fc2701-4bd1-4297-a0e8-b498c9b888a0" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../gmail-test/src/components/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gmail-test/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gmail-test/src/App.js" afterDir="false" />
@@ -31,11 +30,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="187" column="35" lean-forward="true" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
+            <state relative-caret-position="690">
+              <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/ConvertCodeToBlockly.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -44,10 +55,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/CodeContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/BlocklyContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="27" />
+            <state relative-caret-position="510">
+              <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -98,7 +118,9 @@
         <option value="$PROJECT_DIR$/src/misc/statementType2BlocklyType" />
         <option value="$PROJECT_DIR$/src/misc/statementType2BlocklyType.json" />
         <option value="$PROJECT_DIR$/src/components/BlocklyContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/CodeContainer.js" />
         <option value="$PROJECT_DIR$/src/components/MainContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/ConvertCodeToBlockly.js" />
       </list>
     </option>
   </component>
@@ -156,7 +178,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554366676988" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554384462517" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -227,7 +249,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27475000" />
+    <option name="totallyTimeSpent" value="29802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -334,27 +356,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CodeContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/BlocklyContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="510">
+          <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CodeContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="187" column="35" lean-forward="true" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
+        <state relative-caret-position="690">
+          <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ConvertCodeToBlockly.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
