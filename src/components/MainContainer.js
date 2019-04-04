@@ -16,6 +16,11 @@ export class MainContainer extends React.Component {
 
         this.exampleCode = "put your js code here..."
 
+        this.state = {
+            parsedContent: null,
+            xmlContent: ""
+        }
+
         this.updateCode = this.updateCode.bind(this)
         this.updateBlocks = this.updateBlocks.bind(this)
     }
@@ -43,9 +48,12 @@ export class MainContainer extends React.Component {
             console.log("programBody: ", parsedContent);
             console.log("------------------------------------");
 
+            let xmlContent = this.generateBlocksFromParsedContent(parsedContent);
+
             // **** ADDED (test) ****
             this.setState({
-                parsedContent: parsedContent
+                parsedContent: parsedContent,
+                xmlContent: xmlContent
             })
 
         } catch (ex) {
@@ -68,14 +76,14 @@ export class MainContainer extends React.Component {
                 />
 
                 <BlocklyContainer
-                    onChange={this.updateBlocks}
+                    xmlContent={this.state.xmlContent}
                 />
             </div>
         )
     }
 
 
-    static lexicalAnalysis(codeRaw) {
+    lexicalAnalysis(codeRaw) {
         // console.log("codeRaw: " , codeRaw);
 
         let codeParsed
@@ -104,14 +112,24 @@ export class MainContainer extends React.Component {
     }
 
 
-    static parsedContentToXml(parsedContent) {
+    parsedContentToXml(parsedContent) {
 
         const xml_head = "<block type='"
         const xml_tail = "'></block>"
         let xml_body = ""
 
         /////// do processing here
-        // xml_body +=
+        // 1) make recursive
+        // 2) call the JSON to corresponding blockly type
+        for (let i=0 ; i<parsedContent.length ; i++) {
+
+            let statementType = parsedContent[i].type
+            // console.log(statementType)
+
+
+        }
+
+        xml_body += "controls_if"
         /////// end of processing
 
         // assembles xml pieces
@@ -119,7 +137,7 @@ export class MainContainer extends React.Component {
     }
 
 
-    static generateBlocksFromParsedContent(parsedContent) {
+    generateBlocksFromParsedContent(parsedContent) {
 
         const xml_head = "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables>"
         const xml_tail = "</xml>"
@@ -129,10 +147,7 @@ export class MainContainer extends React.Component {
         // assembles xml pieces
         let xml_final = xml_head + xml_body + xml_tail
 
-        this.updateBlocksFromXml(xml_final)
+        return (xml_final)
     }
-
-
-
 
 }
