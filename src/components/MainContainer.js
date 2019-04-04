@@ -36,7 +36,6 @@ export class MainContainer extends React.Component {
 
             console.log("programBody: ", parsedContent);
             let xmlContent = ConvertCodeToBlockly.generateBlocksFromParsedContent(parsedContent);
-            console.log("------------------------------------");
 
             this.setState({
                 parsedContent: parsedContent,
@@ -47,6 +46,7 @@ export class MainContainer extends React.Component {
             // console.log(ex.stackTrace)
             ////// maybe insert lexical analysis here
         }
+        console.log("--------------------------------------------------------------------------");
     }
 
     lexicalAnalysis(codeRaw) {
