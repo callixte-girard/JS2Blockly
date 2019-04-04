@@ -56,7 +56,7 @@ export class MainContainer extends React.Component {
             })
 
         } catch (ex) {
-            console.log(ex.stackTrace)
+            // console.log(ex.stackTrace)
             ////// maybe insert lexical analysis here
         }
     }
@@ -88,11 +88,6 @@ export class MainContainer extends React.Component {
         let codeParsed
         try {
             codeParsed = esprima.tokenize(codeRaw);
-
-            // Création du tableau contenant les mots parsés par esprima
-            for (let i=0 ; i < codeParsed.length ; i++) {
-
-            }
             return codeParsed
         } catch (ex) {
         }
@@ -104,7 +99,6 @@ export class MainContainer extends React.Component {
         let codeParsed
         try {
             codeParsed = esprima.parse(codeRaw);
-
             return codeParsed.body
         } catch (ex) {
         }
@@ -152,8 +146,26 @@ export class MainContainer extends React.Component {
     getBlocklyTypeFromStatementType(statementType) {
 
         const statementTypeToBlocklyType = {
-            VariableDeclaration: "variables_set"
-            ////
+            // BlockStatement: ,
+            // BreakStatement: ,
+            // ContinueStatement: ,
+            // DebuggerStatement: ,
+            // DoWhileStatement: ,
+            // EmptyStatement: ,
+            // ExpressionStatement: ,
+            ForStatement: "controls_for",
+            // ForInStatement: ,
+            // ForOfStatement: ,
+            // FunctionDeclaration: ,
+            IfStatement: "controls_if",
+            // LabeledStatement: ,
+            // ReturnStatement: ,
+            // SwitchStatement: ,
+            // ThrowStatement: ,
+            // TryStatement: ,
+            VariableDeclaration: "variables_set",
+            WhileStatement: "controls_whileUntil",
+            // WithStatement: ,
         };
 
         // for (let statementType in statementTypeToBlocklyType) {
