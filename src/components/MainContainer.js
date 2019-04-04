@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Blockly from 'node-blockly/browser';
-
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
 // import {CodeToBlock} from "./CodeToBlock";
@@ -120,14 +119,24 @@ export class MainContainer extends React.Component {
 
         /////// do processing here
         // 1) make recursive
-        // 2) call the JSON to corresponding blockly type
         for (let i=0 ; i<parsedContent.length ; i++) {
 
             let statementType = parsedContent[i].type
             // console.log(statementType)
 
-
         }
+
+        // working sample code
+        let statementTypeToBlocklyType = {
+            VariableDeclaration: "variables_set"
+        };
+
+        for (let statementType in statementTypeToBlocklyType) {
+
+            let blocklyType = statementTypeToBlocklyType[statementType];
+            console.log(statementType, blocklyType);
+        }
+
 
         xml_body += "controls_if"
         /////// end of processing
