@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import Blockly from "node-blockly/browser";
 
 
@@ -10,7 +11,11 @@ export class BlocklyContainer extends React.Component {
         Blockly.getMainWorkspace().clear()
 
         Blockly.Xml.appendDomToWorkspace(
-            Blockly.Xml.textToDom(xml_str),
+            Blockly.Xml.textToDom(
+                ReactDOMServer.renderToStaticMarkup(
+                    xml_str
+                )
+            ),
             Blockly.getMainWorkspace()
         )
     }

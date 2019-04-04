@@ -120,7 +120,7 @@ export class MainContainer extends React.Component {
             // console.log("statement_" + i, blocklyType)
 
             // create block
-            let block_xml = this.buildBlockXmlFromBlockyType(blocklyType)
+            let block_xml = this.buildBlockXmlFromBlockyType(blocklyType, 10, 10)
             // appends it to whole xml
             whole_xml += block_xml
         }
@@ -130,16 +130,21 @@ export class MainContainer extends React.Component {
     }
 
 
-    buildBlockXmlFromBlockyType(blockType) {
+    buildBlockXmlFromBlockyType(blockType, x, y) {
 
-        const xml_head = "<block type='"
-        const xml_tail = "'></block>"
-        let xml_body = ""
+        let xml_block = <block
+            type={blockType}
+            id="pipou"
+            x={x}
+            y={y}
+        ></block>
+        // xml_block.setAttribute("type", "controls_if")
 
-        xml_body += blockType
+        // console.log(ReactDOMServer.renderToStaticMarkup(xml_block))
+        return xml_block
 
         // assembles xml pieces
-        return xml_head + xml_body + xml_tail
+        // return xml_head + xml_body + xml_tail
     }
 
 
@@ -179,15 +184,16 @@ export class MainContainer extends React.Component {
 
     generateBlocksFromParsedContent(parsedContent) {
 
-        const xml_head = "<xml xmlns='http://www.w3.org/1999/xhtml'><variables></variables>"
-        const xml_tail = "</xml>"
+        let xml = <xml xmlns='http://www.w3.org/1999/xhtml'>
+            <variables></variables>
+            {this.buildBlockXmlFromBlockyType("controls_if",50,50)}
+        </xml>
 
-        // processes code into xml corresponding
-        let xml_body = this.parsedContentToXml(parsedContent)
         // assembles xml pieces
-        let xml_final = xml_head + xml_body + xml_tail
+        // let xml_final = xml_head + xml_body + xml_tail
 
-        return (xml_final)
+        console.log(ReactDOMServer.renderToStaticMarkup(xml))
+        return (xml)
     }
 
 }
