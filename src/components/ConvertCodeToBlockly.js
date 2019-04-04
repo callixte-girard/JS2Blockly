@@ -36,7 +36,7 @@ export class ConvertCodeToBlockly extends React.Component {
             );
         }
 
-        console.log(xml_full);
+        // console.log(xml_full);
         return xml_full;
     }
 
