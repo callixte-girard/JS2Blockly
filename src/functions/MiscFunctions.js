@@ -1,5 +1,10 @@
 export class MiscFunctions {
 
+    static getRandomInt(max) {
+
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
     static splitLineByLine(toSplit) {
 
         return toSplit.split(/\r?\n/)

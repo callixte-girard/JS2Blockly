@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOMServer from "react-dom/server";
+import {MiscFunctions} from "../functions/MiscFunctions";
 
 export class ConvertCodeToBlockly extends React.Component {
 
@@ -9,7 +10,7 @@ export class ConvertCodeToBlockly extends React.Component {
         let xml_block =
             <block
                 type={blockType}
-                // id="pipou"
+                id={MiscFunctions.getRandomInt(100)}
                 x={x}
                 y={y}
             ></block>
@@ -21,7 +22,7 @@ export class ConvertCodeToBlockly extends React.Component {
 
     static buildBodyXmlFromParsedContent(parsedContent) {
 
-        let xml_full = <div></div>;
+        let xml_full = [];
 
         for (let i=0 ; i<parsedContent.length ; i++) {
 
@@ -30,11 +31,12 @@ export class ConvertCodeToBlockly extends React.Component {
             console.log(statementType, blocklyType)
 
             // little bug to correct here : should not concatenate
-            xml_full =+ this.buildBlockXmlFromBlocklyType(
-                blocklyType,50,50
+            xml_full.push(
+                this.buildBlockXmlFromBlocklyType(blocklyType,50,50 * (1 + i))
             );
         }
 
+        console.log(xml_full);
         return xml_full;
     }
 
