@@ -7,10 +7,10 @@ import {CodeToBlockly} from "./CodeToBlockly";
 export class StatementParse extends React.Component {
 
     // ## README ## voici les deux méthodes dont tu as besoin pour finaliser ta fonction parser.
-    // 1) CodeToBlockly.buildBlockXmlFromBlocklyType
+    // 1) CodeToBlockly.buildBlockXml
     // ex : pour construire un bloc sans l'écrire avec les strings. Inspire-toi de parseVariableDeclaration
-    // 2) this.getBlocklyTypeFromStatementType(statType)
-    // ex : this.getBlocklyTypeFromStatementType("VariableDeclaration") returns : "variables_set"
+    // 2) this.getBlocklyTypeFromStatType(statType)
+    // ex : this.getBlocklyTypeFromStatType("VariableDeclaration") returns : "variables_set"
 
     static parseVariableDeclaration(stat) {
 
@@ -20,7 +20,7 @@ export class StatementParse extends React.Component {
             let decl = stat['declarations'][i]
             let statType = stat['type']
 
-            let varName, varValue, varType
+            let varName, varValue, varType, varJsType
             try {
                 varName = decl['id']['name'] // var name : always set (or throw ex)
 
@@ -32,19 +32,27 @@ export class StatementParse extends React.Component {
                     varValue = null
                     varType = null
                 }
+                varJsType = (typeof varValue);
 
-                console.log(varName, varValue, varType)
+                console.log(varName, varValue, varJsType, varType);
                 // COOOL IT WORKS :D now we can create xml.
+
 
                 let xml_decl = [
                     // LEFT PART
-                    CodeToBlockly.buildBlockXmlFromBlocklyType(
-                        this.getBlocklyTypeFromStatementType(statType),
-                        CodeToBlockly.buildFieldXmlFromFieldTypeAndVarName("VAR", varName),
+                    CodeToBlockly.buildBlockXml(
+                        this.getBlocklyTypeFromStatType(statType),
+                        CodeToBlockly.buildFieldXml("VAR", varName),
                     ),
                     // RIGHT PART
                     CodeToBlockly.buildValueXml(
-                        null
+                        CodeToBlockly.buildBlockXml(
+                            this.getBlocklyTypeFromJsVarType(varJsType),
+                            CodeToBlockly.buildFieldXml(
+                                this.getFieldTypeFromJsVarType(varJsType),
+                                varValue
+                            )
+                        )
                     )
                 ];
 
@@ -81,9 +89,31 @@ export class StatementParse extends React.Component {
         return xml_list_stats
     }
 
-    static getBlocklyTypeFromStatementType(statementType) {
+    static getFieldTypeFromJsVarType(jsVarType) {
 
-        const statementTypeToBlocklyType = {
+        const jsVarTypeToFieldType = {
+            "number": "NUM",
+            "string": "TEXT",
+            "boolean": "BOOL",
+            "undefined": "VAR"
+        };
+        return jsVarTypeToFieldType[jsVarType]
+    }
+
+    static getBlocklyTypeFromJsVarType(jsVarType) {
+
+        const jsVarTypeToBlocklyType = {
+            "number": "math_number",
+            "string": "text",
+            "boolean": "logic_boolean",
+            "undefined": "variables_get"
+        };
+        return jsVarTypeToBlocklyType[jsVarType]
+    }
+
+    static getBlocklyTypeFromStatType(statType) {
+
+        const statTypeToBlocklyType = {
             // BlockStatement: ,
             // BreakStatement: ,
             // ContinueStatement: ,
@@ -105,7 +135,7 @@ export class StatementParse extends React.Component {
             WhileStatement: "controls_whileUntil",
             // WithStatement: ,
         };
-        return statementTypeToBlocklyType[statementType]
+        return statTypeToBlocklyType[statType]
     }
 
 }

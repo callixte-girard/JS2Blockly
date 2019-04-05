@@ -10,7 +10,7 @@ let program_advance;
 export class CodeToBlockly extends React.Component {
 
 
-    static buildBlockXmlFromBlocklyType(blockType, children) {
+    static buildBlockXml(blockType, children) {
 
         program_advance ++ ; // to incr counter
 
@@ -26,15 +26,16 @@ export class CodeToBlockly extends React.Component {
         return xml_block
     }
 
-    static buildFieldXmlFromFieldTypeAndVarName(fieldType, varName) {
+    static buildFieldXml(fieldType, fieldValue) {
 
         let xml_field =
             <field
                 name={fieldType}
+                variabletype=""
                 // id={MiscFunctions.getRandomInt(100)}
                 x={1}
                 y={program_advance}
-            >{varName}</field>
+            >{fieldValue}</field>
 
         // console.log(ReactDOMServer.renderToStaticMarkup(xml_field))
         return xml_field
@@ -42,18 +43,34 @@ export class CodeToBlockly extends React.Component {
 
     static buildValueXml(children) {
 
-        let xml_value = <value name="VALUE">{children}</value>
+        let xml_value =
+            <value name="VALUE">{children}</value>
+
         return xml_value
+    }
+
+    static buildVariablesXml(varValue, varId) {
+
+        let xml_variable =
+            <variable
+                type=""
+                id={varId}
+            >{varValue}</variable>
+
+        return xml_variable
     }
 
     static buildBodyXmlFromParsedContent(parsedContent) {
 
         let xml_arr = [];
+
+
+        // then add all things
         for (let i=0 ; i<parsedContent.length ; i++) {
 
             let statement = parsedContent[i];
             // let statementType = parsedContent[i].type;
-            // let blocklyType = this.getBlocklyTypeFromStatementType(statementType);
+            // let blocklyType = this.getBlocklyTypeFromStatType(statementType);
             // console.log(statementType, blocklyType)
 
             // little fix to add : must parse one more than just parent
@@ -78,8 +95,11 @@ export class CodeToBlockly extends React.Component {
 
         let xml_main =
             <xml xmlns='http://www.w3.org/1999/xhtml'>
-                <variables></variables>
-                {this.buildBodyXmlFromParsedContent(parsedContent)}
+                <variables>{
+                    // this.buildVariablesXml(varId)
+                }</variables>{
+                    this.buildBodyXmlFromParsedContent(parsedContent)
+                }
             </xml>
 
         MiscFunctions.dispLine();
