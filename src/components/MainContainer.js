@@ -5,6 +5,7 @@ import Blockly from 'node-blockly/browser';
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
 import {ConvertCodeToBlockly} from "./ConvertCodeToBlockly";
+import {MiscFunctions} from "../functions/MiscFunctions";
 
 const esprima = require('esprima');
 
@@ -46,7 +47,7 @@ export class MainContainer extends React.Component {
             // console.log(ex.stackTrace)
             ////// maybe insert lexical analysis here
         }
-        console.log("--------------------------------------------------------------------------");
+        MiscFunctions.dispStar()
     }
 
     lexicalAnalysis(codeRaw) {
