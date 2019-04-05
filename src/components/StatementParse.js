@@ -32,16 +32,16 @@ export class StatementParse extends React.Component {
                 else varValue = null
 
                 console.log(varName, varValue)
-                // COOOL :D now we can create xml.
+                // COOOL IT WORKS :D now we can create xml.
 
                 let xml_decl = CodeToBlockly.buildBlockXmlFromBlocklyType(
                     this.getBlocklyTypeFromStatementType(statType),
                     null,
-                    50,
-                    (1 + i) * 50
+                    // 50,
+                    // (1 + i) * 50
                 );
 
-                console.log(ReactDOMServer.renderToStaticMarkup(xml_decl))
+                // console.log(ReactDOMServer.renderToStaticMarkup(xml_decl))
                 xml_out.push(xml_decl);
 
             } catch {}

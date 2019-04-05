@@ -22,12 +22,13 @@ export class CodeToBlock extends React.Component {
         console.log("Test" , parsedContent[0]['declarations'][0]['init']['name'])
 
 
+        const rightValue2 = '</field></block></value>'
+
         //Traitement du cas ou la valeur de droite est numérique
         if (parsedContent[0]['declarations'][0]['init']['type'] === 'Literal')
         {
             // RIGHT VALUE
             const rightValue1 = ' <value name="VALUE"><block type="math_number"><field name="NUM">'
-            const rightValue2 = '</field></block></value>'
             var rightVal = parsedContent[0]['declarations'][0]['init']['value']
             // Body Generation
             xml_body = blocStart + leftValue1 + leftVal+ leftValue2 + rightValue1 + rightVal + rightValue2 + blocEnd;
@@ -38,7 +39,6 @@ export class CodeToBlock extends React.Component {
         {
             // RIGHT VALUE
             const rightValue1 = ' <value name="VALUE"><block type="variable_get"><field name="VAR">'
-            const rightValue2 = '</field></block></value>'
             var rightVal = parsedContent[0]['declarations'][0]['init']['name']
             // Body Generation
             xml_body = blocStart + leftValue1 + leftVal+ leftValue2 + rightValue1 + rightVal + rightValue2 + blocEnd;
