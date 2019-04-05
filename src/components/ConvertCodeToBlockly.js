@@ -12,14 +12,14 @@ export class ConvertCodeToBlockly extends React.Component {
         MiscFunctions.dispLine()
         console.log(statType)
 
-        let xml_stat //= []
+        let xml_list_stats = []
         switch (statType) {
             case "VariableDeclaration":
-                xml_stat = this.parseVariableDeclaration(stat)
+                xml_list_stats.push(this.parseVariableDeclaration(stat))
             case "ForStatement":
-                xml_stat = this.parseForStatement(stat)
+                xml_list_stats.push(this.parseForStatement(stat))
         }
-        return xml_stat
+        return xml_list_stats
     }
 
 
@@ -52,7 +52,7 @@ export class ConvertCodeToBlockly extends React.Component {
                     50 * (1 + i)
                 )
 
-                // console.log(ReactDOMServer.renderToStaticMarkup(xml_decl))
+                console.log(ReactDOMServer.renderToStaticMarkup(xml_decl))
                 xml_out.push(xml_decl);
 
             } catch {}
@@ -94,27 +94,30 @@ export class ConvertCodeToBlockly extends React.Component {
 
             // little fix to add : must parse one more than just parent
             let xml_sublist = this.getXmlFromStatement(statement)
-            // for (let i=0 ; i<xml_sublist.length ; i++) {
+
+            for (let xml_index=0 ; xml_index < xml_sublist.length ; xml_index ++) {
                 xml_full.push(
-                    xml_sublist//[i]
+                    xml_sublist[xml_index]
                     // this.buildBlockXmlFromBlocklyType(blocklyType, null, 50,50 * (1 + i))
                 );
-            // }
+            }
         }
+        // console.log(ReactDOMServer.renderToStaticMarkup(xml_full[0]))
         return xml_full;
     }
 
 
     static generateBlocksFromParsedContent(parsedContent) {
 
-        let xml =
+        let xml_main =
             <xml xmlns='http://www.w3.org/1999/xhtml'>
                 <variables></variables>
                 {this.buildBodyXmlFromParsedContent(parsedContent)}
             </xml>
 
-        console.log(ReactDOMServer.renderToStaticMarkup(xml))
-        return (xml)
+        MiscFunctions.dispLine()
+        console.log(ReactDOMServer.renderToStaticMarkup(xml_main))
+        return (xml_main)
     }
 
 
