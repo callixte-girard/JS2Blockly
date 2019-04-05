@@ -49,16 +49,16 @@ export class CodeToBlockly extends React.Component {
         return xml_value
     }
 
-    static buildVariablesXml(varValue, varId) {
-
-        let xml_variable =
-            <variable
-                type=""
-                id={varId}
-            >{varValue}</variable>
-
-        return xml_variable
-    }
+    // static buildVariablesXml(varValue, varId) {
+    //
+    //     let xml_variable =
+    //         <variable
+    //             type=""
+    //             id={varId}
+    //         >{varValue}</variable>
+    //
+    //     return xml_variable
+    // }
 
     static buildBodyXmlFromParsedContent(parsedContent) {
 

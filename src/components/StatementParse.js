@@ -37,22 +37,23 @@ export class StatementParse extends React.Component {
                 console.log(varName, varValue, varJsType, varType);
                 // COOOL IT WORKS :D now we can create xml.
 
-
                 let xml_decl = [
-                    // LEFT PART
                     CodeToBlockly.buildBlockXml(
                         this.getBlocklyTypeFromStatType(statType),
-                        CodeToBlockly.buildFieldXml("VAR", varName),
-                    ),
-                    // RIGHT PART
-                    CodeToBlockly.buildValueXml(
-                        CodeToBlockly.buildBlockXml(
-                            this.getBlocklyTypeFromJsVarType(varJsType),
-                            CodeToBlockly.buildFieldXml(
-                                this.getFieldTypeFromJsVarType(varJsType),
-                                varValue
+                        [
+                            // LEFT PART
+                            CodeToBlockly.buildFieldXml("VAR", varName),
+                            // RIGHT PART
+                            CodeToBlockly.buildValueXml(
+                                CodeToBlockly.buildBlockXml(
+                                    this.getBlocklyTypeFromJsVarType(varJsType),
+                                    CodeToBlockly.buildFieldXml(
+                                        this.getFieldTypeFromJsVarType(varJsType),
+                                        varValue
+                                    )
+                                )
                             )
-                        )
+                        ]
                     )
                 ];
 
