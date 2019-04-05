@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOMServer from "react-dom/server";
 import {MiscFunctions} from "../functions/MiscFunctions";
+import {StatementParse} from "./StatementParse";
 
 export class ConvertCodeToBlockly extends React.Component {
 
 
-    static buildBlockXmlFromBlocklyType(blockType, x, y) {
+    static buildBlockXmlFromBlocklyType(blockType, children, x, y) {
 
         let xml_block =
             <block
@@ -13,7 +14,7 @@ export class ConvertCodeToBlockly extends React.Component {
                 id={MiscFunctions.getRandomInt(100)}
                 x={x}
                 y={y}
-            ></block>
+            >{children}</block>
 
         console.log(ReactDOMServer.renderToStaticMarkup(xml_block))
         return xml_block
@@ -26,13 +27,15 @@ export class ConvertCodeToBlockly extends React.Component {
 
         for (let i=0 ; i<parsedContent.length ; i++) {
 
-            let statementType = parsedContent[i].type;
-            let blocklyType = this.getBlocklyTypeFromStatementType(statementType);
-            console.log(statementType, blocklyType)
+            let statement = parsedContent[i];
+            // let statementType = parsedContent[i].type;
+            // let blocklyType = this.getBlocklyTypeFromStatementType(statementType);
+            // console.log(statementType, blocklyType)
 
-            // little bug to correct here : should not concatenate
+            // little fix to add : must parse one more than just parent
             xml_full.push(
-                this.buildBlockXmlFromBlocklyType(blocklyType,50,50 * (1 + i))
+                StatementParse.getXmlFromStatement(statement)
+                // this.buildBlockXmlFromBlocklyType(blocklyType, null, 50,50 * (1 + i))
             );
         }
 
