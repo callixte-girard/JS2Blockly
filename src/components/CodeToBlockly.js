@@ -19,27 +19,31 @@ export class CodeToBlockly extends React.Component {
                 type={blockType}
                 // id={MiscFunctions.getRandomInt(100)}
                 x={0}
-                y={26 * (program_advance-1) }
-            >{
-                children
-            }</block>;
+                y={26 * (program_advance - 1) }
+            >{children}</block>;
 
         // console.log(ReactDOMServer.renderToStaticMarkup(xml_block))
         return xml_block
     }
 
-    static buildFieldXmlFrom(varType, varValue) {
+    static buildFieldXmlFromFieldTypeAndVarName(fieldType, varName) {
 
         let xml_field =
             <field
-                name={varType}
+                name={fieldType}
                 // id={MiscFunctions.getRandomInt(100)}
                 x={1}
                 y={program_advance}
-            >{varValue}</field>
+            >{varName}</field>
 
         // console.log(ReactDOMServer.renderToStaticMarkup(xml_field))
         return xml_field
+    }
+
+    static buildValueXml(children) {
+
+        let xml_value = <value name="VALUE">{children}</value>
+        return xml_value
     }
 
     static buildBodyXmlFromParsedContent(parsedContent) {

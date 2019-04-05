@@ -21,25 +21,32 @@ export class StatementParse extends React.Component {
             let statType = stat['type']
 
             let varName, varValue, varType
-            // var type : is it another variable's value or a new value ? #TO-DO
-            // varType = decl['init']['type']
-
             try {
-                // var name : always set (or throw ex)
-                varName = decl['id']['name']
-                // var value : can be null
-                if (decl['init'] != null) varValue = decl['init']['value']
-                else varValue = null
+                varName = decl['id']['name'] // var name : always set (or throw ex)
 
-                console.log(varName, varValue)
+                if (decl['init'] != null) {
+                    varValue = decl['init']['value'] // var value : can be null
+                    varType = decl['init']['type'] // var type : is it another variable's value or a new value ?
+                }
+                else {
+                    varValue = null
+                    varType = null
+                }
+
+                console.log(varName, varValue, varType)
                 // COOOL IT WORKS :D now we can create xml.
 
-                let xml_decl = CodeToBlockly.buildBlockXmlFromBlocklyType(
-                    this.getBlocklyTypeFromStatementType(statType),
-                    null,
-                    // 50,
-                    // (1 + i) * 50
-                );
+                let xml_decl = [
+                    // LEFT PART
+                    CodeToBlockly.buildBlockXmlFromBlocklyType(
+                        this.getBlocklyTypeFromStatementType(statType),
+                        CodeToBlockly.buildFieldXmlFromFieldTypeAndVarName("VAR", varName),
+                    ),
+                    // RIGHT PART
+                    CodeToBlockly.buildValueXml(
+                        null
+                    )
+                ];
 
                 // console.log(ReactDOMServer.renderToStaticMarkup(xml_decl))
                 xml_out.push(xml_decl);
@@ -62,7 +69,7 @@ export class StatementParse extends React.Component {
         // doit aiguiller vers la bonne fonction.
         let statType = stat['type']
         MiscFunctions.dispLine()
-        console.log(statType)
+        console.log(">" + statType)
 
         let xml_list_stats = []
         switch (statType) {
@@ -73,8 +80,6 @@ export class StatementParse extends React.Component {
         }
         return xml_list_stats
     }
-
-
 
     static getBlocklyTypeFromStatementType(statementType) {
 

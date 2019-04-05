@@ -20,12 +20,10 @@ export class BlocklyContainer extends React.Component {
         )
     }
 
-
     componentWillUpdate(prevProps, prevState, snapshot) {
 
         this.updateBlocksFromXml(prevProps.xmlContent);
     }
-
 
     render() {
         return (

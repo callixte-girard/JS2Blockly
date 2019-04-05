@@ -29,9 +29,10 @@ export class MainContainer extends React.Component {
 
         // processes JS <> Blockly conversion
         try {
+            // const split_content = MiscFunctions.splitLineByLine(inputContent);
+
             // ### VER 1 : lexical
             // let parsedContent = this.lexicalAnalysis(codeToParse);
-
             // ### VER 2 : syntaxic
             let parsedContent = this.syntaxicAnalysis(inputContent);
 
@@ -43,9 +44,12 @@ export class MainContainer extends React.Component {
                 xmlContent: xmlContent
             });
 
-        } catch (ex) {
-            // console.log(ex.stackTrace)
-            ////// maybe insert lexical analysis here
+        } catch (ex) {////// maybe insert lexical analysis here
+
+            this.setState({
+                parsedContent: null,
+                xmlContent: "" // ### Comment or uncomment to try ### Choose the one you prefer, both work :)
+            });
         }
         MiscFunctions.dispStar()
     }
