@@ -4,8 +4,6 @@ import ReactDOMServer from "react-dom/server";
 import {CodeToBlockly} from "./CodeToBlockly";
 
 
-let varNameToId = {};
-
 export class StatementParse extends React.Component {
 
     // ## README ## voici les deux méthodes dont tu as besoin pour finaliser ta fonction parser.
@@ -46,27 +44,7 @@ export class StatementParse extends React.Component {
                 console.log(varName, varValue, varJsType, varType);
                 // COOOL IT WORKS :D now we can create xml.
 
-
-                let pipou;
-                // variables already exists in the scope ??
-                if (varNameToId.hasOwnProperty(varValue)) {
-
-                    if (varType === 'Identifier') {
-
-                        console.log(varNameToId.hasOwnProperty(varValue))
-
-                        pipou = varNameToId[varValue];
-                    } else {
-                        // if (varType === "Identifier") {
-                        // records variable in var_scope
-                        varNameToId[varName] = MiscFunctions.getRandomInt(1000);
-                        console.log(varNameToId);
-                        // } else {
-                        // }
-                        pipou = varNameToId[varName];
-                    }
-                }
-
+                let varId = ""; // can be deleted
 
                 let xml_decl = [
                     CodeToBlockly.buildBlockXml(
@@ -85,7 +63,7 @@ export class StatementParse extends React.Component {
                                     CodeToBlockly.buildFieldXml(
                                         this.getFieldTypeFromVarType(varJsType, varType),
                                         varValue,
-                                        pipou
+                                        varId
                                     )
                                 )
                             )
@@ -104,6 +82,7 @@ export class StatementParse extends React.Component {
 
     static parseForStatement(stat) {
         /// #TO-DO
+
     }
 
     ////////////////////////////
