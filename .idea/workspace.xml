@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+            <state relative-caret-position="262">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/StatementParse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="890">
-              <caret line="74" column="70" lean-forward="true" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
+            <state relative-caret-position="216">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -96,6 +96,7 @@
       <find>buildBlockXml</find>
       <find>buildFieldXml</find>
       <find>getFieldTypeFromJsVarType</find>
+      <find>getBlocklyTypeFromVarType</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -258,12 +259,12 @@
       <workItem from="1553763292286" duration="1299000" />
       <workItem from="1554359926499" duration="4532000" />
       <workItem from="1554460499818" duration="6129000" />
-      <workItem from="1554748923647" duration="2588000" />
+      <workItem from="1554748923647" duration="3655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58527000" />
+    <option name="totallyTimeSpent" value="59594000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -385,8 +386,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        <state relative-caret-position="262">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -395,8 +396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/StatementParse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="890">
-          <caret line="74" column="70" lean-forward="true" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
+        <state relative-caret-position="216">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -93,6 +93,7 @@ export class CodeToBlockly extends React.Component {
 
         program_advance = init_program;
 
+
         let xml_main =
             <xml xmlns='http://www.w3.org/1999/xhtml'>
                 <variables>{

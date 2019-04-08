@@ -46,16 +46,27 @@ export class StatementParse extends React.Component {
                 console.log(varName, varValue, varJsType, varType);
                 // COOOL IT WORKS :D now we can create xml.
 
-                // records variable in var_scope
-                varNameToId[varName] = MiscFunctions.getRandomInt(1000);
-                console.log(varNameToId);
 
                 let pipou;
-                try {
-                    pipou = ""
-                } catch {
-                    pipou = "bidon"
+                // variables already exists in the scope ??
+                if (varNameToId.hasOwnProperty(varValue)) {
+
+                    if (varType === 'Identifier') {
+
+                        console.log(varNameToId.hasOwnProperty(varValue))
+
+                        pipou = varNameToId[varValue];
+                    } else {
+                        // if (varType === "Identifier") {
+                        // records variable in var_scope
+                        varNameToId[varName] = MiscFunctions.getRandomInt(1000);
+                        console.log(varNameToId);
+                        // } else {
+                        // }
+                        pipou = varNameToId[varName];
+                    }
                 }
+
 
                 let xml_decl = [
                     CodeToBlockly.buildBlockXml(
@@ -140,7 +151,7 @@ export class StatementParse extends React.Component {
             // "undefined": "variables_get"
         };
         if (varType === "Identifier") {
-            return "VAR"
+            return "variables_get"
         } else if (varType === "Literal") {
             return jsVarTypeToBlocklyType[jsVarType]
         }
