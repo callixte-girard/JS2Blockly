@@ -51,8 +51,7 @@ export class StatementParse extends React.Component {
 
                 leftPart = CodeToBlockly.buildFieldXml(
                     "VAR",
-                    varName,
-                    MiscFunctions.getRandomInt(1000)
+                    varName
                 );
 
                 try {
@@ -62,20 +61,13 @@ export class StatementParse extends React.Component {
                             this.getBlocklyTypeFromVarType(varJsType, varType),
                             CodeToBlockly.buildFieldXml(
                                 this.getFieldTypeFromVarType(varJsType, varType),
-                                varValue.toString(),
-                                MiscFunctions.getRandomInt(1000)
+                                varValue.toString()
                             )
                         )
                     );
-                    children = [
-                        leftPart,
-                        rightPart
-                    ]
-
+                    children = [leftPart, rightPart]
                 } catch {
-                    children = [
-                        leftPart
-                    ]
+                    children = [leftPart]
                 }
 
                 // ...and assembling them :)
@@ -103,6 +95,10 @@ export class StatementParse extends React.Component {
         let decl = stat['init'];
         let test = stat['test'];
         let update = stat['update'];
+        
+        // decl
+        // test
+        // update
 
         return xml_out
     }
@@ -115,7 +111,7 @@ export class StatementParse extends React.Component {
         // doit aiguiller vers la bonne fonction.
         let statType = stat['type']
         MiscFunctions.dispLine()
-        console.log(">" + statType)
+        console.log(">>> " + statType)
 
         let xml_list_stats = []
         switch (statType) {
