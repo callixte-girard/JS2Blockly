@@ -7,8 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91fc2701-4bd1-4297-a0e8-b498c9b888a0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/assets/images/drawer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/assets/images/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/assets/images/robot-dev.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/assets/images/robot-prod.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/assets/images/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/pages/Screen1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/pages/Screen2.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../gmail-test/src/components/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StatementParse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StatementParse.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../basic-vignette-manager/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gmail-test/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gmail-test/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gmail-test/src/TestLoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gmail-test/src/components/GoogleLoginPage.js" afterDir="false" />
@@ -38,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="46" column="32" lean-forward="true" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+            <state relative-caret-position="167">
+              <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -50,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/StatementParse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+            <state relative-caret-position="890">
+              <caret line="74" column="70" lean-forward="true" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -80,6 +94,8 @@
       <find>statement</find>
       <find>getXmlFromStatement</find>
       <find>buildBlockXml</find>
+      <find>buildFieldXml</find>
+      <find>getFieldTypeFromJsVarType</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -131,6 +147,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,8 +183,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,6 +232,7 @@
       </method>
     </configuration>
     <configuration default="true" type="TestNG">
+      <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <properties />
       <listeners />
@@ -241,11 +258,12 @@
       <workItem from="1553763292286" duration="1299000" />
       <workItem from="1554359926499" duration="4532000" />
       <workItem from="1554460499818" duration="6129000" />
+      <workItem from="1554748923647" duration="2588000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54672000" />
+    <option name="totallyTimeSpent" value="58527000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -257,7 +275,7 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.20100144" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.20386267" />
       <window_info id="Captures" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283767" />
@@ -268,7 +286,7 @@
       <window_info anchor="bottom" id="Android Profiler" order="6" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32771084" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2267658" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2267658" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Logcat" order="11" weight="0.3286908" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32891566" />
@@ -287,7 +305,7 @@
       <window_info anchor="right" id="Ant Build" order="9" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
       <window_info anchor="right" id="Preview" order="11" sideWeight="0.49585062" weight="0.3297568" />
-      <window_info anchor="right" id="Structure" order="12" sideWeight="0.5016026" side_tool="true" visible="true" weight="0.24320458" />
+      <window_info active="true" anchor="right" id="Structure" order="12" sideWeight="0.5016026" side_tool="true" visible="true" weight="0.24320458" />
       <window_info anchor="right" id="Maven" order="13" />
     </layout>
   </component>
@@ -311,13 +329,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -339,10 +351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="35" column="18" lean-forward="true" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-            <element signature="e#188#251#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -364,33 +372,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CodeToBlock_Old.js" />
     <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="75" column="9" lean-forward="true" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CodeToBlock_Old.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="34" column="75" lean-forward="true" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        <state relative-caret-position="367">
+          <caret line="85" column="18" lean-forward="true" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="46" column="32" lean-forward="true" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+        <state relative-caret-position="167">
+          <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -399,8 +395,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/StatementParse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+        <state relative-caret-position="890">
+          <caret line="74" column="70" lean-forward="true" selection-start-line="74" selection-start-column="70" selection-end-line="74" selection-end-column="70" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

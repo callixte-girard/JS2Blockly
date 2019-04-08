@@ -4,6 +4,8 @@ import ReactDOMServer from "react-dom/server";
 import {CodeToBlockly} from "./CodeToBlockly";
 
 
+let varNameToId = {};
+
 export class StatementParse extends React.Component {
 
     // ## README ## voici les deux méthodes dont tu as besoin pour finaliser ta fonction parser.
@@ -25,31 +27,54 @@ export class StatementParse extends React.Component {
                 varName = decl['id']['name'] // var name : always set (or throw ex)
 
                 if (decl['init'] != null) {
-                    varValue = decl['init']['value'] // var value : can be null
-                    varType = decl['init']['type'] // var type : is it another variable's value or a new value ?
+                    // var type : is it another variable's value or a new value ?
+                    varType = decl['init']['type']
+
+                    // var value : can be null
+                    if (varType === 'Identifier') {
+                        varValue = decl['init']['name']
+                    } else if (varType === 'Literal') {
+                        varValue = decl['init']['value']
+                    }
                 }
                 else {
-                    varValue = null
-                    varType = null
+                    varValue = null;
+                    varType = null;
                 }
                 varJsType = (typeof varValue);
 
                 console.log(varName, varValue, varJsType, varType);
                 // COOOL IT WORKS :D now we can create xml.
 
+                // records variable in var_scope
+                varNameToId[varName] = MiscFunctions.getRandomInt(1000);
+                console.log(varNameToId);
+
+                let pipou;
+                try {
+                    pipou = ""
+                } catch {
+                    pipou = "bidon"
+                }
+
                 let xml_decl = [
                     CodeToBlockly.buildBlockXml(
                         this.getBlocklyTypeFromStatType(statType),
                         [
                             // LEFT PART
-                            CodeToBlockly.buildFieldXml("VAR", varName),
+                            CodeToBlockly.buildFieldXml(
+                                "VAR",
+                                varName,
+                                MiscFunctions.getRandomInt(1000)
+                            ),
                             // RIGHT PART
                             CodeToBlockly.buildValueXml(
                                 CodeToBlockly.buildBlockXml(
-                                    this.getBlocklyTypeFromJsVarType(varJsType),
+                                    this.getBlocklyTypeFromVarType(varJsType, varType),
                                     CodeToBlockly.buildFieldXml(
-                                        this.getFieldTypeFromJsVarType(varJsType),
-                                        varValue
+                                        this.getFieldTypeFromVarType(varJsType, varType),
+                                        varValue,
+                                        pipou
                                     )
                                 )
                             )
@@ -90,26 +115,35 @@ export class StatementParse extends React.Component {
         return xml_list_stats
     }
 
-    static getFieldTypeFromJsVarType(jsVarType) {
+    static getFieldTypeFromVarType(jsVarType, varType) {
 
         const jsVarTypeToFieldType = {
             "number": "NUM",
             "string": "TEXT",
             "boolean": "BOOL",
-            "undefined": "VAR"
+            // "undefined": "VAR"
         };
-        return jsVarTypeToFieldType[jsVarType]
+
+        if (varType === "Identifier") {
+            return "VAR"
+        } else if (varType === "Literal") {
+            return jsVarTypeToFieldType[jsVarType]
+        }
     }
 
-    static getBlocklyTypeFromJsVarType(jsVarType) {
+    static getBlocklyTypeFromVarType(jsVarType, varType) {
 
         const jsVarTypeToBlocklyType = {
             "number": "math_number",
             "string": "text",
             "boolean": "logic_boolean",
-            "undefined": "variables_get"
+            // "undefined": "variables_get"
         };
-        return jsVarTypeToBlocklyType[jsVarType]
+        if (varType === "Identifier") {
+            return "VAR"
+        } else if (varType === "Literal") {
+            return jsVarTypeToBlocklyType[jsVarType]
+        }
     }
 
     static getBlocklyTypeFromStatType(statType) {

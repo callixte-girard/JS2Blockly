@@ -26,13 +26,13 @@ export class CodeToBlockly extends React.Component {
         return xml_block
     }
 
-    static buildFieldXml(fieldType, fieldValue) {
+    static buildFieldXml(fieldType, fieldValue, fieldId) {
 
         let xml_field =
             <field
                 name={fieldType}
                 variabletype=""
-                // id={MiscFunctions.getRandomInt(100)}
+                id={fieldId}
                 x={1}
                 y={program_advance}
             >{fieldValue}</field>
