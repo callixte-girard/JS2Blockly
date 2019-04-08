@@ -62,7 +62,7 @@ export class StatementParse extends React.Component {
                                     this.getBlocklyTypeFromVarType(varJsType, varType),
                                     CodeToBlockly.buildFieldXml(
                                         this.getFieldTypeFromVarType(varJsType, varType),
-                                        varValue,
+                                        varValue.toString(),
                                         varId
                                     )
                                 )
