@@ -15,6 +15,7 @@ export class StatementParse extends React.Component {
     static parseVariableDeclaration(stat) {
 
         let xml_out = []
+
         for (let i=0 ; i<stat['declarations'].length ; i++)
         {
             let decl = stat['declarations'][i]
@@ -44,30 +45,44 @@ export class StatementParse extends React.Component {
                 console.log(varName, varValue, varJsType, varType);
                 // COOOL IT WORKS :D now we can create xml.
 
-                let varId = ""; // can be deleted
 
+                // now creating of the separate parts...
+                let leftPart, rightPart, children;
+
+                leftPart = CodeToBlockly.buildFieldXml(
+                    "VAR",
+                    varName,
+                    MiscFunctions.getRandomInt(1000)
+                );
+
+                try {
+                    rightPart = CodeToBlockly.buildValueXml(
+                        "VALUE"
+                        ,CodeToBlockly.buildBlockXml(
+                            this.getBlocklyTypeFromVarType(varJsType, varType),
+                            CodeToBlockly.buildFieldXml(
+                                this.getFieldTypeFromVarType(varJsType, varType),
+                                varValue.toString(),
+                                MiscFunctions.getRandomInt(1000)
+                            )
+                        )
+                    );
+                    children = [
+                        leftPart,
+                        rightPart
+                    ]
+
+                } catch {
+                    children = [
+                        leftPart
+                    ]
+                }
+
+                // ...and assembling them :)
                 let xml_decl = [
                     CodeToBlockly.buildBlockXml(
                         this.getBlocklyTypeFromStatType(statType),
-                        [
-                            // LEFT PART
-                            CodeToBlockly.buildFieldXml(
-                                "VAR",
-                                varName,
-                                MiscFunctions.getRandomInt(1000)
-                            ),
-                            // RIGHT PART
-                            CodeToBlockly.buildValueXml(
-                                CodeToBlockly.buildBlockXml(
-                                    this.getBlocklyTypeFromVarType(varJsType, varType),
-                                    CodeToBlockly.buildFieldXml(
-                                        this.getFieldTypeFromVarType(varJsType, varType),
-                                        varValue.toString(),
-                                        varId
-                                    )
-                                )
-                            )
-                        ]
+                        children
                     )
                 ];
 
@@ -76,13 +91,20 @@ export class StatementParse extends React.Component {
 
             } catch {}
         }
+
         return xml_out
     }
 
 
     static parseForStatement(stat) {
-        /// #TO-DO
 
+        let xml_out = []
+
+        let decl = stat['init'];
+        let test = stat['test'];
+        let update = stat['update'];
+
+        return xml_out
     }
 
     ////////////////////////////
@@ -104,6 +126,13 @@ export class StatementParse extends React.Component {
         }
         return xml_list_stats
     }
+    
+    static getValueNameFrom() {
+        
+        const blablablab = {
+            Pipou: ""
+        }
+    }
 
     static getFieldTypeFromVarType(jsVarType, varType) {
 
@@ -111,7 +140,7 @@ export class StatementParse extends React.Component {
             "number": "NUM",
             "string": "TEXT",
             "boolean": "BOOL",
-            // "undefined": "VAR"
+            "object": "VAR"
         };
 
         if (varType === "Identifier") {
@@ -127,7 +156,7 @@ export class StatementParse extends React.Component {
             "number": "math_number",
             "string": "text",
             "boolean": "logic_boolean",
-            // "undefined": "variables_get"
+            "object": "variables_get"
         };
         if (varType === "Identifier") {
             return "variables_get"

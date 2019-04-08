@@ -41,30 +41,17 @@ export class CodeToBlockly extends React.Component {
         return xml_field
     }
 
-    static buildValueXml(children) {
+    static buildValueXml(name, children) {
 
         let xml_value =
-            <value name="VALUE">{children}</value>
+            <value name={name}>{children}</value>
 
         return xml_value
     }
 
-    // static buildVariablesXml(varValue, varId) {
-    //
-    //     let xml_variable =
-    //         <variable
-    //             type=""
-    //             id={varId}
-    //         >{varValue}</variable>
-    //
-    //     return xml_variable
-    // }
-
     static buildBodyXmlFromParsedContent(parsedContent) {
 
         let xml_arr = [];
-
-
         // then add all things
         for (let i=0 ; i<parsedContent.length ; i++) {
 
@@ -92,7 +79,6 @@ export class CodeToBlockly extends React.Component {
     static generateBlocksFromParsedContent(parsedContent) {
 
         program_advance = init_program;
-
 
         let xml_main =
             <xml xmlns='http://www.w3.org/1999/xhtml'>
