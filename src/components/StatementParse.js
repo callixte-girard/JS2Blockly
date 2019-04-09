@@ -90,7 +90,9 @@ export class StatementParse extends React.Component {
 
     static parseForStatement(stat) {
 
-        let xml_out = []
+        let xml_out;
+
+        const statType = stat['type'];
 
         let decl = stat['init'];
         let test = stat['test'];
@@ -99,6 +101,13 @@ export class StatementParse extends React.Component {
         // decl
         // test
         // update
+
+        let children = [];
+
+        xml_out = CodeToBlockly.buildBlockXml(
+            this.getBlocklyTypeFromStatType(statType),
+            children
+        );
 
         return xml_out
     }
@@ -116,9 +125,9 @@ export class StatementParse extends React.Component {
         let xml_list_stats = []
         switch (statType) {
             case "VariableDeclaration":
-                xml_list_stats.push(this.parseVariableDeclaration(stat))
+                xml_list_stats.push(this.parseVariableDeclaration(stat)); break
             case "ForStatement":
-                xml_list_stats.push(this.parseForStatement(stat))
+                xml_list_stats.push(this.parseForStatement(stat)); break
         }
         return xml_list_stats
     }
