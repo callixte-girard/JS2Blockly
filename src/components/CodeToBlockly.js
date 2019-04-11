@@ -5,6 +5,7 @@ import {StatementParse} from "./StatementParse";
 
 
 const init_program = 0;
+const distance_between_consecutive_blocks = /*26*/ 52 ;
 let program_advance;
 
 export class CodeToBlockly extends React.Component {
@@ -19,7 +20,7 @@ export class CodeToBlockly extends React.Component {
                 type={blockType}
                 // id={MiscFunctions.getRandomInt(100)}
                 x={0}
-                y={26 * (program_advance - 1) }
+                y={distance_between_consecutive_blocks * (program_advance - 1) }
             >{children}</block>;
 
         // console.log(ReactDOMServer.renderToStaticMarkup(xml_block))

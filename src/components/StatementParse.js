@@ -34,12 +34,15 @@ export class StatementParse extends React.Component {
                         varValue = decl['init']['name']
                     } else if (varType === 'Literal') {
                         varValue = decl['init']['value']
+                    } else if (varType.toString().includes('Expression')) {
+                        varValue = this.parseExpression(varType)
                     }
                 }
                 else {
                     varValue = null;
                     varType = null;
                 }
+                // JS type
                 varJsType = (typeof varValue);
 
                 console.log(varName, varValue, varJsType, varType);
@@ -88,6 +91,15 @@ export class StatementParse extends React.Component {
     }
 
 
+    static parseExpression(expr) {
+
+        // first examinates which kind of expression it is
+
+        // then calculate its result and return it as a value
+
+    }
+
+
     static parseForStatement(stat) {
 
         let xml_out;
@@ -124,19 +136,15 @@ export class StatementParse extends React.Component {
 
         let xml_list_stats = []
         switch (statType) {
+            // declarations
             case "VariableDeclaration":
                 xml_list_stats.push(this.parseVariableDeclaration(stat)); break
+            // statements
             case "ForStatement":
                 xml_list_stats.push(this.parseForStatement(stat)); break
+
         }
         return xml_list_stats
-    }
-    
-    static getValueNameFrom() {
-        
-        const blablablab = {
-            Pipou: ""
-        }
     }
 
     static getFieldTypeFromVarType(jsVarType, varType) {
@@ -168,6 +176,36 @@ export class StatementParse extends React.Component {
         } else if (varType === "Literal") {
             return jsVarTypeToBlocklyType[jsVarType]
         }
+    }
+    
+    static getBlocklyTypeFromExprType(exprType) {
+        
+        const exprTypeToBlocklyType = {
+            // ThisExpression: ,
+            Identifier: "variables_get",
+            // Literal: , // needs another data to select : "math_number" | "text" | "logic_boolean"
+            // ArrayExpression: ,
+            // ObjectExpression: ,
+            // FunctionExpression: ,
+            // ArrowFunctionExpression: ,
+            // ClassExpression: ,
+            // TaggedTemplateExpression: ,
+            // MemberExpression: ,
+            // Super: ,
+            // MetaProperty: ,
+            // NewExpression: ,
+            // CallExpression: ,
+            // UpdateExpression: ,
+            // AwaitExpression: ,
+            // UnaryExpression:,
+            BinaryExpression: "math_arithmetic",
+            LogicalExpression: "logic_operation",
+            // ConditionalExpression: ,
+            // YieldExpression: ,
+            // AssignmentExpression: ,
+            // SequenceExpression: ,
+        };
+        return exprTypeToBlocklyType[exprType]
     }
 
     static getBlocklyTypeFromStatType(statType) {
