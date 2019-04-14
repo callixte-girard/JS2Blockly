@@ -12,8 +12,8 @@ export class CodeContainer extends React.Component {
     render() {
         return (
             <textarea id="code-raw"
-                      rows="40"
-                      cols="60"
+                      rows="37"
+                      cols="63"
                       placeholder={this.exampleCode}
                       onChange={this.props.updateCode}
             >

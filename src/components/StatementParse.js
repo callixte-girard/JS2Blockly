@@ -35,7 +35,7 @@ export class StatementParse extends React.Component {
                     } else if (varType === 'Literal') {
                         varValue = decl['init']['value']
                     } else if (varType.toString().includes('Expression')) {
-                        varValue = this.parseExpression(varType)
+                        // varValue = this.parseExpression(varType) // to change
                     }
                 }
                 else {
