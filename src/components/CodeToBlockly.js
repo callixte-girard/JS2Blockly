@@ -4,16 +4,10 @@ import {MiscFunctions} from "../functions/MiscFunctions";
 import {StatementParse} from "./StatementParse";
 
 
-const init_program = 0;
-const distance_between_consecutive_blocks = /*26*/ 52 ;
-let program_advance;
-
 export class CodeToBlockly extends React.Component {
 
 
     static insertNextTagsIntoXmlBody(xmlBody) {
-
-        let str_nextified = "";
 
         for (let i = xmlBody.length - 1; i > 0; i--) {
 
@@ -46,15 +40,10 @@ export class CodeToBlockly extends React.Component {
 
     static buildBlockXml(blockType, children) {
 
-        program_advance ++ ; // to incr counter
-
         let xml_block =
-            <block
-                type={blockType}
-                // id={MiscFunctions.getRandomInt(100)}
-                x={0}
-                y={distance_between_consecutive_blocks * (program_advance - 1) }
-            >{children}</block>;
+            <block type={blockType}>
+                {children}
+            </block>;
 
         // console.log(ReactDOMServer.renderToStaticMarkup(xml_block))
         return xml_block
@@ -63,12 +52,9 @@ export class CodeToBlockly extends React.Component {
     static buildFieldXml(fieldType, fieldValue) {
 
         let xml_field =
-            <field
-                name={fieldType}
-                variabletype=""
-                x={1}
-                y={program_advance}
-            >{fieldValue}</field>
+            <field name={fieldType} variabletype="">
+                {fieldValue}
+            </field>
 
         // console.log(ReactDOMServer.renderToStaticMarkup(xml_field))
         return xml_field
@@ -77,7 +63,9 @@ export class CodeToBlockly extends React.Component {
     static buildValueXml(name, children) {
 
         let xml_value =
-            <value name={name}>{children}</value>
+            <value name={name}>
+                {children}
+            </value>
 
         return xml_value
     }
@@ -110,8 +98,6 @@ export class CodeToBlockly extends React.Component {
 
 
     static generateBlocksFromParsedContent(parsedContent) {
-
-        program_advance = init_program;
 
         const xml_head = "<xml xmlns='http://www.w3.org/1999/xhtml'>";
         const xml_tail = "</xml>";

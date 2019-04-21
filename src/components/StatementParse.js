@@ -81,8 +81,8 @@ export class StatementParse extends React.Component {
                     )
                 ];
 
-                // console.log(ReactDOMServer.renderToStaticMarkup(xml_decl))
-                xml_out.push(xml_decl);
+                console.log(MiscFunctions.convertJsxArrayIntoStringArray(xml_decl));
+                xml_out = xml_out.concat(xml_decl);
 
             } catch {}
         }
@@ -138,10 +138,10 @@ export class StatementParse extends React.Component {
         switch (statType) {
             // declarations
             case "VariableDeclaration":
-                xml_list_stats.push(this.parseVariableDeclaration(stat)); break
+                xml_list_stats = xml_list_stats.concat(this.parseVariableDeclaration(stat)); break
             // statements
             case "ForStatement":
-                xml_list_stats.push(this.parseForStatement(stat)); break
+                xml_list_stats = xml_list_stats.concat(this.parseForStatement(stat)); break
 
         }
         return xml_list_stats
