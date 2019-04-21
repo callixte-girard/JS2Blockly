@@ -11,27 +11,37 @@ let program_advance;
 export class CodeToBlockly extends React.Component {
 
 
-    static insertNextTagsIntoXmlBody(xmlBody_jsxArray) {
+    static insertNextTagsIntoXmlBody(xmlBody) {
 
-        let xmlBody_strArray = MiscFunctions.convertJsxArrayIntoStringArray(xmlBody_jsxArray);
+        let str_nextified = "";
 
-        // let insert_index = xmlBody_str.lastIndexOf("/") - 1;
-        // console.log("insert_index:", insert_index);
+        for (let i = xmlBody.length - 1 ; i > 0 ; i--) {
 
-        for (let i = xmlBody_strArray.length - 1 ; i > 0 ; i--) {
-
-            let jsx_str_cur = xmlBody_strArray[i];
+            let jsx_str_cur = xmlBody[i];
             console.log("jsx_str_cur" + i + ":", jsx_str_cur);
 
-            let jsx_str_prev = xmlBody_strArray[i - 1];
+            let jsx_str_prev = xmlBody[i - 1];
             console.log("jsx_str_prev" + i + ":", jsx_str_prev);
 
-            jsx_str_cur = "<next>" + jsx_str_prev + "</next>";
-            console.log("with next inserted:", jsx_str_cur);
+            jsx_str_cur = "<next>" + jsx_str_cur + "</next>";
+            // console.log("with next inserted:", jsx_str_cur);
 
+            // now insert nextified cur at the good place index in prev
+            let insert_index = jsx_str_prev.lastIndexOf("</block>");
+            console.log("insert at index:", insert_index);
+            
+            jsx_str_prev =
+                jsx_str_prev.substring(0, insert_index)
+                + jsx_str_cur +
+                jsx_str_prev.substring(insert_index);
+            console.log("insertion done:", jsx_str_prev);
+
+            // re-insert prev into array
+            xmlBody[i] = jsx_str_prev;
+            MiscFunctions.dispLine();
         }
 
-        return xmlBody_strArray
+        return xmlBody
     }
 
     static buildBlockXml(blockType, children) {
@@ -103,16 +113,16 @@ export class CodeToBlockly extends React.Component {
 
         program_advance = init_program;
 
-        const xml_head = "<xml xmlns='http://www.w3.org/1999/xhtml'>"
-        const xml_tail = "</xml>"
+        const xml_head = "<xml xmlns='http://www.w3.org/1999/xhtml'>";
+        const xml_tail = "</xml>";
         const xml_middle =
-            this.insertNextTagsIntoXmlBody( // returns: one string with
-                // MiscFunctions.convertJsxArrayIntoStringArray(
-                    this.buildBodyXmlFromParsedContent(parsedContent) // return: JSX Array
-                // )
-            )
+            this.insertNextTagsIntoXmlBody( // returns: one string with all next tags in place
+                MiscFunctions.convertJsxArrayIntoStringArray( // returns: string Array
+                    this.buildBodyXmlFromParsedContent(parsedContent) // returns: JSX Array
+                )
+            );
 
-        const xml_main = xml_head + xml_middle + xml_tail
+        const xml_main = xml_head + xml_middle + xml_tail;
         MiscFunctions.dispLine();
         console.log(("xml_main:", xml_main));
         return (xml_main); // it's a string now
