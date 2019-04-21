@@ -13,21 +13,21 @@ export class CodeToBlockly extends React.Component {
 
     static insertNextTagsIntoXmlBody(xmlBody) {
 
-        for (let i=0 ; i < xmlBody.length - 1 ; i++) {
-
-            const jsx_current = xmlBody[i];
-            const jsx_next = xmlBody[i+1];
-
-            const str_current = ReactDOMServer.renderToStaticMarkup(jsx_current);
-            const str_next = ReactDOMServer.renderToStaticMarkup(jsx_next);
-
-
-
-            console.log("JSX_CURRENT -->", str_current);
-            console.log("JSX_NEXT -->", str_next);
-
-            // let new_jsx =
-        }
+        // for (let i=0 ; i < xmlBody.length - 1 ; i++) {
+        //
+        //     const jsx_current = xmlBody[i];
+        //     const jsx_next = xmlBody[i+1];
+        //
+        //     const str_current = ReactDOMServer.renderToStaticMarkup(jsx_current);
+        //     const str_next = ReactDOMServer.renderToStaticMarkup(jsx_next);
+        //
+        //
+        //
+        //     console.log("JSX_CURRENT -->", str_current);
+        //     console.log("JSX_NEXT -->", str_next);
+        //
+        //     // let new_jsx =
+        // }
 
         return xmlBody
     }
@@ -109,8 +109,6 @@ export class CodeToBlockly extends React.Component {
                     this.insertNextTagsIntoXmlBody(
                         this.buildBodyXmlFromParsedContent(parsedContent)
                     )
-
-
                 }
             </xml>
 

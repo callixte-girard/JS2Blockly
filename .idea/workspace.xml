@@ -20,7 +20,6 @@
       <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/pages/Screen1.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/pages/Screen2.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../gmail-test/src/components/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CodeToBlockly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CodeToBlockly.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../basic-vignette-manager/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" afterDir="false" />
@@ -52,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+            <state relative-caret-position="622">
+              <caret line="117" column="45" lean-forward="true" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -62,13 +61,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/StatementParse.js">
+        <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="174">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -271,7 +267,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75287000" />
+    <option name="totallyTimeSpent" value="75288000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -313,7 +309,7 @@
       <window_info anchor="right" id="Ant Build" order="9" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
       <window_info anchor="right" id="Preview" order="11" sideWeight="0.49585062" weight="0.3297568" />
-      <window_info active="true" anchor="right" id="Structure" order="12" sideWeight="0.5016026" side_tool="true" visible="true" weight="0.28540772" />
+      <window_info active="true" anchor="right" id="Structure" order="12" sideWeight="0.5016026" side_tool="true" visible="true" weight="0.26824033" />
       <window_info anchor="right" id="Maven" order="13" />
     </layout>
   </component>
@@ -379,8 +375,8 @@
     <entry file="file://$PROJECT_DIR$/src/components/CodeToBlock_Old.js" />
     <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="85" column="18" lean-forward="true" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
+        <state relative-caret-position="174">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
@@ -410,8 +406,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        <state relative-caret-position="622">
+          <caret line="117" column="45" lean-forward="true" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
