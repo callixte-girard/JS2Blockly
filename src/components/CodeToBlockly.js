@@ -15,7 +15,7 @@ export class CodeToBlockly extends React.Component {
 
         let str_nextified = "";
 
-        for (let i = xmlBody.length - 1 ; i > 0 ; i--) {
+        for (let i = xmlBody.length - 1; i > 0; i--) {
 
             let jsx_str_cur = xmlBody[i];
             console.log("jsx_str_cur" + i + ":", jsx_str_cur);
@@ -37,11 +37,11 @@ export class CodeToBlockly extends React.Component {
             console.log("insertion done:", jsx_str_prev);
 
             // re-insert prev into array
-            xmlBody[i] = jsx_str_prev;
+            xmlBody[i - 1] = jsx_str_prev;
             MiscFunctions.dispLine();
         }
 
-        return xmlBody
+        return xmlBody[0]
     }
 
     static buildBlockXml(blockType, children) {
