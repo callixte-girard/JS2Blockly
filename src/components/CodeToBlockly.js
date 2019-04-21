@@ -11,15 +11,20 @@ let program_advance;
 export class CodeToBlockly extends React.Component {
 
 
-    static insertNextTagsIntoXmlBody(xmlBody) {
+    static insertNextTagsIntoXmlBody(xmlBody_jsxArray) {
 
-        let xmlBody_str = MiscFunctions.patchUpJsxArrayIntoOneBigString(xmlBody)
+        let xmlBody_strArray = MiscFunctions.convertJsxArrayIntoStringArray(xmlBody_jsxArray);
 
-        for (let i = xmlBody.length ; i > 0 ; i--) {
-            // process stuff
+        // let insert_index = xmlBody_str.lastIndexOf("/") - 1;
+        // console.log("insert_index:", insert_index);
+
+        for (let i=0 ; i<xmlBody_strArray.length ; i++) {
+            let jsx_str = xmlBody_strArray[i];
+            console.log("jsx_str" + i + ":", jsx_str);
+
         }
 
-        return xmlBody_str
+        return xmlBody_strArray
     }
 
     static buildBlockXml(blockType, children) {
@@ -95,14 +100,12 @@ export class CodeToBlockly extends React.Component {
         const xml_tail = "</xml>"
         const xml_middle =
             this.insertNextTagsIntoXmlBody( // returns: one string with
-                // MiscFunctions.patchUpJsxArrayIntoOneBigString(
+                // MiscFunctions.convertJsxArrayIntoStringArray(
                     this.buildBodyXmlFromParsedContent(parsedContent) // return: JSX Array
                 // )
             )
-        console.log(xml_middle)
 
         const xml_main = xml_head + xml_middle + xml_tail
-
         MiscFunctions.dispLine();
         console.log(("xml_main:", xml_main));
         return (xml_main); // it's a string now

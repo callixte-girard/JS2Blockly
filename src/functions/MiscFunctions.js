@@ -18,20 +18,21 @@ export class MiscFunctions {
         return toSplit.split(/\r?\n/)
     }
 
-    static patchUpJsxArrayIntoOneBigString(jsxArray) {
+    static convertJsxArrayIntoStringArray(jsxArray) {
 
-        let big_string = ""
+        let str_array = [];
 
         for (let i=0 ; i<jsxArray.length ; i++) {
-            big_string += ReactDOMServer.renderToStaticMarkup(jsxArray[i])
+            let jsx_str = ReactDOMServer.renderToStaticMarkup(jsxArray[i]);
+            str_array[i] = jsx_str;
         }
 
-        return big_string
+        return str_array
     }
 
     static patchUpStringArrayIntoOneBigString(stringArray, delimiter) {
 
-        let big_string = ""
+        let big_string = "";
 
         for (let i=0 ; i<stringArray.length ; i++) {
             big_string += stringArray[i]
