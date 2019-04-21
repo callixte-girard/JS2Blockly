@@ -12,9 +12,9 @@ export class BlocklyContainer extends React.Component {
 
         Blockly.Xml.appendDomToWorkspace(
             Blockly.Xml.textToDom(
-                ReactDOMServer.renderToStaticMarkup(
+                // ReactDOMServer.renderToStaticMarkup(
                     xml_str
-                )
+                // )
             ),
             Blockly.getMainWorkspace()
         )

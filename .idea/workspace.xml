@@ -20,6 +20,10 @@
       <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/pages/Screen1.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../DeterronsLesGrandsHommes/pages/Screen2.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../gmail-test/src/components/MainPage.js" afterDir="false" />
+<<<<<<< Updated upstream
+=======
+      <change beforePath="$PROJECT_DIR$/src/components/MainContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainContainer.js" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ReactNativeTest/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../basic-vignette-manager/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gmail-test/.idea/workspace.xml" afterDir="false" />
@@ -48,11 +52,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="622">
               <caret line="117" column="45" lean-forward="true" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
+=======
+            <state relative-caret-position="303">
+              <caret line="91" column="42" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="42" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -60,11 +69,19 @@
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="174">
               <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="214">
+              <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -94,6 +111,11 @@
       <find>getFieldTypeFromJsVarType</find>
       <find>getBlocklyTypeFromVarType</find>
       <find>buildValueXml</find>
+      <find>generateBlock</find>
+      <find>updateBlocksFromXml</find>
+      <find>generateBlocks</find>
+      <find>generate</find>
+      <find>generateBlocksFromParsedContent</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -121,16 +143,16 @@
         <option value="$PROJECT_DIR$/src/misc/statementType2BlocklyType.json" />
         <option value="$PROJECT_DIR$/src/components/OldCodeToBlock.js" />
         <option value="$PROJECT_DIR$/src/components/StatementParser.js" />
-        <option value="$PROJECT_DIR$/src/functions/MiscFunctions.js" />
         <option value="$PROJECT_DIR$/src/components/ParseStatements.js" />
         <option value="$PROJECT_DIR$/src/components/ConvertCodeToBlockly.js" />
         <option value="$PROJECT_DIR$/src/components/CodeToBlock_Old.js" />
-        <option value="$PROJECT_DIR$/src/components/BlocklyContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/MainContainer.js" />
         <option value="$PROJECT_DIR$/src/components/StatementParse.js" />
         <option value="$PROJECT_DIR$/src/components/CodeContainer.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/functions/MiscFunctions.js" />
+        <option value="$PROJECT_DIR$/src/components/BlocklyContainer.js" />
         <option value="$PROJECT_DIR$/src/components/CodeToBlockly.js" />
+        <option value="$PROJECT_DIR$/src/components/MainContainer.js" />
       </list>
     </option>
   </component>
@@ -267,7 +289,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="75288000" />
+=======
+    <option name="totallyTimeSpent" value="78142000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -279,7 +305,7 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.2067239" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.2067239" />
       <window_info id="Captures" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283767" />
@@ -309,7 +335,11 @@
       <window_info anchor="right" id="Ant Build" order="9" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
       <window_info anchor="right" id="Preview" order="11" sideWeight="0.49585062" weight="0.3297568" />
+<<<<<<< Updated upstream
       <window_info active="true" anchor="right" id="Structure" order="12" sideWeight="0.5016026" side_tool="true" visible="true" weight="0.26824033" />
+=======
+      <window_info anchor="right" id="Structure" order="12" sideWeight="0.5016026" side_tool="true" visible="true" weight="0.26824033" />
+>>>>>>> Stashed changes
       <window_info anchor="right" id="Maven" order="13" />
     </layout>
   </component>
@@ -358,21 +388,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/MiscFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/BlocklyContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CodeToBlock_Old.js" />
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -380,6 +397,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/src/components/CodeContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -396,21 +415,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/StatementParse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+        <state relative-caret-position="192">
+          <caret line="129" column="11" selection-start-line="129" selection-start-column="11" selection-end-line="129" selection-end-column="11" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/MiscFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/BlocklyContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CodeToBlockly.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="622">
           <caret line="117" column="45" lean-forward="true" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
+=======
+        <state relative-caret-position="303">
+          <caret line="91" column="42" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="42" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MainContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
         </state>
       </provider>
     </entry>

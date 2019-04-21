@@ -13,23 +13,15 @@ export class CodeToBlockly extends React.Component {
 
     static insertNextTagsIntoXmlBody(xmlBody) {
 
-        // for (let i=0 ; i < xmlBody.length - 1 ; i++) {
-        //
-        //     const jsx_current = xmlBody[i];
-        //     const jsx_next = xmlBody[i+1];
-        //
-        //     const str_current = ReactDOMServer.renderToStaticMarkup(jsx_current);
-        //     const str_next = ReactDOMServer.renderToStaticMarkup(jsx_next);
-        //
-        //
-        //
-        //     console.log("JSX_CURRENT -->", str_current);
-        //     console.log("JSX_NEXT -->", str_next);
-        //
-        //     // let new_jsx =
-        // }
+        let xmlBody_str = ""
 
-        return xmlBody
+        for (let i = xmlBody.length ; i > 0 ; i--) {
+            // process stuff
+        }
+
+        xmlBody_str = ReactDOMServer.renderToStaticMarkup(xmlBody[0])
+
+        return xmlBody_str
     }
 
     static buildBlockXml(blockType, children) {
@@ -92,7 +84,7 @@ export class CodeToBlockly extends React.Component {
                 xml_arr.push(xml_to_insert);
             }
         }
-        // console.log(ReactDOMServer.renderToStaticMarkup(xml_full[0]))
+        // console.log(ReactDOMServer.renderToStaticMarkup(xml_arr[0]))
         return xml_arr;
     }
 
@@ -101,20 +93,21 @@ export class CodeToBlockly extends React.Component {
 
         program_advance = init_program;
 
-        let xml_main =
-            <xml xmlns='http://www.w3.org/1999/xhtml'>
-                <variables>{
-                    // this.buildVariablesXml(varId)
-                }</variables>{
-                    this.insertNextTagsIntoXmlBody(
-                        this.buildBodyXmlFromParsedContent(parsedContent)
-                    )
-                }
-            </xml>
+        const xml_head = "<xml xmlns='http://www.w3.org/1999/xhtml'>"
+        const xml_tail = "</xml>"
+        const xml_middle =
+            this.insertNextTagsIntoXmlBody( // returns: one string with
+                // MiscFunctions.patchUpJsxArrayIntoOneBigString(
+                    this.buildBodyXmlFromParsedContent(parsedContent) // return: JSX Array
+                // )
+            )
+        console.log(xml_middle)
+
+        const xml_main = xml_head + xml_middle + xml_tail
 
         MiscFunctions.dispLine();
-        console.log(ReactDOMServer.renderToStaticMarkup(xml_main));
-        return (xml_main);
+        console.log(("xml_main:", xml_main));
+        return (xml_main); // it's a string now
     }
 
 }

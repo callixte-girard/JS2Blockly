@@ -36,7 +36,7 @@ export class MainContainer extends React.Component {
             // ### VER 2 : syntaxic
             let parsedContent = this.syntaxicAnalysis(inputContent);
 
-            console.log("programBody: ", parsedContent);
+            console.log("programBody:", parsedContent);
             let xmlContent = CodeToBlockly.generateBlocksFromParsedContent(parsedContent);
 
             this.setState({
