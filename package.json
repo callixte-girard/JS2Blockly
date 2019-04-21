@@ -6,6 +6,7 @@
     "node-blockly": "^1.0.35",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-dom-server": "0.0.5",
     "react-scripts": "2.1.5"
   },
   "scripts": {

@@ -13,13 +13,11 @@ export class CodeToBlockly extends React.Component {
 
     static insertNextTagsIntoXmlBody(xmlBody) {
 
-        let xmlBody_str = ""
+        let xmlBody_str = MiscFunctions.patchUpJsxArrayIntoOneBigString(xmlBody)
 
         for (let i = xmlBody.length ; i > 0 ; i--) {
             // process stuff
         }
-
-        xmlBody_str = ReactDOMServer.renderToStaticMarkup(xmlBody[0])
 
         return xmlBody_str
     }

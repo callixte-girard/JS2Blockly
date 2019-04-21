@@ -1,3 +1,5 @@
+import ReactDOMServer from "react-dom/server";
+
 export class MiscFunctions {
 
     static dispLine() {
@@ -16,14 +18,25 @@ export class MiscFunctions {
         return toSplit.split(/\r?\n/)
     }
 
-    static patchUpStringArrayIntoOneBigString(stringArray, withSpaces) {
+    static patchUpJsxArrayIntoOneBigString(jsxArray) {
 
         let big_string = ""
 
-        for (let str in stringArray) {
-            big_string += str
-            if (withSpaces) {
-                big_string += " "
+        for (let i=0 ; i<jsxArray.length ; i++) {
+            big_string += ReactDOMServer.renderToStaticMarkup(jsxArray[i])
+        }
+
+        return big_string
+    }
+
+    static patchUpStringArrayIntoOneBigString(stringArray, delimiter) {
+
+        let big_string = ""
+
+        for (let i=0 ; i<stringArray.length ; i++) {
+            big_string += stringArray[i]
+            if (delimiter !== undefined) {
+                big_string += delimiter
             }
         }
 
