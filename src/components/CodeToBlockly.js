@@ -18,9 +18,16 @@ export class CodeToBlockly extends React.Component {
         // let insert_index = xmlBody_str.lastIndexOf("/") - 1;
         // console.log("insert_index:", insert_index);
 
-        for (let i=0 ; i<xmlBody_strArray.length ; i++) {
-            let jsx_str = xmlBody_strArray[i];
-            console.log("jsx_str" + i + ":", jsx_str);
+        for (let i = xmlBody_strArray.length - 1 ; i > 0 ; i--) {
+
+            let jsx_str_cur = xmlBody_strArray[i];
+            console.log("jsx_str_cur" + i + ":", jsx_str_cur);
+
+            let jsx_str_prev = xmlBody_strArray[i - 1];
+            console.log("jsx_str_prev" + i + ":", jsx_str_prev);
+
+            jsx_str_cur = "<next>" + jsx_str_prev + "</next>";
+            console.log("with next inserted:", jsx_str_cur);
 
         }
 
