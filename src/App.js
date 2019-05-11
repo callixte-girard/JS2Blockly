@@ -5,9 +5,9 @@ import Blockly from 'node-blockly/browser';
 import './App.css';
 
 // import {CodeToBlock} from './components/CodeToBlock.js';
-import {BlocklyContainer} from './components/BlocklyContainer';
-import {CodeContainer} from './components/CodeContainer';
-import {MainContainer} from "./components/MainContainer";
+import {BlocklyContainer} from './components/containers/BlocklyContainer';
+import {CodeContainer} from './components/containers/CodeContainer';
+import {MainContainer} from "./components/containers/MainContainer";
 
 export const line = "--------------------------------------------------------------";
 

@@ -4,8 +4,9 @@ import Blockly from 'node-blockly/browser';
 
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
-import {CodeToBlockly} from "./CodeToBlockly";
-import {MiscFunctions} from "../functions/MiscFunctions";
+import {CodeToBlockly} from "../parse/CodeToBlockly";
+import {MiscFunctions} from "../../functions/MiscFunctions";
+import {JS2XML} from "../parse/JS2XML";
 
 const esprima = require('esprima');
 
@@ -37,7 +38,8 @@ export class MainContainer extends React.Component {
             let parsedContent = this.syntaxicAnalysis(inputContent);
 
             console.log("programBody:", parsedContent);
-            let xmlContent = CodeToBlockly.generateBlocksFromParsedContent(parsedContent);
+            // let xmlContent = CodeToBlockly.generateBlocksFromParsedContent(parsedContent);
+            let xmlContent = JS2XML.processListStatements(parsedContent);
 
             this.setState({
                 parsedContent: parsedContent,

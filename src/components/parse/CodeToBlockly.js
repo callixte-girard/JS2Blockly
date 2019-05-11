@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from "react-dom/server";
-import {MiscFunctions} from "../functions/MiscFunctions";
+import {MiscFunctions} from "../../functions/MiscFunctions";
 import {StatementParse} from "./StatementParse";
 
 
@@ -70,16 +70,18 @@ export class CodeToBlockly extends React.Component {
         return xml_value
     }
 
+
     static buildBodyXmlFromParsedContent(parsedContent) {
 
         let xml_arr = [];
+
         // then add all things
         for (let i=0 ; i<parsedContent.length ; i++) {
 
             let statement = parsedContent[i];
             // let statementType = parsedContent[i].type;
             // let blocklyType = this.getBlocklyTypeFromStatType(statementType);
-            // console.log(statementType, blocklyType)
+            // console.log(statementType)
 
             // little fix to add : must parse one more than just parent
             let xml_sublist = StatementParse.getXmlFromStatement(statement);

@@ -1,0 +1,9 @@
+// TEST 1
+if (true) {}
+for (let i=0 ; i>5 ; i++) {}
+while (true) {}
+
+// TEST 2
+if (i>5) {}
+for (let i=0 ; i>5 ; i++) {}
+while (i>5) {}
