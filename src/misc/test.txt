@@ -7,3 +7,24 @@ while (true) {}
 if (i>5) {}
 for (let i=0 ; i>5 ; i++) {}
 while (i>5) {}
+
+// TEST 3
+if (i>5) {}
+for (let i=0 ; i>5 ; i++) {}
+while (i>5 || i<3) {}
+
+// TEST 4
+if (i>5) {}
+while (i>5 || i<3) {
+    let p=9
+    for (let i=0 ; i>5 ; i++) {
+        if (true) {}
+    }
+}
+
+// TEST 5
+let p = -(5 + 3 + 4) // on prend le bloc negate pour l'instant... on en creera un autre avec un moins apres
+let g = true || (5 > 3 + 2)
+
+// TEST 6
+if (true || 3>5) {}

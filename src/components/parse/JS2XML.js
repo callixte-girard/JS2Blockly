@@ -8,9 +8,8 @@ export class JS2XML extends React.Component {
     static processListStatements(statements) {
 
         let xml_out = [];
-        MiscFunctions.dispLine();
-
         for (let i=0 ; i < statements.length ; i++) {
+
             const statementListItem = statements[i];
             const statementType = statementListItem['type'];
 
@@ -39,6 +38,8 @@ export class JS2XML extends React.Component {
                 const statementCondition = statementListItem[attrName_condition];
                 this.processExpression(statementCondition);
 
+                // debug
+                MiscFunctions.dispLine();
                 console.log("statementType:", statementType);
                 console.log("statementCondition:", statementCondition);
                 console.log("statementChildren:", statementChildren);
@@ -46,7 +47,7 @@ export class JS2XML extends React.Component {
             } else if (statementType.includes('Declaration')) {
             // ### II - DECLARATIONS
 
-
+                // # 1)
             }
         }
         return xml_out
@@ -54,6 +55,38 @@ export class JS2XML extends React.Component {
 
 
     static processExpression(expression) {
-        // @TO-DO
+
+        MiscFunctions.dispLine();
+        const expressionType = expression['type'];
+        const expressionOperator = expression['operator'];
+        console.log("expressionType:", expressionType);
+        console.log("expressionOperator:", expressionOperator);
+
+        let expressionArguments;
+        if (expressionType === 'UnaryExpression') {
+            // we take this one for every kind of negation.
+            // we'll create a special negate block for arithmetic later.
+            expressionArguments = [ expression['argument'] ];
+
+        } else if (expressionType === 'LogicalExpression'
+                || expressionType === 'BinaryExpression') {
+            // two members : left and right
+            expressionArguments = [ expression['left'] , expression['right'] ];
+        }
+        // then parse it recursively (or not)
+        for (let i=0 ; i < expressionArguments.length ; i++) {
+            const expressionArgument = expressionArguments[i];
+            console.log("expressionArgument" + i.toString() + ":", expressionArgument);
+
+            if (expressionArgument['type'].includes('Expression'))
+                this.processExpression(expressionArgument);
+            else
+                this.processEndValue(expressionArgument);
+        }
+    }
+
+
+    static processEndValue(endValue) {
+
     }
 }
