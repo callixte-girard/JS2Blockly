@@ -74,10 +74,8 @@ export class CodeToBlockly extends React.Component {
     static buildBodyXmlFromParsedContent(parsedContent) {
 
         let xml_arr = [];
-
         // then add all things
         for (let i=0 ; i<parsedContent.length ; i++) {
-
             let statement = parsedContent[i];
             // let statementType = parsedContent[i].type;
             // let blocklyType = this.getBlocklyTypeFromStatType(statementType);
