@@ -16,11 +16,11 @@ export class ParseEsprimaLogic extends React.Component {
             const statementType = statement['type'];
 
             if (statementType.includes('Statement')) { // this excludes ExpressionStatements.
-            // ### I - STATEMENTS
+                // ### I - STATEMENTS
                 console.log("statementType:", statementType);
 
                 if (statementType === 'ExpressionStatement') {
-                // ## Ia - EXPRESSION STATEMENTS
+                    // ## Ia - EXPRESSION STATEMENTS
                     // !!!! WARNING : creates bugs so we'll ignore it for now.
                     /*
                     // # 1) get the expr
@@ -30,7 +30,7 @@ export class ParseEsprimaLogic extends React.Component {
                     xml_statements.push(expressionStatement);
                     */
                 } else {
-                // ## Ib - IF, FOR, WHILE STATEMENTS
+                    // ## Ib - IF, FOR, WHILE STATEMENTS
                     let block, statementCondition, statementChildren;
                     // # 1) parse recursively the headers expressions
                     statementCondition = this.processIfWhileForStatementCondition(statement);
@@ -47,12 +47,11 @@ export class ParseEsprimaLogic extends React.Component {
                 }
 
             } else if (statementType.includes('Declaration')) {
-            // ### II - DECLARATIONS
+                // ### II - DECLARATIONS
                 if (statementType === 'VariableDeclaration') {
                     const declarations = statement['declarations'];
 
-                    for (let i=0 ; i < declarations.length ; i++)
-                    {
+                    for (let i = 0; i < declarations.length; i++) {
                         try {
                             const variableName = declarations[i]['id']['name'];
                             const variableValue = declarations[i]['init']; // is an Expression
@@ -62,17 +61,13 @@ export class ParseEsprimaLogic extends React.Component {
                             this.processExpression(variableValue);
                             // @children
 
+                            // add EACH corresponding xml to xml_out, with or without children (0, 1 or n)
                         } catch {
-                            // no value, just defining
+                            // something happens
                         }
-
-                        // add EACH corresponding xml to xml_out, with or without children (0, 1 or n)
-
                     }
 
-                } else if (statementType === 'FunctionDeclaration') {
-
-                }
+                } else if (statementType === 'FunctionDeclaration') {}
             }
             MiscFunctions.dispLine();
         }

@@ -49,23 +49,13 @@ export class MainContainer extends React.Component {
                 xmlContent: xmlContent
             });
 
-        } catch (ex) { ////// maybe insert lexical analysis here
+        } catch (ex) { // this means invalid program syntax
+            ////// maybe insert lexical analysis here
 
             this.setState({
                 parsedContent: null,
                 xmlContent: "" // ### Comment or uncomment to try ### Choose the one you prefer, both work :)
             });
-        }
-    }
-
-    lexicalAnalysis(codeRaw) {
-        // console.log("codeRaw: " , codeRaw);
-
-        let codeParsed
-        try {
-            codeParsed = esprima.tokenize(codeRaw);
-            return codeParsed
-        } catch (ex) {
         }
     }
 
@@ -76,6 +66,17 @@ export class MainContainer extends React.Component {
         try {
             codeParsed = esprima.parse(codeRaw);
             return codeParsed.body
+        } catch (ex) {
+        }
+    }
+
+    lexicalAnalysis(codeRaw) {
+        // console.log("codeRaw: " , codeRaw);
+
+        let codeParsed
+        try {
+            codeParsed = esprima.tokenize(codeRaw);
+            return codeParsed
         } catch (ex) {
         }
     }

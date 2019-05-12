@@ -9,10 +9,12 @@ export class BlocklyContainer extends React.Component {
     updateBlocksFromXml(xml_str) {
         Blockly.getMainWorkspace().clear();
 
-        Blockly.Xml.appendDomToWorkspace(
-            Blockly.Xml.textToDom(xml_str),
-            Blockly.getMainWorkspace()
-        );
+        try {
+            Blockly.Xml.appendDomToWorkspace(
+                Blockly.Xml.textToDom(xml_str),
+                Blockly.getMainWorkspace()
+            );
+        } catch {}
     }
 
     componentWillUpdate(prevProps, prevState, snapshot) {
