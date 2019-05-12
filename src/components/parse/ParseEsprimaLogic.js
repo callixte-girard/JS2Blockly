@@ -73,7 +73,7 @@ export class ParseEsprimaLogic extends React.Component {
     }
 
     static processIfWhileForStatementChildren(statement) {
-        let xml_out ;
+        let xml_statement ;
 
         let attrName_body ;
         const statementType = statement['type'];
@@ -88,12 +88,12 @@ export class ParseEsprimaLogic extends React.Component {
         const statementChildren = statement[attrName_body]['body'];
         console.log("statementChildren:", statementChildren);
 
-        xml_out = this.processListStatements(statementChildren);
-        return xml_out
+        xml_statement = this.processListStatements(statementChildren);
+        return xml_statement
     }
 
     static processIfWhileForStatementCondition(statement) {
-        let xml_out ;
+        let xml_statement;
 
         const attrName_condition = 'test';
 
@@ -101,27 +101,26 @@ export class ParseEsprimaLogic extends React.Component {
         const statementCondition = statement[attrName_condition];
         console.log("statementCondition:", statementCondition);
 
-        xml_out = this.processExpression(statementCondition);
-        return xml_out
+        xml_statement = this.processExpression(statementCondition);
+        return xml_statement
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     static processExpression(expression) {
-        let xml_out ;
+        let xml_expression ;
 
         const expressionType = expression['type'];
         if (expressionType.includes('Expression'))
-            xml_out = this.processHostExpression(expression);
+            xml_expression = this.processHostExpression(expression);
         else
-            xml_out = this.processEndExpression(expression);
+            xml_expression = this.processEndExpression(expression);
 
-        return xml_out
+        return xml_expression
     }
 
-
     static processHostExpression(hostExpression) {
-        let xml_out ;
+        let xml_expression ;
 
         const expressionType = hostExpression['type'];
         const expressionOperator = hostExpression['operator'];
@@ -158,12 +157,12 @@ export class ParseEsprimaLogic extends React.Component {
         }
 
         // xml_out =
-        return xml_out
+        return xml_expression
     }
 
 
     static processEndExpression(endExpression) {
-        let xml_out ;
+        let xml_expression ;
 
         const endExpression_type = endExpression['type'];
         let endExpression_val, attrName_valueOrName;
@@ -176,7 +175,7 @@ export class ParseEsprimaLogic extends React.Component {
         endExpression_val = endExpression[attrName_valueOrName];
         console.log("endExpression:", endExpression_type, endExpression_val);
 
-        xml_out = BuildXMLBlocks.forEndExpression(endExpression_type, endExpression_val);
-        return xml_out
+        xml_expression = BuildXMLBlocks.forEndExpression(endExpression_type, endExpression_val);
+        return xml_expression
     }
 }
