@@ -4,7 +4,7 @@ import {MiscFunctions} from "../../functions/MiscFunctions";
 import {ParseEsprimaLogic} from "./ParseEsprimaLogic";
 
 
-export class Esprima2XML extends React.Component {
+export class EsprimaToXML extends React.Component {
 
 
     static insertNextTagsIntoXmlBody(xmlBody) {

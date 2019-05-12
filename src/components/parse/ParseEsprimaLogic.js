@@ -10,8 +10,8 @@ export class ParseEsprimaLogic extends React.Component {
     static processListStatements(statements) {
 
         let xml_statements = [];
-        for (let i=0 ; i < statements.length ; i++) {
-
+        for (let i=0 ; i < statements.length ; i++)
+        {
             const statement = statements[i];
             const statementType = statement['type'];
 
@@ -51,20 +51,17 @@ export class ParseEsprimaLogic extends React.Component {
                 if (statementType === 'VariableDeclaration') {
                     const declarations = statement['declarations'];
 
-                    for (let i = 0; i < declarations.length; i++) {
-                        try {
-                            const variableName = declarations[i]['id']['name'];
-                            const variableValue = declarations[i]['init']; // is an Expression
-                            console.log("variableName" + i.toString() + ":", variableName);
-                            // console.log("variableValue" + i.toString() + ":", variableValue);
+                    for (let i = 0; i < declarations.length; i++)
+                    {
+                        const variableName = declarations[i]['id']['name'];
+                        const variableValue = declarations[i]['init']; // is an Expression
+                        console.log("variableName" + i.toString() + ":", variableName);
+                        // console.log("variableValue" + i.toString() + ":", variableValue);
 
-                            this.processExpression(variableValue);
-                            // @children
+                        this.processExpression(variableValue);
+                        // @children
 
-                            // add EACH corresponding xml to xml_out, with or without children (0, 1 or n)
-                        } catch {
-                            // something happens
-                        }
+                        // add EACH corresponding xml to xml_out, with or without children (0, 1 or n)
                     }
 
                 } else if (statementType === 'FunctionDeclaration') {}
@@ -148,7 +145,8 @@ export class ParseEsprimaLogic extends React.Component {
         // @TO-DO : complete it. Must export XML
 
         // then parse it recursively or not
-        for (let i=0 ; i < expressionArguments.length ; i++) {
+        for (let i=0 ; i < expressionArguments.length ; i++)
+        {
             const expressionArgument = expressionArguments[i];
             console.log("expressionArgument" + i.toString()
                 + "/" + (expressionArguments.length - 1)

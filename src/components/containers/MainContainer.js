@@ -6,7 +6,7 @@ import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
 import {MiscFunctions} from "../../functions/MiscFunctions";
 import {ParseEsprimaLogic} from "../parse/ParseEsprimaLogic";
-import {Esprima2XML} from "../parse/Esprima2XML";
+import {EsprimaToXML} from "../parse/EsprimaToXML";
 
 const esprima = require('esprima');
 
@@ -41,7 +41,7 @@ export class MainContainer extends React.Component {
             console.log("programBody:", parsedContent);
             MiscFunctions.dispStar();
 
-            let xmlContent = Esprima2XML.generateBlocksFromParsedContent(parsedContent);
+            let xmlContent = EsprimaToXML.generateBlocksFromParsedContent(parsedContent);
             // let xmlContent = ParseEsprimaLogic.processListStatements(parsedContent);
 
             this.setState({
