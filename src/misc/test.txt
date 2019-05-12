@@ -35,3 +35,7 @@ if (true || 3>5) {
 // TEST 7
 if (true) {p = i+5}
 3 +5
+
+// TEST 8
+let p = 7
+function pipou() {}

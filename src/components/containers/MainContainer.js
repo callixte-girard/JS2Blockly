@@ -4,9 +4,9 @@ import Blockly from 'node-blockly/browser';
 
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
-import {CodeToBlockly} from "../parse/CodeToBlockly";
 import {MiscFunctions} from "../../functions/MiscFunctions";
-import {JS2XML} from "../parse/JS2XML";
+import {ParseLogic} from "../parse/ParseLogic";
+import {Esprima2XML} from "../parse/Esprima2XML";
 
 const esprima = require('esprima');
 
@@ -14,12 +14,12 @@ const esprima = require('esprima');
 export class MainContainer extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             parsedContent: null,
             xmlContent: ""
-        }
+        };
 
         this.updateCode = this.updateCode.bind(this)
     }
@@ -41,22 +41,21 @@ export class MainContainer extends React.Component {
             console.log("programBody:", parsedContent);
             MiscFunctions.dispStar();
 
-            // let xmlContent = CodeToBlockly.generateBlocksFromParsedContent(parsedContent);
-            let xmlContent = JS2XML.processListStatements(parsedContent);
+            let xmlContent = Esprima2XML.generateBlocksFromParsedContent(parsedContent);
+            // let xmlContent = ParseLogic.processListStatements(parsedContent);
 
             this.setState({
                 parsedContent: parsedContent,
                 xmlContent: xmlContent
             });
 
-        } catch (ex) {////// maybe insert lexical analysis here
+        } catch (ex) { ////// maybe insert lexical analysis here
 
             this.setState({
                 parsedContent: null,
                 xmlContent: "" // ### Comment or uncomment to try ### Choose the one you prefer, both work :)
             });
         }
-        MiscFunctions.dispStar()
     }
 
     lexicalAnalysis(codeRaw) {
@@ -80,7 +79,6 @@ export class MainContainer extends React.Component {
         } catch (ex) {
         }
     }
-
 
     render() {
         return (
