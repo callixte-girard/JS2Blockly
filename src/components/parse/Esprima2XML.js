@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {MiscFunctions} from "../../functions/MiscFunctions";
-import {ParseLogic} from "./ParseLogic";
+import {ParseEsprimaLogic} from "./ParseEsprimaLogic";
 
 
 export class Esprima2XML extends React.Component {
@@ -46,7 +46,7 @@ export class Esprima2XML extends React.Component {
         const xml_middle =
             this.insertNextTagsIntoXmlBody( // returns: one string with all next tags in place
                 MiscFunctions.convertJsxArrayIntoStringArray( // returns: string Array
-                    ParseLogic.processListStatements(parsedContent)
+                    ParseEsprimaLogic.processListStatements(parsedContent)
                 )
             );
 

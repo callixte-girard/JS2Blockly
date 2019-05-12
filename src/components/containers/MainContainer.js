@@ -5,7 +5,7 @@ import Blockly from 'node-blockly/browser';
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
 import {MiscFunctions} from "../../functions/MiscFunctions";
-import {ParseLogic} from "../parse/ParseLogic";
+import {ParseEsprimaLogic} from "../parse/ParseEsprimaLogic";
 import {Esprima2XML} from "../parse/Esprima2XML";
 
 const esprima = require('esprima');
@@ -42,7 +42,7 @@ export class MainContainer extends React.Component {
             MiscFunctions.dispStar();
 
             let xmlContent = Esprima2XML.generateBlocksFromParsedContent(parsedContent);
-            // let xmlContent = ParseLogic.processListStatements(parsedContent);
+            // let xmlContent = ParseEsprimaLogic.processListStatements(parsedContent);
 
             this.setState({
                 parsedContent: parsedContent,
