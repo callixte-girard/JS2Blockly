@@ -24,8 +24,8 @@ export class JS2XML extends React.Component {
                     const expression = statementListItem['expression'];
                     // # 2) parse it like an expression lol
                     this.processExpression(expression);
-                } else {
 
+                } else {
                 // ## Ib - IF, FOR, WHILE STATEMENTS
                     // # 1) parse recursively the headers expressions
                     const attrName_condition = 'test';

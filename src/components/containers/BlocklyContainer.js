@@ -7,21 +7,15 @@ export class BlocklyContainer extends React.Component {
 
 
     updateBlocksFromXml(xml_str) {
-
-        Blockly.getMainWorkspace().clear()
+        Blockly.getMainWorkspace().clear();
 
         Blockly.Xml.appendDomToWorkspace(
-            Blockly.Xml.textToDom(
-                // ReactDOMServer.renderToStaticMarkup(
-                    xml_str
-                // )
-            ),
+            Blockly.Xml.textToDom(xml_str),
             Blockly.getMainWorkspace()
-        )
+        );
     }
 
     componentWillUpdate(prevProps, prevState, snapshot) {
-
         this.updateBlocksFromXml(prevProps.xmlContent);
     }
 
