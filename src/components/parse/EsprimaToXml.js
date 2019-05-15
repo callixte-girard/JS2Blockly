@@ -38,11 +38,12 @@ export class EsprimaToXml extends React.Component {
                     statementChildren = this.processIfWhileForStatementChildren(statement);
                     // # 3) parse init and update in ForStatements
                     // not for now. we'll just do If and While Statements for now
-                    // # 4) assemble block and add it to xml_statements
+                    // # 4) assemble block
                     if (statementType === 'IfStatement')
                         block = BuildBlocks.forIfStatement(statementCondition, statementChildren);
                     else if (statementType === 'WhileStatement')
                         block = BuildBlocks.forWhileStatement(statementCondition, statementChildren);
+                    // # 5) add it to xml_statements
                     xml_statements.push(block);
                 }
 
@@ -151,19 +152,6 @@ export class EsprimaToXml extends React.Component {
                 || expressionType === 'UpdateExpression') {
             // @TO-DO
         }
-
-        // then parse it recursively or not
-        // for (let i=0 ; i < expressionArguments.length ; i++)
-        // {
-        //     const expressionArgument = expressionArguments[i];
-        //     console.log("expressionArgument" + i.toString()
-        //         + "/" + (expressionArguments.length - 1)
-        //         + ":", expressionArgument
-        //     );
-        //
-        //     // @argument
-        //     this.processExpression(expressionArgument);
-        // }
 
         return xml_expression
     }

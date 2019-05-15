@@ -4,56 +4,6 @@ import {MiscFunctions} from "../../functions/MiscFunctions";
 import {EsprimaToXml} from "./EsprimaToXml";
 
 
-const blocklyOpFromJsOp = {
-    // logic_compare
-    "===" : "EQ", // added by C
-    "==" : "EQ",
-    "!==" : "NEQ", // added by C
-    "!=" : "NEQ",
-    "<" : "LT",
-    "<=" : "LTE",
-    ">" : "GT",
-    ">=" : "GTE",
-    // math_arithmetic
-    "+" : "ADD",
-    "-" : "MINUS",
-    "*" : "MULTIPLY",
-    "/" : "DIVIDE",
-    "**" : "POWER",
-    // logic_operation
-    "&&" : "AND",
-    "||" : "OR",
-};
-
-const blockly1ArgExpressionTypeFromJsOp = {
-    // logic_negate
-    "!" : "logic_negate",
-    // math_negate
-    // to be added later... ;)
-};
-
-const blockly2ArgsExpressionTypeFromJsOp = {
-    // logic_compare
-    "===" : "logic_compare", // added by C
-    "==" : "logic_compare",
-    "!==" : "logic_compare", // added by C
-    "!=" : "logic_compare",
-    "<" : "logic_compare",
-    "<=" : "logic_compare",
-    ">" : "logic_compare",
-    ">=" : "logic_compare",
-    // math_arithmetic
-    "+" : "math_arithmetic",
-    "-" : "math_arithmetic",
-    "*" : "math_arithmetic",
-    "/" : "math_arithmetic",
-    "**" : "math_arithmetic",
-    // logic_operation
-    "&&" : "logic_operation",
-    "||" : "logic_operation",
-};
-
-
 export class BuildBlocks extends React.Component {
 
 
@@ -161,3 +111,52 @@ export class BuildBlocks extends React.Component {
     }
 }
 
+
+const blocklyOpFromJsOp = {
+    // logic_compare
+    "===" : "EQ", // added by C
+    "==" : "EQ",
+    "!==" : "NEQ", // added by C
+    "!=" : "NEQ",
+    "<" : "LT",
+    "<=" : "LTE",
+    ">" : "GT",
+    ">=" : "GTE",
+    // math_arithmetic
+    "+" : "ADD",
+    "-" : "MINUS",
+    "*" : "MULTIPLY",
+    "/" : "DIVIDE",
+    "**" : "POWER",
+    // logic_operation
+    "&&" : "AND",
+    "||" : "OR",
+};
+
+const blockly1ArgExpressionTypeFromJsOp = {
+    // logic_negate
+    "!" : "logic_negate",
+    // math_negate
+    // to be added later... ;)
+};
+
+const blockly2ArgsExpressionTypeFromJsOp = {
+    // logic_compare
+    "===" : "logic_compare", // added by C
+    "==" : "logic_compare",
+    "!==" : "logic_compare", // added by C
+    "!=" : "logic_compare",
+    "<" : "logic_compare",
+    "<=" : "logic_compare",
+    ">" : "logic_compare",
+    ">=" : "logic_compare",
+    // math_arithmetic
+    "+" : "math_arithmetic",
+    "-" : "math_arithmetic",
+    "*" : "math_arithmetic",
+    "/" : "math_arithmetic",
+    "**" : "math_arithmetic",
+    // logic_operation
+    "&&" : "logic_operation",
+    "||" : "logic_operation",
+};
