@@ -129,26 +129,23 @@ export class EsprimaToXml extends React.Component {
 
         // let expressionArguments;
         if (expressionType === 'UnaryExpression') {
-            // we take this one for every kind of negation.
             // we'll create a special negate block for arithmetic later.
-            // expressionArguments = [ hostExpression['argument'] ];
             const expressionArg = hostExpression['argument'];
 
-            const arg = this.processExpression(expressionArg);
+            const blockArg = this.processExpression(expressionArg);
 
-            xml_expression = BuildBlocks.for1ArgExpression(arg, expressionOperator);
+            xml_expression = BuildBlocks.for1ArgExpression(blockArg, expressionOperator);
 
         } else if (expressionType === 'LogicalExpression'
                 || expressionType === 'BinaryExpression') {
             // two members : left and right
-            // expressionArguments = [ hostExpression['left'] , hostExpression['right'] ];
             const expressionArgLeft = hostExpression['left'];
             const expressionArgRight = hostExpression['right'];
 
-            const blockLeft = this.processExpression(expressionArgLeft);
-            const blockRight = this.processExpression(expressionArgRight);
+            const blockArgLeft = this.processExpression(expressionArgLeft);
+            const blockArgRight = this.processExpression(expressionArgRight);
 
-            xml_expression = BuildBlocks.for2ArgsExpression(blockLeft, blockRight, expressionOperator);
+            xml_expression = BuildBlocks.for2ArgsExpression(blockArgLeft, blockArgRight, expressionOperator);
 
         } else if (expressionType === 'AssignmentExpression'
                 || expressionType === 'UpdateExpression') {

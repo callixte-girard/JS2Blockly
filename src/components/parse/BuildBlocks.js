@@ -4,6 +4,56 @@ import {MiscFunctions} from "../../functions/MiscFunctions";
 import {EsprimaToXml} from "./EsprimaToXml";
 
 
+const blocklyOpFromJsOp = {
+    // logic_compare
+    "===" : "EQ", // added by C
+    "==" : "EQ",
+    "!==" : "NEQ", // added by C
+    "!=" : "NEQ",
+    "<" : "LT",
+    "<=" : "LTE",
+    ">" : "GT",
+    ">=" : "GTE",
+    // math_arithmetic
+    "+" : "ADD",
+    "-" : "MINUS",
+    "*" : "MULTIPLY",
+    "/" : "DIVIDE",
+    "**" : "POWER",
+    // logic_operation
+    "&&" : "AND",
+    "||" : "OR",
+};
+
+const blockly1ArgExpressionTypeFromJsOp = {
+    // logic_negate
+    "!" : "logic_negate",
+    // math_negate
+    // to be added later... ;)
+};
+
+const blockly2ArgsExpressionTypeFromJsOp = {
+    // logic_compare
+    "===" : "logic_compare", // added by C
+    "==" : "logic_compare",
+    "!==" : "logic_compare", // added by C
+    "!=" : "logic_compare",
+    "<" : "logic_compare",
+    "<=" : "logic_compare",
+    ">" : "logic_compare",
+    ">=" : "logic_compare",
+    // math_arithmetic
+    "+" : "math_arithmetic",
+    "-" : "math_arithmetic",
+    "*" : "math_arithmetic",
+    "/" : "math_arithmetic",
+    "**" : "math_arithmetic",
+    // logic_operation
+    "&&" : "logic_operation",
+    "||" : "logic_operation",
+};
+
+
 export class BuildBlocks extends React.Component {
 
 
@@ -35,15 +85,24 @@ export class BuildBlocks extends React.Component {
     }
 
 
-    static for1ArgExpression(arg, operator) {
+    static for1ArgExpression(arg, js_op) {
+        let blocklyType;
 
+        blocklyType = blockly1ArgExpressionTypeFromJsOp[js_op];
+        console.log("blocklyType:", blocklyType);
+
+        return <block type={blocklyType}>
+            <value name="BOOL">
+                {arg}
+            </value>
+        </block>
     }
 
     static for2ArgsExpression(left, right, js_op) {
         let blocklyType, blocklyOp;
 
         blocklyOp = blocklyOpFromJsOp[js_op];
-        blocklyType = blocklyExpressionTypeFromJsOp[js_op];
+        blocklyType = blockly2ArgsExpressionTypeFromJsOp[js_op];
         console.log("blocklyOp:", blocklyOp);
         console.log("blocklyType:", blocklyType);
 
@@ -102,45 +161,3 @@ export class BuildBlocks extends React.Component {
     }
 }
 
-
-const blocklyOpFromJsOp = {
-    // logic_compare
-    "===" : "EQ", // added by C
-    "==" : "EQ",
-    "!==" : "NEQ", // added by C
-    "!=" : "NEQ",
-    "<" : "LT",
-    "<=" : "LTE",
-    ">" : "GT",
-    ">=" : "GTE",
-    // math_arithmetic
-    "+" : "ADD",
-    "-" : "MINUS",
-    "*" : "MULTIPLY",
-    "/" : "DIVIDE",
-    "**" : "POWER",
-    // logic_operation
-    "&&" : "AND",
-    "||" : "OR",
-};
-
-const blocklyExpressionTypeFromJsOp = {
-    // logic_compare
-    "===" : "logic_compare", // added by C
-    "==" : "logic_compare",
-    "!==" : "logic_compare", // added by C
-    "!=" : "logic_compare",
-    "<" : "logic_compare",
-    "<=" : "logic_compare",
-    ">" : "logic_compare",
-    ">=" : "logic_compare",
-    // math_arithmetic
-    "+" : "math_arithmetic",
-    "-" : "math_arithmetic",
-    "*" : "math_arithmetic",
-    "/" : "math_arithmetic",
-    "**" : "math_arithmetic",
-    // logic_operation
-    "&&" : "logic_operation",
-    "||" : "logic_operation",
-};
