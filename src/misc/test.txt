@@ -39,3 +39,6 @@ if (true) {p = i+5}
 // TEST 8
 let p = 7
 function pipou() {}
+
+// TEST 9
+while (true || false) {}

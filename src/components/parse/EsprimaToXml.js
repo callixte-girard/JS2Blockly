@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {MiscFunctions} from "../../functions/MiscFunctions";
-import {BuildXMLBlocks} from "./BuildXMLBlocks";
+import {BuildBlocks} from "./BuildBlocks";
 
 
-export class ParseEsprimaLogic extends React.Component {
+export class EsprimaToXml extends React.Component {
 
 
     static processListStatements(statements) {
@@ -40,9 +40,9 @@ export class ParseEsprimaLogic extends React.Component {
                     // not for now. we'll just do If and While Statements for now
                     // # 4) assemble block and add it to xml_statements
                     if (statementType === 'IfStatement')
-                        block = BuildXMLBlocks.forIfStatement(statementCondition, statementChildren);
+                        block = BuildBlocks.forIfStatement(statementCondition, statementChildren);
                     else if (statementType === 'WhileStatement')
-                        block = BuildXMLBlocks.forWhileStatement(statementCondition, statementChildren);
+                        block = BuildBlocks.forWhileStatement(statementCondition, statementChildren);
                     xml_statements.push(block);
                 }
 
@@ -127,36 +127,47 @@ export class ParseEsprimaLogic extends React.Component {
         console.log("expressionType:", expressionType);
         console.log("expressionOperator:", expressionOperator);
 
-        let expressionArguments;
-        if (expressionType === 'UnaryExpression'
-                || expressionType === 'UpdateExpression') {
+        // let expressionArguments;
+        if (expressionType === 'UnaryExpression') {
             // we take this one for every kind of negation.
             // we'll create a special negate block for arithmetic later.
-            expressionArguments = [ hostExpression['argument'] ];
+            // expressionArguments = [ hostExpression['argument'] ];
+            const expressionArg = hostExpression['argument'];
+
+            const arg = this.processExpression(expressionArg);
+
+            xml_expression = BuildBlocks.for1ArgExpression(arg, expressionOperator);
 
         } else if (expressionType === 'LogicalExpression'
-                || expressionType === 'BinaryExpression'
-                || expressionType === 'AssignmentExpression') {
+                || expressionType === 'BinaryExpression') {
             // two members : left and right
-            expressionArguments = [ hostExpression['left'] , hostExpression['right'] ];
-        }
+            // expressionArguments = [ hostExpression['left'] , hostExpression['right'] ];
+            const expressionArgLeft = hostExpression['left'];
+            const expressionArgRight = hostExpression['right'];
 
-        // @TO-DO : complete it. Must export XML
+            const blockLeft = this.processExpression(expressionArgLeft);
+            const blockRight = this.processExpression(expressionArgRight);
+
+            xml_expression = BuildBlocks.for2ArgsExpression(blockLeft, blockRight, expressionOperator);
+
+        } else if (expressionType === 'AssignmentExpression'
+                || expressionType === 'UpdateExpression') {
+            // @TO-DO
+        }
 
         // then parse it recursively or not
-        for (let i=0 ; i < expressionArguments.length ; i++)
-        {
-            const expressionArgument = expressionArguments[i];
-            console.log("expressionArgument" + i.toString()
-                + "/" + (expressionArguments.length - 1)
-                + ":", expressionArgument
-            );
+        // for (let i=0 ; i < expressionArguments.length ; i++)
+        // {
+        //     const expressionArgument = expressionArguments[i];
+        //     console.log("expressionArgument" + i.toString()
+        //         + "/" + (expressionArguments.length - 1)
+        //         + ":", expressionArgument
+        //     );
+        //
+        //     // @argument
+        //     this.processExpression(expressionArgument);
+        // }
 
-            // @argument
-            this.processExpression(expressionArgument);
-        }
-
-        // xml_out =
         return xml_expression
     }
 
@@ -175,7 +186,7 @@ export class ParseEsprimaLogic extends React.Component {
         endExpression_val = endExpression[attrName_valueOrName];
         console.log("endExpression:", endExpression_type, endExpression_val);
 
-        xml_expression = BuildXMLBlocks.forEndExpression(endExpression_type, endExpression_val);
+        xml_expression = BuildBlocks.forEndExpression(endExpression_type, endExpression_val);
         return xml_expression
     }
 }

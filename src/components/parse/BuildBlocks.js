@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {MiscFunctions} from "../../functions/MiscFunctions";
-import {ParseEsprimaLogic} from "./ParseEsprimaLogic";
+import {EsprimaToXml} from "./EsprimaToXml";
 
 
-export class BuildXMLBlocks extends React.Component {
+export class BuildBlocks extends React.Component {
 
 
     static forIfStatement(condition, children) { // @TO-DO
@@ -33,6 +33,35 @@ export class BuildXMLBlocks extends React.Component {
     static forForStatement(statement) {
         
     }
+
+
+    static for1ArgExpression(arg, operator) {
+
+    }
+
+    static for2ArgsExpression(left, right, js_op) {
+        let blocklyType, blocklyOp;
+
+        blocklyOp = blocklyOpFromJsOp[js_op];
+        blocklyType = blocklyExpressionTypeFromJsOp[js_op];
+        console.log("blocklyOp:", blocklyOp);
+        console.log("blocklyType:", blocklyType);
+
+        return <block type={blocklyType}>
+            <value name="A">
+                {left}
+            </value>
+
+            <value name="B">
+                {right}
+            </value>
+
+            <field name="OP">
+                {blocklyOp}
+            </field>
+        </block>
+    }
+
 
     static forEndExpression(exprType, value) {
         let blocklyType, fieldName;
@@ -72,3 +101,46 @@ export class BuildXMLBlocks extends React.Component {
         </block>
     }
 }
+
+
+const blocklyOpFromJsOp = {
+    // logic_compare
+    "===" : "EQ", // added by C
+    "==" : "EQ",
+    "!==" : "NEQ", // added by C
+    "!=" : "NEQ",
+    "<" : "LT",
+    "<=" : "LTE",
+    ">" : "GT",
+    ">=" : "GTE",
+    // math_arithmetic
+    "+" : "ADD",
+    "-" : "MINUS",
+    "*" : "MULTIPLY",
+    "/" : "DIVIDE",
+    "**" : "POWER",
+    // logic_operation
+    "&&" : "AND",
+    "||" : "OR",
+};
+
+const blocklyExpressionTypeFromJsOp = {
+    // logic_compare
+    "===" : "logic_compare", // added by C
+    "==" : "logic_compare",
+    "!==" : "logic_compare", // added by C
+    "!=" : "logic_compare",
+    "<" : "logic_compare",
+    "<=" : "logic_compare",
+    ">" : "logic_compare",
+    ">=" : "logic_compare",
+    // math_arithmetic
+    "+" : "math_arithmetic",
+    "-" : "math_arithmetic",
+    "*" : "math_arithmetic",
+    "/" : "math_arithmetic",
+    "**" : "math_arithmetic",
+    // logic_operation
+    "&&" : "logic_operation",
+    "||" : "logic_operation",
+};

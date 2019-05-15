@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {MiscFunctions} from "../../functions/MiscFunctions";
-import {ParseEsprimaLogic} from "./ParseEsprimaLogic";
+import {EsprimaToXml} from "./EsprimaToXml";
 
 
-export class EsprimaToXML extends React.Component {
+export class MainLogic extends React.Component {
 
 
     static insertNextTagsIntoXmlBody(xmlBody) {
@@ -46,10 +46,9 @@ export class EsprimaToXML extends React.Component {
         const xml_middle =
             this.insertNextTagsIntoXmlBody( // returns: one string with all next tags in place
                 MiscFunctions.convertJsxArrayIntoStringArray( // returns: string Array
-                    ParseEsprimaLogic.processListStatements(parsedContent)
+                    EsprimaToXml.processListStatements(parsedContent)
                 )
             );
-
         const xml_main = xml_head + xml_middle + xml_tail;
         MiscFunctions.dispLine();
         console.log("xml_main:", xml_main);
