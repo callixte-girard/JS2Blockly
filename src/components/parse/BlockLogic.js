@@ -75,19 +75,28 @@ export class BlockLogic extends React.Component {
         console.log("blocklyOp:", blocklyOp);
         console.log("blocklyType:", blocklyType);
 
-        return <block type={blocklyType}>
-            <value name="A">
-                {left}
-            </value>
+        if (js_op === "=") {
+            const block_assignment = <block type={blocklyType}>
 
-            <value name="B">
-                {right}
-            </value>
+            </block>
+            return block_assignment
+        } else {
+            const block_operation = <block type={blocklyType}>
+                <value name="A">
+                    {left}
+                </value>
 
-            <field name="OP">
-                {blocklyOp}
-            </field>
-        </block>
+                <value name="B">
+                    {right}
+                </value>
+
+                <field name="OP">
+                    {blocklyOp}
+                </field>
+            </block>
+            return block_operation
+        }
+
     }
 
 

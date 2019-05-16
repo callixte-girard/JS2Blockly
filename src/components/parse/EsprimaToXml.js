@@ -8,53 +8,68 @@ export class EsprimaToXml extends React.Component {
 
 
     static processListStatements(statements) {
-
         let xml_statements = [];
+
         for (let i=0 ; i < statements.length ; i++)
         {
             const statement = statements[i];
             const statementType = statement['type'];
 
+            // ### I - STATEMENTS
             if (statementType.includes('Statement')) { // this excludes ExpressionStatements.
-                // ### I - STATEMENTS
                 console.log("statementType:", statementType);
 
+                let block;
+                // ## I - a) EXPRESSION STATEMENTS
                 if (statementType === 'ExpressionStatement') {
-                    // ## Ia - EXPRESSION STATEMENTS
-                    // !!!! WARNING : creates bugs so we'll ignore it for now.
-                    /*
-                    // # 1) get the expr
                     const expression = statement['expression'];
-                    // # 2) parse it like an expression lol
-                    const expressionStatement = this.processExpression(expression);
-                    xml_statements.push(expressionStatement);
-                    */
-                } else {
-                    // ## Ib - IF, FOR, WHILE STATEMENTS
-                    let block;
+                    const expressionType = expression['type'];
+                    const expressionOperator = expression['operator'];
+
+                    if (expressionType === 'AssignmentExpression') {
+                        if (expressionOperator === '=')
+                        {
+                            const variableName = expression['left']; // is a Literal
+                            const variableValue = expression['right']; // is an Expression too
+                            console.log("variableName" + i.toString() + ":", variableName);
+                            console.log("variableValue" + i.toString() + ":", variableValue);
+
+                            // get variable name
+                            const varName = variableName['name'];
+                            // get variable value (if any)
+                            const blockVarValue = this.processExpression(variableValue);
+                            // create block like a variable declaration
+                            block = BlockLogic.forVariableDeclaration(varName, blockVarValue);
+                        } // other cases will be treated later... maybe ;)
+                    } else if (expressionType === 'UpdateExpression') {
+                        // @TO-DO
+
+                    }
+                } // ## I - b) IF, FOR, WHILE STATEMENTS
+                else {
                     if (statementType === 'IfStatement')
                         block = this.processIfStatement(statement);
                     else if (statementType === 'WhileStatement')
                         block = this.processWhileStatement(statement);
                     else if (statementType === 'ForStatement')
                         block = this.processForStatement(statement);
-                    // insert statement
-                    xml_statements.push(block);
                 }
+                // insert statement
+                xml_statements.push(block);
 
+            // ### II - DECLARATIONS
             } else if (statementType.includes('Declaration')) {
-                // ### II - DECLARATIONS
+
                 if (statementType === 'VariableDeclaration') {
                     const declarations = statement['declarations'];
 
                     for (let i = 0; i < declarations.length; i++)
                     {
                         let block, varName, blockVarValue;
-
-                        const variableName = declarations[i]['id']; // is an Expression
+                        const variableName = declarations[i]['id']; // is an Expression (Literal)
                         const variableValue = declarations[i]['init']; // is an Expression too
                         console.log("variableName" + i.toString() + ":", variableName);
-                        // console.log("variableValue" + i.toString() + ":", variableValue);
+                        console.log("variableValue" + i.toString() + ":", variableValue);
 
                         // get variable name
                         varName = variableName['name'];
@@ -69,7 +84,9 @@ export class EsprimaToXml extends React.Component {
                         xml_statements.push(block);
                     }
 
-                } else if (statementType === 'FunctionDeclaration') {}
+                } else if (statementType === 'FunctionDeclaration') {
+                    /////
+                }
             }
             MiscFunctions.dispLine();
         }
@@ -111,6 +128,8 @@ export class EsprimaToXml extends React.Component {
 
     static processForStatement(statement) {
         let xml_expression ;
+
+        ////
 
         xml_expression = BlockLogic.forForStatement(
 
@@ -160,7 +179,6 @@ export class EsprimaToXml extends React.Component {
         console.log("expressionType:", expressionType);
         console.log("expressionOperator:", expressionOperator);
 
-        // let expressionArguments;
         if (expressionType === 'UnaryExpression') {
             // we'll create a special negate block for arithmetic later.
             const expressionArg = hostExpression['argument'];
@@ -182,7 +200,8 @@ export class EsprimaToXml extends React.Component {
 
         } else if (expressionType === 'AssignmentExpression'
                 || expressionType === 'UpdateExpression') {
-            // @TO-DO
+            // these are not real expressions but statements
+            console.log("!!! UNEXPECTED SITUATION !!!");
         }
 
         return xml_expression
