@@ -35,14 +35,36 @@ export class BlockLogic extends React.Component {
 
 
     static forIfStatement(conditions, instructions) { // @TO-DO
-        let children, nb_elseif, nb_else ;
+        let children = [];
 
-        // for ()
+        const nb_elseif = conditions.length - 1;
+        const nb_else = instructions.length - conditions.length;
 
-        return <block type="controls_if">
-            <mutation elseif={nb_elseif} else={nb_else}></mutation>
-            {children}
-        </block>
+        // analyse conditions and associated instructions
+        for (let i=0 ; i < conditions.length ; i++) {
+            const blockCondition = conditions[i];
+            const blockInstructions = instructions[i];
+
+            children = children.concat([
+                <value name={"IF" + i}>{blockCondition}</value>,
+                <statement name={"DO" + i}>{blockInstructions}</statement>
+            ])
+        }
+        // analyse last else statement
+        try {
+            children.push(
+                <statement name="ELSE">
+                    { instructions[conditions.length + 1] }
+                </statement>
+            );
+        } catch {}
+
+        return (
+            <block type="controls_if">
+                <mutation elseif={nb_elseif} else={nb_else}></mutation>
+                {children}
+            </block>
+        )
     }
 
     static forWhileStatement(conditions, instructions) {

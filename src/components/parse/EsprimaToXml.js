@@ -143,7 +143,7 @@ export class EsprimaToXml extends React.Component {
 
 
     static processIfStatement(statement) {
-        let xml_expression ;
+        let xml_expression, blocksConditions, blocksInstructions;
 
         const statementConsequent = statement['consequent'];
         const statementAlternate = statement['alternate'];
@@ -154,9 +154,11 @@ export class EsprimaToXml extends React.Component {
             this.processAutonomousStatementInstructions(statementAlternate)
         }
 
+
+
         xml_expression = BlockLogic.forIfStatement(
             // blocksConditions,
-            // blockInstructions
+            // blocksInstructions
         );
         return xml_expression
     }
