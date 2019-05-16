@@ -108,9 +108,10 @@ export class EsprimaToXml extends React.Component {
     static processIfStatement(statement) {
         let xml_expression, blocksConditions ;
 
-        /////
+        const statementsInstructionsConsequent = statement['consequent'];
+        const statementsInstructionsAlternate = statement['alternate'];
 
-        const blockInstructions = this.processIfWhileForStatementInstructions(statement);
+        // @TO-DO
 
         xml_expression = BlockLogic.forIfStatement(
             // blocksConditions,
@@ -123,10 +124,11 @@ export class EsprimaToXml extends React.Component {
         let xml_expression ;
 
         const statementCondition = statement['test'];
+        const statementInstructions = statement['body'];
         console.log("statementCondition:", statementCondition);
 
         const blockCondition = this.processExpression(statementCondition);
-        const blockInstructions = this.processIfWhileForStatementInstructions(statement);
+        const blockInstructions = this.processAutonomousStatementInstructions(statementInstructions);
 
         xml_expression = BlockLogic.forWhileStatement(
             blockCondition,
@@ -138,6 +140,9 @@ export class EsprimaToXml extends React.Component {
     static processForStatement(statement) {
         let xml_expression ;
 
+        // const statementCondition = statement['test'];
+        const statementInstructions = statement['body'];
+
         // @TO-DO
 
         xml_expression = BlockLogic.forForStatement(
@@ -146,22 +151,19 @@ export class EsprimaToXml extends React.Component {
         return xml_expression
     }
 
-    static processIfWhileForStatementInstructions(statement) {
+    static processAutonomousStatementInstructions(statements) {
         let xml_statement ;
 
-        let attrName_body ;
-        const statementType = statement['type'];
+        // if (statementType === 'IfStatement') {
+        //     attrName_body = 'consequent' | 'alternate';
+        // } else if (statementType === 'ForStatement' || statementType === 'WhileStatement') {
+        //     attrName_body = 'body'
+        // }
 
-        if (statementType === 'IfStatement') {
-            attrName_body = 'consequent'; // or 'alternate' ! @TO-DO
-
-        } else if (statementType === 'ForStatement' || statementType === 'WhileStatement')
-            attrName_body = 'body';
-
-        // recursively analyse statements of the body
-        const statementInstructions = statement[attrName_body]['body'];
+        const statementInstructions = statements['body'];
         console.log("statementInstructions:", statementInstructions);
 
+        // recursively analyse statements of the body
         xml_statement = this.processListStatements(statementInstructions);
         return xml_statement
     }
