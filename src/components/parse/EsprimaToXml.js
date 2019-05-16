@@ -111,6 +111,7 @@ export class EsprimaToXml extends React.Component {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+
     static processUpdateStatement(varName, updateBy, operator) {
 
         if (operator.includes("-")) updateBy = -updateBy;
@@ -143,29 +144,40 @@ export class EsprimaToXml extends React.Component {
 
 
     static processIfStatement(statement) {
-        let xml_expression, blocksConditions, blocksInstructions;
+        let xml_expression;
 
+        let blocksConditions = [];
+        let blocksInstructions = [];
+
+        const statementCondition = statement['test'];
         const statementConsequent = statement['consequent'];
-        const statementAlternate = statement['alternate'];
+        blocksConditions.push(this.processExpression(statementCondition));
+        blocksInstructions.push(this.processAutonomousStatementInstructions(statementConsequent));
 
-        try { // first try to find another IfStatement in the else (alternate)
-            this.processIfStatement(statementAlternate);
-        } catch { //
-            this.processAutonomousStatementInstructions(statementAlternate)
-        }
+        // not the final else : parse recursively on statementAlternate
+        try {
+            let statementAlternate = statement['alternate'];
+            while (statementAlternate['type'] === 'IfStatement') {
+                try {
+                    const alternateCondition = statementAlternate['test'];
+                    const alternateInstructions = statementAlternate['consequent'];
+                    blocksConditions.push(this.processExpression(alternateCondition));
+                    blocksInstructions.push(this.processAutonomousStatementInstructions(alternateInstructions));
 
+                    statementAlternate = statementAlternate['alternate'];
+                } catch {}
+            }
+            // final else : just get the instruction and push it
+            blocksInstructions.push(this.processAutonomousStatementInstructions(statementAlternate));
 
+        } catch {}
 
+        console.log(blocksConditions.length, blocksInstructions.length);
         xml_expression = BlockLogic.forIfStatement(
-            // blocksConditions,
-            // blocksInstructions
+            blocksConditions,
+            blocksInstructions
         );
         return xml_expression
-    }
-
-
-    static processAlternateStatement(statement, mutation_index) {
-
     }
 
 
@@ -187,12 +199,6 @@ export class EsprimaToXml extends React.Component {
     static processAutonomousStatementInstructions(statements) {
         let xml_statement ;
 
-        // if (statementType === 'IfStatement') {
-        //     attrName_body = 'consequent' | 'alternate';
-        // } else if (statementType === 'ForStatement' || statementType === 'WhileStatement') {
-        //     attrName_body = 'body'
-        // }
-
         const statementInstructions = statements['body'];
         console.log("statementInstructions:", statementInstructions);
 
@@ -202,6 +208,7 @@ export class EsprimaToXml extends React.Component {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     static processExpression(expression) {
         let xml_expression ;

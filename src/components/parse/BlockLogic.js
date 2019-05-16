@@ -54,7 +54,7 @@ export class BlockLogic extends React.Component {
         try {
             children.push(
                 <statement name="ELSE">
-                    { instructions[conditions.length + 1] }
+                    {instructions[conditions.length]}
                 </statement>
             );
         } catch {}

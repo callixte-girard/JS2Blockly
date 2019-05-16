@@ -49,7 +49,17 @@ p = 9
 p += 5
 p ++
 
+// TEST 11
+if (true) {}
+else if (true) {}
+else if (false) {}
+else {}
 
+// TEST 12
+if (true) {p ++}
+else if (true) {p -= 5}
+else if (false) {p = p + 8}
+else {let p}
 
 // EXAMPLE 1
 let p,j
