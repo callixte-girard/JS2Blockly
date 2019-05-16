@@ -21,6 +21,19 @@ export class BlockLogic extends React.Component {
         </block>
     }
 
+    static forVariableUpdate(varName, update) {
+        return <block type="math_change">
+            <field name="VAR">
+                {varName}
+            </field>
+
+            <value name="DELTA">
+                {update}
+            </value>
+        </block>
+    }
+
+
     static forIfStatement(conditions, instructions) { // @TO-DO
         let children, nb_elseif, nb_else ;
 
