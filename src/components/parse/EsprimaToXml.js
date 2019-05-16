@@ -106,12 +106,16 @@ export class EsprimaToXml extends React.Component {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     static processIfStatement(statement) {
-        let xml_expression, blocksConditions ;
+        let xml_expression, blocksConditions, blockInstructions ;
 
-        const statementsInstructionsConsequent = statement['consequent'];
-        const statementsInstructionsAlternate = statement['alternate'];
+        const statementsConsequent = statement['consequent'];
+        const statementsAlternate = statement['alternate'];
 
-        // @TO-DO
+        try { // first try to find another IfStatement in the else (alternate)
+            this.processIfStatement(statementsAlternate);
+        } catch { //
+
+        }
 
         xml_expression = BlockLogic.forIfStatement(
             // blocksConditions,
