@@ -43,8 +43,9 @@ function pipou() {}
 // TEST 9
 while (true || false) {}
 
-// EXAMPLES
+// EXAMPLE 1
 let p,j
 const m=5
 let p= true || 3 > 5 + 2
-while (true && false) {while(7 > 8) {}}
+while (true && false) { while(7 > 8) {} }
+

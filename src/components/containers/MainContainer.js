@@ -1,11 +1,8 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import Blockly from 'node-blockly/browser';
 
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
 import {MiscFunctions} from "../../functions/MiscFunctions";
-import {EsprimaToXml} from "../parse/EsprimaToXml";
 import {MainLogic} from "../parse/MainLogic";
 
 const esprima = require('esprima');

@@ -1,10 +1,8 @@
 import React from 'react';
 
-import {MiscFunctions} from "../../functions/MiscFunctions";
-import {EsprimaToXml} from "./EsprimaToXml";
 
+export class BlockLogic extends React.Component {
 
-export class BuildBlocks extends React.Component {
 
     static forVariableDeclaration(varName, value) {
         let children, blockVarName, blockValue;
@@ -23,13 +21,18 @@ export class BuildBlocks extends React.Component {
         </block>
     }
 
-    static forIfStatement(condition, children) { // @TO-DO
-        // return <block type="controls_if">
+    static forIfStatement(conditions, instructions) { // @TO-DO
+        let children, nb_elseif, nb_else ;
 
-        // </block>
+        // for ()
+
+        return <block type="controls_if">
+            <mutation elseif={nb_elseif} else={nb_else}></mutation>
+            {children}
+        </block>
     }
 
-    static forWhileStatement(condition, children) {
+    static forWhileStatement(conditions, instructions) {
         return <block type="controls_whileUntil">
             <field name="MODE">
                 WHILE
@@ -37,11 +40,11 @@ export class BuildBlocks extends React.Component {
             </field>
 
             <value name="BOOL">
-                {condition}
+                {conditions}
             </value>
 
             <statement name="DO">
-                {children}
+                {instructions}
             </statement>
         </block>
     }
