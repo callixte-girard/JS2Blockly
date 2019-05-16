@@ -44,5 +44,7 @@ function pipou() {}
 while (true || false) {}
 
 // EXAMPLES
+let p,j
+const m=5
 let p= true || 3 > 5 + 2
 while (true && false) {while(7 > 8) {}}

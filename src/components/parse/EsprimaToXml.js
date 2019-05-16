@@ -66,7 +66,6 @@ export class EsprimaToXml extends React.Component {
                         // get variable value (if any)
                         try {
                             blockVarValue = this.processExpression(variableValue);
-
                             block = BuildBlocks.forVariableDeclaration(varName, blockVarValue);
                         } catch {
                             block = BuildBlocks.forVariableDeclaration(varName);
