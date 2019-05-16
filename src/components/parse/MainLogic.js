@@ -12,23 +12,23 @@ export class MainLogic extends React.Component {
         for (let i = xmlBody.length - 1; i > 0; i--)
         {
             let jsx_str_cur = xmlBody[i];
-            console.log("jsx_str_cur" + i + ":", jsx_str_cur);
+            // console.log("jsx_str_cur" + i + ":", jsx_str_cur);
 
             let jsx_str_prev = xmlBody[i - 1];
-            console.log("jsx_str_prev" + i + ":", jsx_str_prev);
+            // console.log("jsx_str_prev" + i + ":", jsx_str_prev);
 
             jsx_str_cur = "<next>" + jsx_str_cur + "</next>";
             // console.log("with next inserted:", jsx_str_cur);
 
             // now insert nextified cur at the good place index in prev
             let insert_index = jsx_str_prev.lastIndexOf("</block>");
-            console.log("insert at index:", insert_index);
+            // console.log("insert at index:", insert_index);
 
             jsx_str_prev =
                 jsx_str_prev.substring(0, insert_index)
                 + jsx_str_cur +
                 jsx_str_prev.substring(insert_index);
-            console.log("insertion done:", jsx_str_prev);
+            // console.log("insertion done:", jsx_str_prev);
 
             // re-insert prev into array
             xmlBody[i - 1] = jsx_str_prev;
