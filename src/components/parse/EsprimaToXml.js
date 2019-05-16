@@ -54,17 +54,24 @@ export class EsprimaToXml extends React.Component {
 
                     for (let i = 0; i < declarations.length; i++)
                     {
-                        let block, blockVarName, blockVarValue;
+                        let block, varName, blockVarValue;
 
                         const variableName = declarations[i]['id']; // is an Expression
                         const variableValue = declarations[i]['init']; // is an Expression too
                         console.log("variableName" + i.toString() + ":", variableName);
                         // console.log("variableValue" + i.toString() + ":", variableValue);
 
-                        blockVarName = this.processEndExpression(variableName);
-                        blockVarValue = this.processExpression(variableValue);
+                        // get variable name
+                        varName = variableName['name'];
+                        // get variable value (if any)
+                        try {
+                            blockVarValue = this.processExpression(variableValue);
 
-                        block = BuildBlocks.forVariableDeclaration(blockVarName, blockVarValue);
+                            block = BuildBlocks.forVariableDeclaration(varName, blockVarValue);
+                        } catch {
+                            block = BuildBlocks.forVariableDeclaration(varName);
+                        }
+                        // insert each declaration
                         xml_statements.push(block);
                     }
 

@@ -6,16 +6,20 @@ import {EsprimaToXml} from "./EsprimaToXml";
 
 export class BuildBlocks extends React.Component {
 
-    static forVariableDeclaration(name, value) {
-        let block, valueXml;
-        if (value !== undefined)
-            valueXml = <value name="VALUE">{value}</value>;
-        else
-            valueXml = null;
+    static forVariableDeclaration(varName, value) {
+        let children, blockVarName, blockValue;
+
+        blockVarName = <field name="VAR">{varName}</field>
+
+        if (value !== undefined) {
+            blockValue = <value name="VALUE">{value}</value>;
+            children = [ blockVarName, blockValue ];
+        } else {
+            children = [ blockVarName ];
+        }
 
         return <block type="variables_set">
-            {name}
-            {valueXml}
+            {children}
         </block>
     }
 
