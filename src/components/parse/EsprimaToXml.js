@@ -40,10 +40,17 @@ export class EsprimaToXml extends React.Component {
                             const blockVarValue = this.processExpression(variableValue);
                             // create block like a variable declaration
                             block = BlockLogic.forVariableDeclaration(varName, blockVarValue);
-                        } // other cases will be treated later... maybe ;)
-                    } else if (expressionType === 'UpdateExpression') {
-                        // @TO-DO
+                        }
+                        else if (expressionOperator === '+=' || expressionOperator === '-=')
+                        {
+                            // @TO-DO
+                        }
 
+                    } else if (expressionType === 'UpdateExpression') {
+                        if (expressionOperator === '++' || expressionOperator === '--')
+                        {
+                            // @TO-DO
+                        }
                     }
                 } // ## I - b) IF, FOR, WHILE STATEMENTS
                 else {
@@ -85,7 +92,9 @@ export class EsprimaToXml extends React.Component {
                     }
 
                 } else if (statementType === 'FunctionDeclaration') {
-                    /////
+                    // @TO-DO
+                } else if (statementType === 'ClassDeclaration') {
+                    ////////
                 }
             }
             MiscFunctions.dispLine();
@@ -129,7 +138,7 @@ export class EsprimaToXml extends React.Component {
     static processForStatement(statement) {
         let xml_expression ;
 
-        ////
+        // @TO-DO
 
         xml_expression = BlockLogic.forForStatement(
 
