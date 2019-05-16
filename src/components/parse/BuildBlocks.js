@@ -6,6 +6,18 @@ import {EsprimaToXml} from "./EsprimaToXml";
 
 export class BuildBlocks extends React.Component {
 
+    static forVariableDeclaration(name, value) {
+        let block, valueXml;
+        if (value !== undefined)
+            valueXml = <value name="VALUE">{value}</value>;
+        else
+            valueXml = null;
+
+        return <block type="variables_set">
+            {name}
+            {valueXml}
+        </block>
+    }
 
     static forIfStatement(condition, children) { // @TO-DO
         // return <block type="controls_if">
@@ -78,10 +90,13 @@ export class BuildBlocks extends React.Component {
         if (exprType === 'Identifier') {
             blocklyType = 'variables_get';
             fieldName = 'VAR';
-        } else /* if (exprType === 'Literal') */ {
+        } else if (exprType === 'Literal') {
             if (value === null) blocklyType = 'logic_null'; // fieldName is null here
             else {
                 switch (typeof value) {
+                    // case 'undefined':
+                    //     blocklyType = 'logic_null';
+                    //     break ;
                     case 'number':
                         blocklyType = 'math_number';
                         fieldName = 'NUM';
