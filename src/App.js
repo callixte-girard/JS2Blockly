@@ -6,7 +6,7 @@ import './App.css';
 import {MainContainer} from "./components/containers/MainContainer";
 
 
-class App extends React.Component {
+export class App extends React.Component {
 
     componentDidMount() {
 
@@ -30,7 +30,3 @@ class App extends React.Component {
         );
     }
 }
-
-ReactDOM.render(<App/>, document.getElementById('app'));
-
-export default App;

@@ -7,7 +7,7 @@ export class BlockLogic extends React.Component {
     static forVariableDeclaration(varName, value) {
         let children, blockVarName, blockValue;
 
-        blockVarName = <field name="VAR">{varName}</field>
+        blockVarName = <field name="VAR">{varName}</field>;
 
         if (value !== undefined) {
             blockValue = <value name="VALUE">{value}</value>;
