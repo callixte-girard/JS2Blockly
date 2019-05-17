@@ -105,7 +105,7 @@ export class EsprimaToXml extends React.Component {
             }
             MiscFunctions.dispLine();
         }
-        console.log("xml_out length:", xml_statements.length);
+        // console.log("xml_out length:", xml_statements.length);
         return xml_statements
     }
 
@@ -171,8 +171,9 @@ export class EsprimaToXml extends React.Component {
             blocksInstructions.push(this.processAutonomousStatementInstructions(statementAlternate));
 
         } catch {}
+        // console.log("nbConditions:", blocksConditions.length);
+        // console.log("nbInstructions:", blocksInstructions.length);
 
-        console.log(blocksConditions.length, blocksInstructions.length);
         xml_expression = BlockLogic.forIfStatement(
             blocksConditions,
             blocksInstructions

@@ -33,12 +33,21 @@ export class BlockLogic extends React.Component {
         </block>
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    static forIfStatement(conditions, instructions) { // @TO-DO
+
+    static forIfStatement(conditions, instructions) {
         let children = [];
 
+        // calculate and add mutation tag
         const nb_elseif = conditions.length - 1;
         const nb_else = instructions.length - conditions.length;
+        children.push(
+            <mutation
+                elseif={nb_elseif}
+                else={nb_else}
+            ></mutation>
+        );
 
         // analyse conditions and associated instructions
         for (let i=0 ; i < conditions.length ; i++) {
@@ -50,7 +59,8 @@ export class BlockLogic extends React.Component {
                 <statement name={"DO" + i}>{blockInstructions}</statement>
             ])
         }
-        // analyse last else statement
+
+        // try to analyse last else statement
         try {
             children.push(
                 <statement name="ELSE">
@@ -59,15 +69,10 @@ export class BlockLogic extends React.Component {
             );
         } catch {}
 
-        return (
-            <block type="controls_if">
-                <mutation elseif={nb_elseif} else={nb_else}></mutation>
-                {children}
-            </block>
-        )
+        return <block type="controls_if">{children}</block>
     }
 
-    static forWhileStatement(conditions, instructions) {
+    static forWhileStatement(condition, instructions) {
         return <block type="controls_whileUntil">
             <field name="MODE">
                 WHILE
@@ -75,7 +80,7 @@ export class BlockLogic extends React.Component {
             </field>
 
             <value name="BOOL">
-                {conditions}
+                {condition}
             </value>
 
             <statement name="DO">
@@ -84,9 +89,27 @@ export class BlockLogic extends React.Component {
         </block>
     }
 
-    static forForStatement(statement) {
-        
+    static forForStatement(condition, instructions) {
+        return <block type="controls_for">
+            <value name="FROM">
+                {block of the init expression}
+            </value>
+
+            <value name="TO">
+                {block of the limit expression}
+            </value>
+
+            <value name="BY">
+                {block of the update expression}
+            </value>
+
+            <statement name="DO">
+                {instructions}
+            </statement>
+        </block>
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     static for1ArgExpression(arg, js_op) {
@@ -177,6 +200,7 @@ export class BlockLogic extends React.Component {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 const blocklyOpFromJsOp = {
     // logic_compare
