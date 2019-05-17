@@ -185,13 +185,27 @@ export class EsprimaToXml extends React.Component {
     static processForStatement(statement) {
         let xml_expression ;
 
-        // const statementCondition = statement['test'];
+        const statementInit = statement['init'];
+        const statementTest = statement['test'];
+        const statementUpdate = statement['update'];
         const statementInstructions = statement['body'];
 
-        // @TO-DO
+        let blockInstructions = [];
+        let varName, valInit, valTest, valUpdate;
+
+        try {
+            valTest = this.processEndExpression();
+        } catch {}
+
+        // 4) instructions
+        blockInstructions = this.processAutonomousStatementInstructions(statementInstructions);
 
         xml_expression = BlockLogic.forForStatement(
-
+            varName,
+            valInit,
+            valTest,
+            valUpdate,
+            blockInstructions
         );
         return xml_expression
     }

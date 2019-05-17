@@ -89,18 +89,18 @@ export class BlockLogic extends React.Component {
         </block>
     }
 
-    static forForStatement(condition, instructions) {
+    static forForStatement(from, to, by, instructions) {
         return <block type="controls_for">
             <value name="FROM">
-                {/*{block of the init expression}*/}
+                {from}
             </value>
 
             <value name="TO">
-                {/*{block of the limit expression}*/}
+                {to}
             </value>
 
             <value name="BY">
-                {/*{block of the update expression}*/}
+                {by}
             </value>
 
             <statement name="DO">
@@ -134,12 +134,9 @@ export class BlockLogic extends React.Component {
         console.log("blocklyType:", blocklyType);
 
         if (js_op === "=") {
-            const block_assignment = <block type={blocklyType}>
-
-            </block>
-            return block_assignment
+            return <block type={blocklyType}></block>
         } else {
-            const block_operation = <block type={blocklyType}>
+            return <block type={blocklyType}>
                 <value name="A">
                     {left}
                 </value>
@@ -152,7 +149,6 @@ export class BlockLogic extends React.Component {
                     {blocklyOp}
                 </field>
             </block>
-            return block_operation
         }
 
     }
