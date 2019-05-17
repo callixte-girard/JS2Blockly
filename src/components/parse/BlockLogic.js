@@ -164,9 +164,6 @@ export class BlockLogic extends React.Component {
             if (value === null) blocklyType = 'logic_null'; // fieldName is null here
             else {
                 switch (typeof value) {
-                    // case 'undefined':
-                    //     blocklyType = 'logic_null';
-                    //     break ;
                     case 'number':
                         blocklyType = 'math_number';
                         fieldName = 'NUM';
@@ -179,6 +176,10 @@ export class BlockLogic extends React.Component {
                         blocklyType = 'logic_boolean';
                         fieldName = 'BOOL';
                         break ;
+                    default :
+                    // case 'undefined':
+                    //     blocklyType = 'logic_null';
+                    //     break ;
                 }
             }
         }

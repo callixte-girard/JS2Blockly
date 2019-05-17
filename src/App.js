@@ -3,13 +3,7 @@ import ReactDOM from 'react-dom';
 import Blockly from 'node-blockly/browser';
 
 import './App.css';
-
-// import {CodeToBlock} from './components/CodeToBlock.js';
-import {BlocklyContainer} from './components/containers/BlocklyContainer';
-import {CodeContainer} from './components/containers/CodeContainer';
 import {MainContainer} from "./components/containers/MainContainer";
-
-export const line = "--------------------------------------------------------------";
 
 
 class App extends React.Component {
@@ -32,7 +26,6 @@ class App extends React.Component {
                 </div>
 
                 <MainContainer className={"pipou"}/>
-
             </div>
         );
     }

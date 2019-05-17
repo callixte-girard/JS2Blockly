@@ -59,7 +59,7 @@ export class MainContainer extends React.Component {
     syntaxicAnalysis(codeRaw) {
         // console.log("codeRaw: " , codeRaw);
 
-        let codeParsed
+        let codeParsed;
         try {
             codeParsed = esprima.parse(codeRaw);
             return codeParsed.body
@@ -70,7 +70,7 @@ export class MainContainer extends React.Component {
     lexicalAnalysis(codeRaw) {
         // console.log("codeRaw: " , codeRaw);
 
-        let codeParsed
+        let codeParsed;
         try {
             codeParsed = esprima.tokenize(codeRaw);
             return codeParsed
