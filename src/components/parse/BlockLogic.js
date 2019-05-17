@@ -92,15 +92,15 @@ export class BlockLogic extends React.Component {
     static forForStatement(condition, instructions) {
         return <block type="controls_for">
             <value name="FROM">
-                {block of the init expression}
+                {/*{block of the init expression}*/}
             </value>
 
             <value name="TO">
-                {block of the limit expression}
+                {/*{block of the limit expression}*/}
             </value>
 
             <value name="BY">
-                {block of the update expression}
+                {/*{block of the update expression}*/}
             </value>
 
             <statement name="DO">
