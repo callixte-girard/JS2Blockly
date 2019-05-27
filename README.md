@@ -1,14 +1,14 @@
-***** ISEP final project *****
+***** JS2Blockly — ISEP final project *****
 
 
-### QUICK DESCRIPTION 
+### >>> QUICK DESCRIPTION 
 
 This basically does the opposite of Blocky, which enables user to transform logical blocks into code.
 Our app transforms code (only JS for the moment) into block constructions using Blockly framework.
 This way, any obnoxious code, poorly-idented etc will become much clearer, and easier to read and understand.
 
 
-### DEBUGGING FOR FREQUENT ERRORS
+### >>> DEBUGGING FOR FREQUENT ERRORS
 
 > if the blocks don't appear after you cloned :
   - check if ./src/blockly is empty.
@@ -22,12 +22,12 @@ This way, any obnoxious code, poorly-idented etc will become much clearer, and e
   - should open http://localhost:3000 in your browser.
   
 
-### HOW IT WORKS
+### >>> HOW IT WORKS
 
 Simply input your JavaScript code into the left / top input container.
 The right / bottom block container will update itself accordingly to the code your entered.
 
-### WHAT'S NEW ?
+### >>> WHAT'S NEW ?
 
 - now : every basic JS built-in blocks are working except ForStatements and FunctionDeclarations. TBA soon
 
