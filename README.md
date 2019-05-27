@@ -20,5 +20,15 @@ This way, any obnoxious code, poorly-idented etc will become much clearer, and e
   - go to the directory (BlockBasedCodeVisualisation) with cd in terminal.
   - do "npm install" then "npm start".
   - should open http://localhost:3000 in your browser.
+  
+
+### HOW IT WORKS
+
+Simply input your JavaScript code into the left / top input container.
+The right / bottom block container will update itself accordingly to the code your entered.
+
+### WHAT'S NEW ?
+
+- now : every basic JS built-in blocks are working except ForStatements and FunctionDeclarations. TBA soon
 
 -------------------------------------------------------------------------------------------------------------------------------
