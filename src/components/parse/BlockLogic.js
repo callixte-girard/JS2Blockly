@@ -89,8 +89,12 @@ export class BlockLogic extends React.Component {
         </block>
     }
 
-    static forForStatement(from, to, by, instructions) {
+    static forForStatement(varName, from, to, by, instructions) {
         return <block type="controls_for">
+            <field name="VAR">
+                {varName}
+            </field>
+
             <value name="FROM">
                 {from}
             </value>

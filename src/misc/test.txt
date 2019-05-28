@@ -56,13 +56,22 @@ else if (false) {}
 else {}
 
 // TEST 12
+let p,j
+const m=5
+let p= true || 3 > 5 + 2
+while (true && false) { while(7 > 8) {} }
+
+// TEST 13
 if (true) {p ++}
 else if (true) {p -= 5}
 else if (false) {p = p + 8}
 else {let p}
 
-// EXAMPLE 1
-let p,j
-const m=5
-let p= true || 3 > 5 + 2
-while (true && false) { while(7 > 8) {} }
+// TEST 14
+for (i=0 ; i<5 ; i++) {}
+for (let i=0 ; i<5 ; i++) {}
+for (i=0 ; i<5 ; i+=3) {}
+
+// TEST 15
+for (let p=0 ; p<5 ; p+=2) {}
+for (mo = 9 ; p<1 ; p--) {}

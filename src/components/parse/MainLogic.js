@@ -43,7 +43,7 @@ export class MainLogic extends React.Component {
         const xml_middle =
             this.insertNextTagsIntoXmlBody( // returns: one string with all next tags in place
                 MiscFunctions.convertJsxArrayIntoStringArray( // returns: string Array
-                    EsprimaToXml.processListStatements(parsedContent)
+                    EsprimaToXml.parseListStatements(parsedContent)
                 )
             );
         const xml_main = xml_head + xml_middle + xml_tail;

@@ -7,7 +7,7 @@ import {BlockLogic} from "./BlockLogic";
 export class EsprimaToXml extends React.Component {
 
 
-    static processListStatements(statements) {
+    static parseListStatements(statements) {
         let xml_statements = [];
 
         for (let i=0 ; i < statements.length ; i++)
@@ -26,7 +26,7 @@ export class EsprimaToXml extends React.Component {
                     const expressionType = expression['type'];
                     const expressionOperator = expression['operator'];
 
-                    if (expressionType === 'AssignmentExpression') {
+                    if (expressionType === 'AssignmentExpression') { // can have "=" or '-=' or '+='
                         const variableName = expression['left']; // is a Literal
                         const variableValue = expression['right']; // is an Expression too
                         // console.log("variableName" + i.toString() + ":", variableName);
@@ -36,36 +36,36 @@ export class EsprimaToXml extends React.Component {
                         const varName = variableName['name'];
                         // get right part
                         if (expressionOperator === '=') {
-                            blockRight = this.processExpression(variableValue);
+                            blockRight = this.parseExpression(variableValue);
                             blockStatement = BlockLogic.forVariableDeclaration(varName, blockRight);
 
                         } else if (expressionOperator === '+=' || expressionOperator === '-=') {
                             // determines updateValue
                             let updateBy = variableValue['value'];
-                            blockStatement = this.processUpdateStatement(varName, updateBy, expressionOperator);
+                            blockStatement = this.parseUpdateStatement(varName, updateBy, expressionOperator);
                         }
 
-                    } else if (expressionType === 'UpdateExpression') {
+                    } else if (expressionType === 'UpdateExpression') { // can have '--' or '++'
                         const variableName = expression['argument'];
                         // console.log("variableName" + i.toString() + ":", variableName);
 
                         // get variable name
                         const varName = variableName['name'];
-                        // get right part
-                        if (expressionOperator === '++' || expressionOperator === '--') {
-                            // determines updateValue
-                            let updateBy = 1 ;
-                            blockStatement = this.processUpdateStatement(varName, updateBy, expressionOperator);
-                        }
+
+                        // determines updateValue
+                        let updateBy = 1 ;
+                        if (expressionOperator.includes("-")) updateBy = -updateBy; // corresponds to '--'
+
+                        blockStatement = this.parseUpdateStatement(varName, updateBy, expressionOperator);
                     }
                 } // ## I - b) IF, FOR, WHILE STATEMENTS
                 else {
                     if (statementType === 'IfStatement')
-                        blockStatement = this.processIfStatement(statement);
+                        blockStatement = this.parseIfStatement(statement);
                     else if (statementType === 'WhileStatement')
-                        blockStatement = this.processWhileStatement(statement);
+                        blockStatement = this.parseWhileStatement(statement);
                     else if (statementType === 'ForStatement')
-                        blockStatement = this.processForStatement(statement);
+                        blockStatement = this.parseForStatement(statement);
                 }
                 // insert statement
                 xml_statements.push(blockStatement);
@@ -78,9 +78,11 @@ export class EsprimaToXml extends React.Component {
 
                     for (let i = 0; i < declarations.length; i++)
                     {
+                        const declaration = declarations[i];
+
                         let blockDeclaration, varName, blockVarValue;
-                        const variableName = declarations[i]['id']; // is an Expression (Literal)
-                        const variableValue = declarations[i]['init']; // is an Expression too
+                        const variableName = declaration['id']; // is an Expression (Literal)
+                        const variableValue = declaration['init']; // is an Expression too
                         console.log("variableName" + i.toString() + ":", variableName);
                         console.log("variableValue" + i.toString() + ":", variableValue);
 
@@ -88,7 +90,7 @@ export class EsprimaToXml extends React.Component {
                         varName = variableName['name'];
                         // get variable value (if any)
                         try {
-                            blockVarValue = this.processExpression(variableValue);
+                            blockVarValue = this.parseExpression(variableValue);
                             blockDeclaration = BlockLogic.forVariableDeclaration(varName, blockVarValue);
                         } catch {
                             blockDeclaration = BlockLogic.forVariableDeclaration(varName);
@@ -112,9 +114,9 @@ export class EsprimaToXml extends React.Component {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    static processUpdateStatement(varName, updateBy, operator) {
+    static parseUpdateStatement(varName, updateBy, operator) {
 
-        if (operator.includes("-")) updateBy = -updateBy;
+        if (operator === "-=") updateBy = -updateBy; // little cheat awaiting for new neg block
 
         const blockUpdate = BlockLogic.forEndExpression(
             'Literal',
@@ -125,15 +127,15 @@ export class EsprimaToXml extends React.Component {
     }
 
 
-    static processWhileStatement(statement) {
+    static parseWhileStatement(statement) {
         let xml_expression ;
 
         const statementCondition = statement['test'];
         const statementInstructions = statement['body'];
         console.log("statementCondition:", statementCondition);
 
-        const blockCondition = this.processExpression(statementCondition);
-        const blockInstructions = this.processAutonomousStatementInstructions(statementInstructions);
+        const blockCondition = this.parseExpression(statementCondition);
+        const blockInstructions = this.parseAutonomousStatementInstructions(statementInstructions);
 
         xml_expression = BlockLogic.forWhileStatement(
             blockCondition,
@@ -143,7 +145,7 @@ export class EsprimaToXml extends React.Component {
     }
 
 
-    static processIfStatement(statement) {
+    static parseIfStatement(statement) {
         let xml_expression;
 
         let blocksConditions = [];
@@ -151,8 +153,8 @@ export class EsprimaToXml extends React.Component {
 
         const statementCondition = statement['test'];
         const statementConsequent = statement['consequent'];
-        blocksConditions.push(this.processExpression(statementCondition));
-        blocksInstructions.push(this.processAutonomousStatementInstructions(statementConsequent));
+        blocksConditions.push(this.parseExpression(statementCondition));
+        blocksInstructions.push(this.parseAutonomousStatementInstructions(statementConsequent));
 
         // not the final else : parse recursively on statementAlternate
         try {
@@ -161,14 +163,14 @@ export class EsprimaToXml extends React.Component {
                 try {
                     const alternateCondition = statementAlternate['test'];
                     const alternateInstructions = statementAlternate['consequent'];
-                    blocksConditions.push(this.processExpression(alternateCondition));
-                    blocksInstructions.push(this.processAutonomousStatementInstructions(alternateInstructions));
+                    blocksConditions.push(this.parseExpression(alternateCondition));
+                    blocksInstructions.push(this.parseAutonomousStatementInstructions(alternateInstructions));
 
                     statementAlternate = statementAlternate['alternate'];
                 } catch {}
             }
             // final else : just get the instruction and push it
-            blocksInstructions.push(this.processAutonomousStatementInstructions(statementAlternate));
+            blocksInstructions.push(this.parseAutonomousStatementInstructions(statementAlternate));
 
         } catch {}
         // console.log("nbConditions:", blocksConditions.length);
@@ -182,7 +184,7 @@ export class EsprimaToXml extends React.Component {
     }
 
 
-    static processForStatement(statement) {
+    static parseForStatement(statement) {
         let xml_expression ;
 
         const statementInit = statement['init'];
@@ -190,55 +192,88 @@ export class EsprimaToXml extends React.Component {
         const statementUpdate = statement['update'];
         const statementInstructions = statement['body'];
 
-        let blockInstructions = [];
-        let varName, valInit, valTest, valUpdate;
+        // first, parameters
+        let varName, varInit, varTest, varUpdate;
 
-        try {
-            valTest = this.processEndExpression();
-        } catch {}
+        // statementInit --> varName & varFrom
+        if (statementInit['type'] === 'VariableDeclaration') {
+            const declaration = statementInit['declarations'][0];
+            varName = declaration['id']['name'];
+            varInit = declaration['init']['value'];
+        } else if (statementInit['type'] === 'AssignmentExpression' ) {
+            varName = statementInit['left']['name'];
+            varInit = statementInit['right']['value'];
+        }
 
-        // 4) instructions
-        blockInstructions = this.processAutonomousStatementInstructions(statementInstructions);
+        // statementTest --> varTo
+        varTest = statementTest['right']['value'];
+        const operatorTest = statementTest['operator'];
+
+        // statementUpdate --> varBy
+        if (statementUpdate['type'] === 'AssignmentExpression')
+            varUpdate = statementUpdate['right']['value'];
+        else if (statementUpdate['type'] === 'UpdateExpression')
+            varUpdate = 1;
+        const operatorUpdate = statementUpdate['operator'];
+        if (operatorUpdate.includes("-")) varUpdate = -varUpdate; // works for '--' and '-='
+
+        // debugg
+        console.log(varName, varInit, varTest, varUpdate);
+
+        // then, blocks
+        let blockFrom, blockTo, blockBy, blockInstructions = [];
+
+        // instructions
+        blockInstructions.push(this.parseAutonomousStatementInstructions(statementInstructions));
+
+        // just to check logical validity
+        if (varTest >= varInit && operatorTest.includes('<') ||
+            varTest <= varInit && operatorTest.includes('>') )
+        {
+            blockFrom = BlockLogic.forEndExpression('Literal', varInit);
+            blockTo = BlockLogic.forEndExpression('Literal', varTest);
+            blockBy = BlockLogic.forEndExpression('Literal', varUpdate);
+        }
 
         xml_expression = BlockLogic.forForStatement(
             varName,
-            valInit,
-            valTest,
-            valUpdate,
+            blockFrom,
+            blockTo,
+            blockBy,
             blockInstructions
         );
         return xml_expression
     }
 
 
-    static processAutonomousStatementInstructions(statements) {
-        let xml_statement ;
+    static parseAutonomousStatementInstructions(statements) {
+        let xml_statement = [] ;
 
         const statementInstructions = statements['body'];
         console.log("statementInstructions:", statementInstructions);
 
         // recursively analyse statements of the body
-        xml_statement = this.processListStatements(statementInstructions);
+        xml_statement = this.parseListStatements(statementInstructions);
         return xml_statement
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    static processExpression(expression) {
+    static parseExpression(expression) {
         let xml_expression ;
 
         const expressionType = expression['type'];
         if (expressionType.includes('Expression'))
-            xml_expression = this.processHostExpression(expression);
+            xml_expression = this.parseHostExpression(expression);
         else
-            xml_expression = this.processEndExpression(expression);
+            xml_expression = this.parseEndExpression(expression);
 
         return xml_expression
     }
 
 
-    static processHostExpression(hostExpression) {
+    static parseHostExpression(hostExpression) {
         let xml_expression ;
 
         const expressionType = hostExpression['type'];
@@ -250,7 +285,7 @@ export class EsprimaToXml extends React.Component {
             // we'll create a special negate block for arithmetic later.
             const expressionArg = hostExpression['argument'];
 
-            const blockArg = this.processExpression(expressionArg);
+            const blockArg = this.parseExpression(expressionArg);
 
             xml_expression = BlockLogic.for1ArgExpression(blockArg, expressionOperator);
 
@@ -260,8 +295,8 @@ export class EsprimaToXml extends React.Component {
             const expressionArgLeft = hostExpression['left'];
             const expressionArgRight = hostExpression['right'];
 
-            const blockArgLeft = this.processExpression(expressionArgLeft);
-            const blockArgRight = this.processExpression(expressionArgRight);
+            const blockArgLeft = this.parseExpression(expressionArgLeft);
+            const blockArgRight = this.parseExpression(expressionArgRight);
 
             xml_expression = BlockLogic.for2ArgsExpression(blockArgLeft, blockArgRight, expressionOperator);
 
@@ -275,7 +310,7 @@ export class EsprimaToXml extends React.Component {
     }
 
 
-    static processEndExpression(endExpression) {
+    static parseEndExpression(endExpression) {
         let xml_expression ;
 
         const endExpression_type = endExpression['type'];
