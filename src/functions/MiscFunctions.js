@@ -1,4 +1,4 @@
-import ReactDOMServer from "react-dom/server";
+import jsx2str from 'jsx-to-string';
 
 
 export class MiscFunctions {
@@ -24,7 +24,7 @@ export class MiscFunctions {
         let str_array = [];
 
         for (let i=0 ; i<jsxArray.length ; i++) {
-            let jsx_str = ReactDOMServer.renderToStaticMarkup(jsxArray[i]);
+            let jsx_str = jsx2str(jsxArray[i]);
             str_array[i] = jsx_str;
         }
 

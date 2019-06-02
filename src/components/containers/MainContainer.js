@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import jsx2str from 'jsx-to-string';
 
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
@@ -38,12 +40,15 @@ export class MainContainer extends React.Component {
             console.log("programBody:", parsedContent);
             MiscFunctions.dispStar();
 
-            let xmlContent = MainLogic.generateBlocksFromParsedContent(parsedContent);
-            // let xmlContent = EsprimaToXml.processListStatements(parsedContent);
+            const xmlContent_jsx = MainLogic.generateBlocksFromParsedContent_new(parsedContent);
+            // !!! this jsx --> str conversion with ReactDOMServer.RenderToStaticMarkup
+            // !!! is ONLY for the final output (to avoid space that jsx-to-string woulg add)
+            const xmlContent_str = ReactDOMServer.renderToStaticMarkup(xmlContent_jsx);
+            // console.log("xmlContent_str:", xmlContent_str);
 
             this.setState({
                 parsedContent: parsedContent,
-                xmlContent: xmlContent
+                xmlContent: xmlContent_str
             });
 
         } catch (ex) { // this means invalid program syntax

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jsx-to-string": "^1.4.0",
     "node-blockly": "^1.0.35",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
