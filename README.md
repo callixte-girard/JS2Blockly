@@ -24,7 +24,12 @@ Simply input your JavaScript code into the left / top input container.
 The right / bottom block container will update itself accordingly to the code your entered.
 
 
-### >>> WHAT HASN'T BEEN IMPLEMENTED YET ?
-- add integers and strings like in js. ex : let p = 3; const k = p + "str"; 
+### >>> NOTES
+- if for loop does not contain a valid condition, it is displayed, but without from, to & by blocks
+    ex : for (p = 9 ; p<1 ; p--) {} (should be p>1)
 
+
+### >>> WHAT'S TO BE ADDED IN THE FUTURE ?
+- add concat for integers and strings like in js. 
+    ex : let p = 3; const k = p + "str"; 
 -------------------------------------------------------------------------------------------------------------------------------

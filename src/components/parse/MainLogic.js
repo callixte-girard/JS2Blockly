@@ -14,16 +14,15 @@ export class MainLogic extends React.Component {
         for (let i = statements.length - 1; i > 0; i--) {
             let jsx_cur = statements[i];
             let jsx_prev = statements[i - 1];
-            console.log("jsx_str_cur" + i + ":", jsx2str(jsx_cur));
-            console.log("jsx_str_prev" + i + ":", jsx2str(jsx_prev));
+            // console.log("jsx_str_cur" + i + ":", jsx2str(jsx_cur));
+            // console.log("jsx_str_prev" + i + ":", jsx2str(jsx_prev));
 
             // // now insert nextified cur at the good place index in prev
             // 1) get back previous block type
             const blocklyType = jsx_prev.props.type;
             const blockChildren = jsx_prev.props.children;
-            console.log("test_blocklyType", blocklyType);
-            console.log("test_blockChildren", MiscFunctions.convertJsxArrayIntoStringArray(blockChildren));
-            // console.log("test_blockChildren", MiscFunctions.convertJsxArrayIntoJsx2StrArray(blockChildren));
+            // console.log("test_blocklyType", blocklyType);
+            // console.log("test_blockChildren", MiscFunctions.convertJsxArrayIntoStringArray(blockChildren));
             // 2) create again prev block with nextified current block
             jsx_prev = <block type={blocklyType}>{
                     blockChildren
