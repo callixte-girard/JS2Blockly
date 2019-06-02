@@ -1,5 +1,5 @@
 import jsx2str from 'jsx-to-string';
-
+import ReactDOMServer from 'react-dom/server';
 
 export class MiscFunctions {
 
@@ -19,15 +19,17 @@ export class MiscFunctions {
         return toSplit.split(/\r?\n/)
     }
 
-    static convertJsxArrayIntoStringArray(jsxArray) {
+    static convertJsxArrayIntoJsx2StrArray(jsxArray) {
+        let jsx2str_array = [];
 
+        for (let i=0 ; i<jsxArray.length ; i++) { jsx2str_array[i] = jsx2str(jsxArray[i]); }
+        return jsx2str_array
+    }
+
+    static convertJsxArrayIntoStringArray(jsxArray) {
         let str_array = [];
 
-        for (let i=0 ; i<jsxArray.length ; i++) {
-            let jsx_str = jsx2str(jsxArray[i]);
-            str_array[i] = jsx_str;
-        }
-
+        for (let i=0 ; i<jsxArray.length ; i++) { str_array[i] = ReactDOMServer.renderToStaticMarkup(jsxArray[i]); }
         return str_array
     }
 

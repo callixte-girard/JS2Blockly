@@ -40,7 +40,7 @@ export class MainContainer extends React.Component {
             console.log("programBody:", parsedContent);
             MiscFunctions.dispStar();
 
-            const xmlContent_jsx = MainLogic.generateBlocksFromParsedContent_new(parsedContent);
+            const xmlContent_jsx = MainLogic.generateBlocksFromParsedContent(parsedContent);
             // !!! this jsx --> str conversion with ReactDOMServer.RenderToStaticMarkup
             // !!! is ONLY for the final output (to avoid space that jsx-to-string woulg add)
             const xmlContent_str = ReactDOMServer.renderToStaticMarkup(xmlContent_jsx);

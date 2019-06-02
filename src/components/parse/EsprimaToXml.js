@@ -2,6 +2,7 @@ import React from 'react';
 
 import {MiscFunctions} from "../../functions/MiscFunctions";
 import {BlockLogic} from "./BlockLogic";
+import {MainLogic} from "./MainLogic";
 
 
 export class EsprimaToXml extends React.Component {
@@ -107,7 +108,9 @@ export class EsprimaToXml extends React.Component {
             }
             MiscFunctions.dispLine();
         }
-        // console.log("xml_out length:", xml_statements.length);
+        // console.log("xml_statements.length:", xml_statements.length);
+        // nextify the jsx list into a single jsx
+        xml_statements = MainLogic.nextifyXmlStatementListIntoSingleBlock(xml_statements);
         return xml_statements
     }
 
