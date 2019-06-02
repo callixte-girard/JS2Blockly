@@ -23,7 +23,7 @@ export class MainLogic extends React.Component {
             const blockChildren = jsx_prev.props.children;
             console.log("test_blocklyType", blocklyType);
             console.log("test_blockChildren", MiscFunctions.convertJsxArrayIntoStringArray(blockChildren));
-            console.log("test_blockChildren", MiscFunctions.convertJsxArrayIntoJsx2StrArray(blockChildren));
+            // console.log("test_blockChildren", MiscFunctions.convertJsxArrayIntoJsx2StrArray(blockChildren));
             // 2) create again prev block with nextified current block
             jsx_prev = <block type={blocklyType}>{
                     blockChildren
