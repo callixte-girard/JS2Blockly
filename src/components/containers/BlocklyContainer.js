@@ -6,11 +6,15 @@ export class BlocklyContainer extends React.Component {
 
 
     updateBlocksFromXml(xml_str) {
+
         Blockly.getMainWorkspace().clear();
 
         try {
             Blockly.Xml.appendDomToWorkspace(
-                Blockly.Xml.textToDom(xml_str),
+                Blockly.Xml.textToDom(
+                    xml_str
+                    // Blockly.renderToStaticMarkup(xml_str)
+                ),
                 Blockly.getMainWorkspace()
             );
         } catch {}
