@@ -74,4 +74,4 @@ for (i=0 ; i<5 ; i+=3) {}
 
 // TEST 15
 for (let p=0 ; p<5 ; p+=2) {}
-for (mo = 9 ; p<1 ; p--) {}
+for (p = 9 ; p<1 ; p--) {} // this one should not work
