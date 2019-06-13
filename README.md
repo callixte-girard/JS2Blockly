@@ -25,11 +25,12 @@ The right / bottom block container will update itself accordingly to the code yo
 
 
 ### >>> NOTES
-- if for loop does not contain a valid condition, it is displayed, but without from, to & by blocks
-    ex : for (p = 9 ; p<1 ; p--) {} (should be p>1)
+- if for loop does not do anything, it is displayed, but without from, to & by blocks
+    - ex : for (p = 9 ; p<1 ; p--) {} 
+    - (works with p>1 because loop is infinite)
 - concatenation of string doesn't work. 
-    --> Must take : <block type="text_join"></block>
+    - Must take blockly type : __"text_join"__
 - -9 is considered as a UnaryExpression by Esprima, not by a Literal number in itself.
-    --> Maybe create a negate block, similar to the "logic_negate" block ?
+    - Maybe create a negate block, similar to the __"logic_negate"__ block ?
 
 -------------------------------------------------------------------------------------------------------------------------------
