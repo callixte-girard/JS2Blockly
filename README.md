@@ -2,9 +2,9 @@
 
 
 ### >>> QUICK DESCRIPTION 
-This basically does the opposite of Blocky, which enables user to transform logical blocks into code.
-Our app transforms code (only JS for the moment) into block constructions using Blockly framework.
-This way, any obnoxious code, poorly-indented etc will become much clearer, and easier to read and understand.
+This basically does the opposite of Blocky, which enables user to transform logical blocks into code. 
+That means, this app transforms JS code into block constructions using the Blockly framework. 
+This way, any obnoxious code, poorly-idented etc will be represented visually with blocks tied to each other, thus become much clearer to read and understand.
   
   
 ### >>> HOW IT WORKS
