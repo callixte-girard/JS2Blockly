@@ -20,8 +20,8 @@ The right / bottom block container will update itself accordingly to the code yo
   - do "npm install" then "npm start".
   - should open http://localhost:3000 in your browser.
 
-
 ## NOTES
+- you can find mapping between JavaScript and Blockly XML and many other useful infos in : ./src/misc/
 - if for loop does not do anything, it is displayed, but without from, to & by blocks
     - ex : for (p = 9 ; p<1 ; p--) {} 
     - (works with p>1 because loop is infinite)
