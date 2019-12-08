@@ -4,8 +4,10 @@ import jsx2str from 'jsx-to-string';
 
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
-import {MiscFunctions} from "../../functions/MiscFunctions";
 import {MainLogic} from "../parse/MainLogic";
+
+import {splitLineByLine} from "../../static/methods";
+import {line, star} from "../../static/constants";
 
 const esprima = require('esprima');
 
@@ -24,21 +26,20 @@ export class MainContainer extends React.Component {
     }
 
     updateCode(event) {
-
         let inputContent = event.target.value;
 
         // processes JS <> Blockly conversion
         try {
-            // const split_content = MiscFunctions.splitLineByLine(inputContent);
+            // const split_content = splitLineByLine(inputContent);
 
             // ### VER 1 : lexical
             // let parsedContent = this.lexicalAnalysis(codeToParse);
             // ### VER 2 : syntaxic
             let parsedContent = this.syntaxicAnalysis(inputContent);
 
-            MiscFunctions.dispStar();
+            console.log(star);
             console.log("programBody:", parsedContent);
-            MiscFunctions.dispStar();
+            console.log(star);
 
             const xmlContent_jsx = MainLogic.generateBlocksFromParsedContent(parsedContent);
             // !!! this jsx --> str conversion with ReactDOMServer.RenderToStaticMarkup

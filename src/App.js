@@ -1,17 +1,17 @@
 import React  from 'react';
-import ReactDOM from 'react-dom';
-import Blockly from 'node-blockly/browser';
+// import Blockly from 'node-blockly/browser';
+import Blockly from 'blockly';
 
 import './App.css';
 import {MainContainer} from "./components/containers/MainContainer";
 
 
-export class App extends React.Component {
+class App extends React.Component {
 
     componentDidMount() {
 
         Blockly.inject('blocklyDiv', {
-                // toolbox: document.getElementById('toolbox') // comment this line to inject no toolbox
+                toolbox: document.getElementById('toolbox') // comment this line to inject no toolbox
         });
     }
 
@@ -19,14 +19,15 @@ export class App extends React.Component {
     render() {
         return (
             <div className={"main"}>
-
                 <div className={"header"}>
                     <h1>HEY GUYS :)</h1>
-                    <h4>Enjoy visualising horrible code with this fantastic app ;)</h4>
+                    <h4>Enjoy visualising horribly-indented code with this fantastic app ;)</h4>
                 </div>
-
-                <MainContainer className={"pipou"}/>
+                <br></br>
+                <MainContainer className={"main-container"}/>
             </div>
         );
     }
 }
+
+export default App;

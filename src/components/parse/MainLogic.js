@@ -1,9 +1,12 @@
 import React from 'react';
-import Blockly from "node-blockly/browser";
+// import Blockly from "node-blockly/browser";
+import Blockly from 'blockly';
 import jsx2str from 'jsx-to-string';
 
-import {MiscFunctions} from "../../functions/MiscFunctions";
 import {EsprimaToXml} from "./EsprimaToXml";
+
+import {convertJsxArrayIntoStringArray} from "../../static/methods";
+import {line, star} from "../../static/constants";
 
 
 export class MainLogic extends React.Component {
@@ -22,7 +25,7 @@ export class MainLogic extends React.Component {
             const blocklyType = jsx_prev.props.type;
             const blockChildren = jsx_prev.props.children;
             // console.log("test_blocklyType", blocklyType);
-            // console.log("test_blockChildren", MiscFunctions.convertJsxArrayIntoStringArray(blockChildren));
+            // console.log("test_blockChildren", convertJsxArrayIntoStringArray(blockChildren));
             // 2) create again prev block with nextified current block
             jsx_prev = <block type={blocklyType}>{
                     blockChildren
@@ -33,7 +36,7 @@ export class MainLogic extends React.Component {
             // 3) insert result back into the array
             // console.log("insertion done:", jsx2str(jsx_prev));
             statements[i - 1] = jsx_prev;
-            MiscFunctions.dispLine();
+            console.log(line);
         }
         return statements[0]
     }
@@ -48,7 +51,7 @@ export class MainLogic extends React.Component {
         }</xml>;
 
         // debug it stringified and return it as jsx
-        MiscFunctions.dispLine();
+        console.log(line);
         console.log("xml_main (stringified) :", jsx2str(xml_main));
         return xml_main; // it's still a JSX
     }

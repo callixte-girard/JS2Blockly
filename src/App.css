@@ -1,23 +1,16 @@
 /*
-GUIDE TO FLEX BOX (it's life give it a look)
+GUIDE TO FLEX BOX (it will change your life give it a look)
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 */
 
 
-/*
-.main {
-  background-color: #8888ff;
-  text-decoration-color: #8888ff;
-}*/
-
-.pipou {
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
+body {
+  background-color: #1a1818;
+  color: #e7e0e0;
 }
 
-.header {
+
+.main {
   text-align: center;
-  display: inline;
   flex-wrap: wrap;
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 
-import {MiscFunctions} from "../../functions/MiscFunctions";
 import {BlockLogic} from "./BlockLogic";
 import {MainLogic} from "./MainLogic";
+
+import {splitLineByLine} from "../../static/methods";
+import {line, star} from "../../static/constants";
 
 
 export class EsprimaToXml extends React.Component {
@@ -106,7 +108,7 @@ export class EsprimaToXml extends React.Component {
                     ////////
                 }
             }
-            MiscFunctions.dispLine();
+            console.log(line);
         }
         // console.log("xml_statements.length:", xml_statements.length);
         // nextify the jsx list into a single jsx
