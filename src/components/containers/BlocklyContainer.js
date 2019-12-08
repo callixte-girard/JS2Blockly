@@ -1,6 +1,7 @@
 import React from 'react';
-// import Blockly from "node-blockly/browser";
 import Blockly from "blockly";
+
+import {style_dark} from '../../static/constants';
 
 
 export class BlocklyContainer extends React.Component {
@@ -26,20 +27,8 @@ export class BlocklyContainer extends React.Component {
 
     render() {
         return (
-            <div
-                id="blocklyDiv"
-                className="blockly-container"
-                style={{
-                    height: 500,
-                    width: 500,
-                    backgroundColor: "#1a1818",
-                    color: "#e7e0e0",
-                    // position: 'absolute',
-                    // right: 40,
-                    border: "1px solid black",
-                    display: 'inline-block',
-                    // margin: 40
-                }}
+            <div id="blocklyDiv"
+                style={style_dark} // why don't you fucking work with colors ???
             ></div>
         );
     }

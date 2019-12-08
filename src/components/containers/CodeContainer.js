@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {style_dark} from '../../static/constants';
+
 
 export class CodeContainer extends React.Component {
 
@@ -11,12 +13,13 @@ export class CodeContainer extends React.Component {
 
     render() {
         return (
-            <textarea id="code-raw"
-                      className="code-container"
-                      rows="38"
-                      cols="76"
-                      placeholder={this.exampleCode}
-                      onChange={this.props.updateCode}
+            <textarea
+                style={style_dark}
+                // rows and cols don't work if they're overridden by height and width (in style_dark)
+                // rows="38"
+                // cols="80"
+                placeholder={this.exampleCode}
+                onChange={this.props.updateCode}
             ></textarea>
         );
     }

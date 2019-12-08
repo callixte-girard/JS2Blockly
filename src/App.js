@@ -1,5 +1,4 @@
 import React  from 'react';
-// import Blockly from 'node-blockly/browser';
 import Blockly from 'blockly';
 
 import './App.css';

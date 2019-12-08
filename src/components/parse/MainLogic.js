@@ -1,6 +1,4 @@
 import React from 'react';
-// import Blockly from "node-blockly/browser";
-import Blockly from 'blockly';
 import jsx2str from 'jsx-to-string';
 
 import {EsprimaToXml} from "./EsprimaToXml";
