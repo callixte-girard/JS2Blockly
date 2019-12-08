@@ -9,3 +9,8 @@ body {
   text-align: center;
   flex-wrap: wrap;
 }
+
+
+div#blocklyDiv .blocklyMainBackground {
+  background: #000000;
+}
