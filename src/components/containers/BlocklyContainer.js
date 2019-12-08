@@ -38,7 +38,7 @@ export class BlocklyContainer extends React.Component {
                     // right: 40,
                     border: "1px solid black",
                     display: 'inline-block',
-                    margin: 40
+                    // margin: 40
                 }}
             ></div>
         );
