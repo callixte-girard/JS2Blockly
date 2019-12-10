@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/JS2Blockly/static/css/main.fea4316f.chunk.css",
-    "main.js": "/JS2Blockly/static/js/main.cf203437.chunk.js",
-    "main.js.map": "/JS2Blockly/static/js/main.cf203437.chunk.js.map",
+    "main.js": "/JS2Blockly/static/js/main.3b6768e7.chunk.js",
+    "main.js.map": "/JS2Blockly/static/js/main.3b6768e7.chunk.js.map",
     "runtime-main.js": "/JS2Blockly/static/js/runtime-main.f0b76850.js",
     "runtime-main.js.map": "/JS2Blockly/static/js/runtime-main.f0b76850.js.map",
     "static/js/2.28b2d324.chunk.js": "/JS2Blockly/static/js/2.28b2d324.chunk.js",
     "static/js/2.28b2d324.chunk.js.map": "/JS2Blockly/static/js/2.28b2d324.chunk.js.map",
     "index.html": "/JS2Blockly/index.html",
-    "precache-manifest.3a1fd7031216b756014b9c9a93ac18ea.js": "/JS2Blockly/precache-manifest.3a1fd7031216b756014b9c9a93ac18ea.js",
+    "precache-manifest.0f9238e51690d9a11fb8f9db0acb8c5c.js": "/JS2Blockly/precache-manifest.0f9238e51690d9a11fb8f9db0acb8c5c.js",
     "service-worker.js": "/JS2Blockly/service-worker.js",
     "static/css/main.fea4316f.chunk.css.map": "/JS2Blockly/static/css/main.fea4316f.chunk.css.map",
     "static/js/2.28b2d324.chunk.js.LICENSE": "/JS2Blockly/static/js/2.28b2d324.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.f0b76850.js",
     "static/js/2.28b2d324.chunk.js",
     "static/css/main.fea4316f.chunk.css",
-    "static/js/main.cf203437.chunk.js"
+    "static/js/main.3b6768e7.chunk.js"
   ]
 }
