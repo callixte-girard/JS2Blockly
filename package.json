@@ -1,7 +1,7 @@
 {
   "name": "js2blockly",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "homepage": "https://callixte-girard.github.io/JS2Blockly",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
