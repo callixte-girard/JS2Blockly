@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/JS2Blockly/precache-manifest.0f9238e51690d9a11fb8f9db0acb8c5c.js"
+  "/JS2Blockly/precache-manifest.7fd9c9f27c7e729c71b9357f081a45f1.js"
 );
 
 self.addEventListener('message', (event) => {
