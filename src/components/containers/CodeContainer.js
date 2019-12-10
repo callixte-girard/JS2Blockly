@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {style_dark} from '../../static/constants';
-// import {sample_code} from '../../../misc/sample_code'; // TODO replace it
+import {blank_code, sample_code} from '../../static/constants'; 
 
 
 export class CodeContainer extends React.Component {
@@ -9,8 +9,9 @@ export class CodeContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.exampleCode = "test" // TODO replace it
+        props.updateCode(); // calls this a first time to visualise sample code !
     }
+
 
     render() {
         return (
@@ -19,9 +20,11 @@ export class CodeContainer extends React.Component {
                 // rows and cols don't work if they're overridden by height and width (in style_dark)
                 // rows="38"
                 // cols="80"
-                placeholder={this.exampleCode}
+                placeholder={blank_code}
                 onChange={this.props.updateCode}
-            ></textarea>
+            >
+                {sample_code}
+            </textarea>
         );
     }
 

@@ -15,3 +15,7 @@ export const style_dark = { // avoid killing your eyes !
     display: 'inline-block',
     // padding: 40
 }
+
+
+export const blank_code = "Input your JavaScript code here"
+export const sample_code = "while (p>5 || p<3) { r = true || 3 > 5 + (2 + x) }"

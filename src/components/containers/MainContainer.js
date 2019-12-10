@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import jsx2str from 'jsx-to-string';
 
 import {CodeContainer} from "./CodeContainer";
 import {BlocklyContainer} from "./BlocklyContainer";
 import {MainLogic} from "../parse/MainLogic";
 
-import {splitLineByLine} from "../../static/methods";
 import {line, star} from "../../static/constants";
+import {sample_code} from '../../static/constants'; 
 
 const esprima = require('esprima');
 
@@ -26,12 +25,13 @@ export class MainContainer extends React.Component {
     }
 
     updateCode(event) {
-        let inputContent = event.target.value;
+        
+        let inputContent;
+        if (event !== undefined) inputContent = event.target.value;
+        else inputContent = sample_code;
 
         // processes JS <> Blockly conversion
         try {
-            // const split_content = splitLineByLine(inputContent);
-
             // ### VER 1 : lexical
             // let parsedContent = this.lexicalAnalysis(codeToParse);
             // ### VER 2 : syntaxic
@@ -43,7 +43,7 @@ export class MainContainer extends React.Component {
 
             const xmlContent_jsx = MainLogic.generateBlocksFromParsedContent(parsedContent);
             // !!! this jsx --> str conversion with ReactDOMServer.RenderToStaticMarkup
-            // !!! is ONLY for the final output (to avoid space that jsx-to-string woulg add)
+            // !!! is ONLY for the final output (to avoid space that jsx-to-string would add)
             const xmlContent_str = ReactDOMServer.renderToStaticMarkup(xmlContent_jsx);
             // console.log("xmlContent_str:", xmlContent_str);
 
@@ -88,7 +88,7 @@ export class MainContainer extends React.Component {
         return (
             <div>
                 <CodeContainer
-                    exampleCode={this.exampleCode}
+                    // exampleCode={this.exampleCode}
                     updateCode={this.updateCode}
                 />
                 
