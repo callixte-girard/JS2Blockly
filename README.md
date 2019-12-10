@@ -18,8 +18,8 @@ You can find mapping between JavaScript and Blockly XML and many other useful in
   - Do `npm start`. It should open `http://localhost:3000` in your browser.
   - Replace `npm` with `yarn` if it doesn't work.
 
+
 ## TO-DO
-- Fix this alert : https://github.com/callixte-girard/JS2Blockly/network/alert/yarn.lock/serialize-javascript/open
 - Add string concatenation (blockly type : `"text_join"`), which doesn't work well as of now.
 - Add support for objects like : `const test = {'title': 'hey guys', 'content': "what's up ?", 'date': '2019-12-10 10:20:00.799418'}`
 
