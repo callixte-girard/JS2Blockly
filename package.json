@@ -1,12 +1,14 @@
 {
   "name": "js2blockly",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://callixte-girard.github.io/JS2Blockly",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "blockly": "^3.20191014.4",
+    "gh-pages": "^2.1.1",
     "jsx-to-string": "^1.4.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -14,6 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

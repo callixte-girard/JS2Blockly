@@ -9,6 +9,7 @@ export const style_dark = { // avoid killing your eyes !
 
     color: "#e7e0e0",
     background: "#1a1818",
+    font: "comic-sans-ms",
 
     border: "1px solid black",
     display: 'inline-block',
