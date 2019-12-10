@@ -37,3 +37,4 @@ export function patchUpStringArrayIntoOneBigString(stringArray, delimiter) {
 
     return big_string
 }
+

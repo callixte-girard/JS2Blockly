@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {style_dark} from '../../static/constants';
+// import {sample_code} from '../../../misc/sample_code'; // TODO replace it
 
 
 export class CodeContainer extends React.Component {
@@ -8,7 +9,7 @@ export class CodeContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.exampleCode = "put your js code here..."
+        this.exampleCode = "test" // TODO replace it
     }
 
     render() {
