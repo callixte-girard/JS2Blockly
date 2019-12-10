@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/js2blockly/static/css/main.fea4316f.chunk.css",
+    "main.js": "/js2blockly/static/js/main.d664a5ee.chunk.js",
+    "main.js.map": "/js2blockly/static/js/main.d664a5ee.chunk.js.map",
+    "runtime-main.js": "/js2blockly/static/js/runtime-main.2217e924.js",
+    "runtime-main.js.map": "/js2blockly/static/js/runtime-main.2217e924.js.map",
+    "static/js/2.28b2d324.chunk.js": "/js2blockly/static/js/2.28b2d324.chunk.js",
+    "static/js/2.28b2d324.chunk.js.map": "/js2blockly/static/js/2.28b2d324.chunk.js.map",
+    "index.html": "/js2blockly/index.html",
+    "precache-manifest.9d9e414e4d8bf3d5391e31cb5faa15f1.js": "/js2blockly/precache-manifest.9d9e414e4d8bf3d5391e31cb5faa15f1.js",
+    "service-worker.js": "/js2blockly/service-worker.js",
+    "static/css/main.fea4316f.chunk.css.map": "/js2blockly/static/css/main.fea4316f.chunk.css.map",
+    "static/js/2.28b2d324.chunk.js.LICENSE": "/js2blockly/static/js/2.28b2d324.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2217e924.js",
+    "static/js/2.28b2d324.chunk.js",
+    "static/css/main.fea4316f.chunk.css",
+    "static/js/main.d664a5ee.chunk.js"
+  ]
+}
